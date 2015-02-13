@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcupunctureClinic.Desktop", "AcupunctureClinic.Desktop", "{E7A002B7-7823-4339-9F2D-0DAD59283DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcupunctureClinic.Desktop", "AcupunctureClinic.Desktop\AcupunctureClinic.Desktop.csproj", "{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcupunctureClinic.Data", "AcupunctureClinic.Data", "{F2E51779-15F0-4590-B695-1840A170BB52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcupunctureClinic.Data", "AcupunctureClinic.Data\AcupunctureClinic.Data.csproj", "{BD99F3E9-A537-4509-B059-192E4746EC0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Debug|x86.ActiveCfg = Debug|x86
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Debug|x86.Build.0 = Debug|x86
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Release|x86.ActiveCfg = Release|x86
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}.Release|x86.Build.0 = Release|x86
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Debug|x86.ActiveCfg = Debug|x86
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Debug|x86.Build.0 = Debug|x86
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Release|x86.ActiveCfg = Release|x86
+		{BD99F3E9-A537-4509-B059-192E4746EC0B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2} = {E7A002B7-7823-4339-9F2D-0DAD59283DFD}
+		{BD99F3E9-A537-4509-B059-192E4746EC0B} = {F2E51779-15F0-4590-B695-1840A170BB52}
+	EndGlobalSection
+EndGlobal

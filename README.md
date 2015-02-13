@@ -1,3 +1,3 @@
 # MyClinic
 
-## Clinic Record Management System
+## Clinic Record Management System   Feb. 2015
