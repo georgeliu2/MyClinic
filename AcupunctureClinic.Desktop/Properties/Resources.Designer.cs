@@ -295,7 +295,7 @@ namespace AcupunctureClinic.Desktop.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New member registered successfully!.
+        ///   Looks up a localized string similar to New customer registered successfully!.
         /// </summary>
         internal static string Registration_Successful_Message {
             get {

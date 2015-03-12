@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="ConnectionAccess.cs" company="John">
-// Socia Member club Demo ©2013
+// Acupuncture Clinic Record Management System 2015
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -16,13 +16,26 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <summary>
         /// Gets connection string
         /// </summary>
-        protected string ConnectionString
+        protected string DBConnectionString
         {
             get 
             { 
                 return ConfigurationManager
-                    .ConnectionStrings["SocialClubDBConnection"]
+                    .ConnectionStrings["DBConnection"]
                     .ToString(); 
+            }
+        }
+
+        protected string ExcelConnectionString
+        {
+            get
+            {
+                return ConfigurationManager
+                    .ConnectionStrings["RootDir"]
+                    .ToString() +
+                    ConfigurationManager
+                    .ConnectionStrings["ExcelConnection"]
+                    .ToString();
             }
         }
     }

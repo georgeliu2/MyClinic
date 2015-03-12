@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="Login.cs" company="John">
-// Socia Member club Demo ©2013
+// Acupuncture Clinic Record Management System 2015
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -45,8 +45,15 @@ namespace AcupunctureClinic.Desktop
         /// </summary>
         /// <param name="sender">sender object</param>
         /// <param name="e">event data</param>
+       
         private void Login_Click(object sender, EventArgs e)
         {
+            LoginProcess();
+        }
+
+        private void LoginProcess()
+        {
+
             if (txtUsername.Text.Trim() == Settings.Default.Username && txtPassword.Text.Trim() == Settings.Default.Password)
             {
                 var frmManage = new Manage();
@@ -62,6 +69,12 @@ namespace AcupunctureClinic.Desktop
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
+        }
+
+        private void txtPassword_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)        
+                LoginProcess();                     
         }
     }
 }

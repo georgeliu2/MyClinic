@@ -11,7 +11,7 @@ namespace AcupunctureClinic.Data.Enums
     /// <summary>
     /// Enumerator for occupation
     /// </summary>
-    public enum Occupation
+    public enum State
     {
         /// <summary>
         /// Occupation - None
@@ -22,25 +22,25 @@ namespace AcupunctureClinic.Data.Enums
         /// <summary>
         /// Occupation - Doctor
         /// </summary>
-        [Description("Doctor")]
-        Doctor,
+        [Description("TX")]
+        TX,
 
         /// <summary>
         /// Occupation - Engineer
         /// </summary>
-        [Description("Engineer")]
-        Engineer,
+        [Description("MA")]
+        MA,
 
         /// <summary>
         /// Occupation - Professor
         /// </summary>
-        [Description("Professor")]
-        Professor,
+        [Description("WA")]
+        WA,
 
         /// <summary>
         /// Occupation - Cat
         /// </summary>
-        [Description("Cat")]
-        Cat
+        [Description("CA")]
+        CA
     }
 }

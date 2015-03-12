@@ -3,6 +3,6 @@
     <StartWorkingDirectory>G:\projects\Hospital\VS2008\AcupunctureClinic\AcupunctureClinic.Desktop\bin\Debug\</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <StartWorkingDirectory>G:\projects\Hospital\VS2008\AcupunureClinic\AcupunctureClinic.Desktop\bin\Debug\</StartWorkingDirectory>
+    <StartWorkingDirectory>C:\MyClinic\AcupunctureClinic.Desktop\bin\x86\Debug\</StartWorkingDirectory>
   </PropertyGroup>
 </Project>

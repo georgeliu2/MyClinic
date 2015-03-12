@@ -1,10 +1,10 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="MaritalStatus.cs" company="John">
-// Socia Member club Demo ©2013
+// Acupuncture Clinic Record Management System 2015
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace AcupunctureClinic.Data.Enum
+namespace AcupunctureClinic.Data.Enums
 {
     using System.ComponentModel;
 
