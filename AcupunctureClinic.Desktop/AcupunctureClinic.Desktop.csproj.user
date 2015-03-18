@@ -7,7 +7,7 @@
     <StartWorkingDirectory>g:\projects\Hospital\VS2008\AcupunctureClinic\AcupunctureClinic.Desktop\bin\Release</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup>
-    <PublishUrlHistory>publish\</PublishUrlHistory>
+    <PublishUrlHistory>c:\deploy\|publish\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
@@ -18,5 +18,6 @@
     </BootstrapperUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <ErrorReportUrlHistory />
   </PropertyGroup>
 </Project>

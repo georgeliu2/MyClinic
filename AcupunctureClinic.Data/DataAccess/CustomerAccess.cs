@@ -897,7 +897,7 @@ namespace AcupunctureClinic.Data.DataAccess
 
         public void ClearInvoice(Excel.Worksheet invoiceSheet)
         {
-            for (int i = 14; i <= 34; i++)
+            for (int i = 15; i <= 27; i++)
             {
                 invoiceSheet.Cells[i, 1] = "";
                 invoiceSheet.Cells[i, 2] = "";
@@ -906,10 +906,10 @@ namespace AcupunctureClinic.Data.DataAccess
                 invoiceSheet.Cells[i, 8] = "";
                 invoiceSheet.Cells[i, 9] = "";
             }
-            invoiceSheet.Cells[36, 2] = "";   //Payment method
-            invoiceSheet.Cells[35, 9] = "";   //Subtotal
-            invoiceSheet.Cells[36, 9] = "";     //Amount paid
-            invoiceSheet.Cells[37, 9] = "";     //Total
+            invoiceSheet.Cells[29, 2] = "";   //Payment method
+            invoiceSheet.Cells[28, 9] = "";   //Subtotal
+            invoiceSheet.Cells[29, 9] = "";     //Amount paid
+            invoiceSheet.Cells[30, 9] = "";     //Total
         }
         /// <summary>
         /// Method FilloutInvoiceReport. It fill out Excel Invoice report
@@ -935,20 +935,20 @@ namespace AcupunctureClinic.Data.DataAccess
                 ClearInvoice(InvoiceSheet);
 
                 //InvoiceSheet.Activate();
-                InvoiceSheet.Cells[3, 9] = invoiceModel.InvDate;
-                InvoiceSheet.Cells[4, 9] = invoiceModel.InvNo;
-                InvoiceSheet.Cells[5, 9] = invoiceModel.CustomerID;
+                InvoiceSheet.Cells[4, 9] = invoiceModel.InvDate;
+                InvoiceSheet.Cells[5, 9] = invoiceModel.InvNo;
+                InvoiceSheet.Cells[6, 9] = invoiceModel.CustomerID;
 
-                InvoiceSheet.Cells[14, 1] = invoiceModel.ProcedureCode;
-                InvoiceSheet.Cells[14, 2] = invoiceModel.HMCode;
-                InvoiceSheet.Cells[14, 7] = invoiceModel.SubTotal;
-                InvoiceSheet.Cells[14, 8] = invoiceModel.DiscountRate / 100.0;
-                InvoiceSheet.Cells[14, 9] = invoiceModel.Total;
+                InvoiceSheet.Cells[15, 1] = invoiceModel.ProcedureCode;
+                InvoiceSheet.Cells[15, 2] = invoiceModel.HMCode;
+                InvoiceSheet.Cells[15, 7] = invoiceModel.SubTotal;
+                InvoiceSheet.Cells[15, 8] = invoiceModel.DiscountRate / 100.0;
+                InvoiceSheet.Cells[15, 9] = invoiceModel.Total;
 
-                InvoiceSheet.Cells[36, 2] = Enum.GetName(typeof(PaymentMethods), invoiceModel.PaymentMethod);
-                InvoiceSheet.Cells[35, 9] = invoiceModel.SubTotal;   //Subtotal
-                InvoiceSheet.Cells[36, 9] = invoiceModel.AmountPaid;     //Amount paid
-                InvoiceSheet.Cells[37, 9] = invoiceModel.Total;     //Total
+                InvoiceSheet.Cells[29, 2] = Enum.GetName(typeof(PaymentMethods), invoiceModel.PaymentMethod);
+                InvoiceSheet.Cells[28, 9] = invoiceModel.SubTotal;   //Subtotal
+                InvoiceSheet.Cells[29, 9] = invoiceModel.AmountPaid;     //Amount paid
+                InvoiceSheet.Cells[30, 9] = invoiceModel.Total;     //Total
 
                 ExcelApp.Visible = true;
                 
@@ -956,7 +956,7 @@ namespace AcupunctureClinic.Data.DataAccess
                 
                 
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 ;
             }

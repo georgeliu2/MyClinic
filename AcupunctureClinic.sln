@@ -1,11 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcupunctureClinic.Desktop", "AcupunctureClinic.Desktop", "{E7A002B7-7823-4339-9F2D-0DAD59283DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcupunctureClinic.Desktop", "AcupunctureClinic.Desktop\AcupunctureClinic.Desktop.csproj", "{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcupunctureClinic.Data", "AcupunctureClinic.Data", "{F2E51779-15F0-4590-B695-1840A170BB52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcupunctureClinic.Desktop", "AcupunctureClinic.Desktop\AcupunctureClinic.Desktop.csproj", "{EEAC70B7-874A-4EBF-BEFA-3280FD1361C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcupunctureClinic.Data", "AcupunctureClinic.Data\AcupunctureClinic.Data.csproj", "{BD99F3E9-A537-4509-B059-192E4746EC0B}"
 EndProject

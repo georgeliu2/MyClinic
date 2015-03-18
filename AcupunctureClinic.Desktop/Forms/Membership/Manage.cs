@@ -658,7 +658,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
                 excel.Visible = true;
                 Microsoft.Office.Interop.Excel.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)excel.ActiveSheet;
-                worksheet.Activate(); 
+                //worksheet.Activate(); 
             }
             catch (Exception ex)
             {
@@ -1016,7 +1016,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                            MessageBoxIcon.Error);
                    } */
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 ;
             }
@@ -1235,7 +1235,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         this.ResetInvoices();
                     }
                 }
-                else
+                /*else
                 {
                     // Display the validation failed message
                     MessageBox.Show(
@@ -1243,7 +1243,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         Resources.Registration_Error_Message_Title, 
                         MessageBoxButtons.OK, 
                         MessageBoxIcon.Error);
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -1479,7 +1479,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                             MessageBoxIcon.Error);
                     }
                 }
-                else
+               /* else
                 {
                     // Display the validation failed message
                     MessageBox.Show(
@@ -1487,7 +1487,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         Resources.Registration_Error_Message_Title,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -1761,7 +1761,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                             MessageBoxIcon.Error);
                     }
                 }
-                else
+               /* else
                 {
                     // Display the validation failed message
                     MessageBox.Show(
@@ -1769,7 +1769,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         Resources.Registration_Error_Message_Title,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -2019,7 +2019,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                             MessageBoxIcon.Error);
                     }
                 }
-                else
+               /* else
                 {
                     // Display the validation failed message
                     MessageBox.Show(
@@ -2027,7 +2027,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         Resources.Registration_Error_Message_Title,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                }
+                }*/
             }
             catch (Exception ex)
             {
