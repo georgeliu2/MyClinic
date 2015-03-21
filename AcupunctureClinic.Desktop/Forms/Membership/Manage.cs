@@ -2607,11 +2607,19 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
         private void lbl62ProcedureCodes_Click(object sender, EventArgs e)
         {
-            var frmProcedureCodeEditor = new frmProcedureCode(this, lst62ProcedureCodes);
+            var procedureCodeEditor = new frmProcedureCode(this, lst62ProcedureCodes);
             //frmProcedureCodeEditor.Closing += frmProcedureCode.frmProcedureCode_Closing;
-            frmProcedureCodeEditor.Show();
-            frmProcedureCodeEditor.BringToFront();
+            procedureCodeEditor.Show();
+            procedureCodeEditor.BringToFront();
             //this.Hide();
+        }
+
+        private void lbl62HMCodes_Click(object sender, EventArgs e)
+        {
+            var hmCodeEditor = new HMCodeEditor(this, lst62HMCodes);
+            hmCodeEditor.Show();
+            hmCodeEditor.BringToFront();
+
         }
 
 

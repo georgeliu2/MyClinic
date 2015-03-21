@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <StartWorkingDirectory>\\Intellagent2\c\MyClinic\AcupunctureClinic.Desktop\</StartWorkingDirectory>
+    <StartWorkingDirectory>\\Intellagent2\c\MyClinic2013\AcupunctureClinic.Desktop\</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <StartWorkingDirectory>g:\projects\Hospital\VS2008\AcupunctureClinic\AcupunctureClinic.Desktop\bin\Release</StartWorkingDirectory>
@@ -19,5 +19,8 @@
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
     <ErrorReportUrlHistory />
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
 </Project>

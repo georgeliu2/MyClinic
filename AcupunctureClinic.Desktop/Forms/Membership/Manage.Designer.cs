@@ -3177,6 +3177,7 @@
             this.lbl62HMCodes.Size = new System.Drawing.Size(88, 18);
             this.lbl62HMCodes.TabIndex = 55;
             this.lbl62HMCodes.Text = "H/M Codes:";
+            this.lbl62HMCodes.Click += new System.EventHandler(this.lbl62HMCodes_Click);
             // 
             // lbl62ProcedureCodes
             // 

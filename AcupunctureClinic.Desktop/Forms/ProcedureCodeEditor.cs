@@ -12,8 +12,8 @@ namespace AcupunctureClinic.Desktop.Forms
     using AcupunctureClinic.Desktop.Forms.Membership;
     public partial class frmProcedureCode : Form
     {
-        private Manage manage;
-        private ListBox codes;
+        protected Manage manage;
+        protected ListBox codes;
         
         public ListBox SelectedProcedureCodes
         { get { return lstbSelectedProcedureCodes; } }
@@ -40,7 +40,7 @@ namespace AcupunctureClinic.Desktop.Forms
             this.Close();
         }
 
-        private void LoadProcedureCodeList()
+        protected virtual void LoadProcedureCodeList()
         {
             DataTable procedureCodes = manage.CustomerServiceObj.LoadProcedureCodes();
             if (procedureCodes == null || procedureCodes.Rows.Count == 0)

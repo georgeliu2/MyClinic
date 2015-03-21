@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSelectedCodeList = new System.Windows.Forms.Label();
             this.btn1Add = new System.Windows.Forms.Button();
             this.btn1Remove = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCodeList = new System.Windows.Forms.Label();
             this.btn1Done = new System.Windows.Forms.Button();
             this.btn1Quite = new System.Windows.Forms.Button();
             this.lstbSelectedProcedureCodes = new System.Windows.Forms.ListBox();
@@ -39,14 +39,14 @@
             this.btn1Clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblSelectedCodeList
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Selected Procedure Codes:";
+            this.lblSelectedCodeList.AutoSize = true;
+            this.lblSelectedCodeList.Location = new System.Drawing.Point(50, 24);
+            this.lblSelectedCodeList.Name = "lblSelectedCodeList";
+            this.lblSelectedCodeList.Size = new System.Drawing.Size(181, 17);
+            this.lblSelectedCodeList.TabIndex = 1;
+            this.lblSelectedCodeList.Text = "Selected Procedure Codes:";
             // 
             // btn1Add
             // 
@@ -68,14 +68,14 @@
             this.btn1Remove.UseVisualStyleBackColor = true;
             this.btn1Remove.Click += new System.EventHandler(this.btn1Remove_Click);
             // 
-            // label2
+            // lblCodeList
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(414, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Procedure Codes:";
+            this.lblCodeList.AutoSize = true;
+            this.lblCodeList.Location = new System.Drawing.Point(414, 24);
+            this.lblCodeList.Name = "lblCodeList";
+            this.lblCodeList.Size = new System.Drawing.Size(122, 17);
+            this.lblCodeList.TabIndex = 5;
+            this.lblCodeList.Text = "Procedure Codes:";
             // 
             // btn1Done
             // 
@@ -137,13 +137,13 @@
             this.Controls.Add(this.lstbSelectedProcedureCodes);
             this.Controls.Add(this.btn1Quite);
             this.Controls.Add(this.btn1Done);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCodeList);
             this.Controls.Add(this.btn1Remove);
             this.Controls.Add(this.btn1Add);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSelectedCodeList);
             this.Location = new System.Drawing.Point(400, 200);
             this.Name = "frmProcedureCode";
-            this.Text = "Procedure Code List";
+            this.Text = "Procedure Code Editor";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,14 +151,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.Label lblSelectedCodeList;
         private System.Windows.Forms.Button btn1Add;
         private System.Windows.Forms.Button btn1Remove;
-        private System.Windows.Forms.Label label2;
+        protected System.Windows.Forms.Label lblCodeList;
         private System.Windows.Forms.Button btn1Done;
         private System.Windows.Forms.Button btn1Quite;
-        private System.Windows.Forms.ListBox lstbSelectedProcedureCodes;
-        private System.Windows.Forms.ListBox lstbProcedureCodes;
+        protected System.Windows.Forms.ListBox lstbSelectedProcedureCodes;
+        protected System.Windows.Forms.ListBox lstbProcedureCodes;
         private System.Windows.Forms.Button btn1Clear;
     }
 }
