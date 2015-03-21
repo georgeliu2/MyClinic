@@ -42,7 +42,22 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         /// Member id
         /// </summary>
         private long CustomerID;
-        
+
+        public ICusomerService CustomerServiceObj
+        { get { return customerService; }   }
+
+        public ListBox Lst62ProcedureCodes
+        {
+            get { return lst62ProcedureCodes;  }
+            set { lst62ProcedureCodes = value; }
+        }
+
+        public ListBox Lst62HMCodes
+        {
+            get { return lst62HMCodes; }
+            set { lst62HMCodes = value; }
+        }
+
         /// <summary>
         /// Initializes a new instance of the Manage class
         /// </summary>
@@ -1654,6 +1669,11 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             {
                 DataRow followupVisit = this.customerService.SelectFollowUpVisitByInitNo(CustomerID, initNo, followupNo);
                 // DataTable followupVisits = this.customerService.SelectFollowupVisitById(CustomerID);
+                DataTable procedureCodeTable = this.customerService.LoadProcedureCodes();
+                DataColumn procedureCodes = procedureCodeTable.Columns[0];
+                DataTable hmCodeTable = this.customerService.LoadHMCodes();
+                DataColumn hmCodes = hmCodeTable.Columns[0];
+
                 if (followupVisit != null)
                 {
                     this.txt62InitNo.Text = followupVisit[1].ToString();
@@ -1662,8 +1682,15 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                     this.txt62Subject.Text = followupVisit[4].ToString();
                     this.txt62Object.Text = followupVisit[5].ToString();
                     this.txt62AddNotePlan.Text = followupVisit[6].ToString();
-                    this.txt62ProcedureCode.Text = followupVisit[7].ToString();
-                    this.txt62HMCode.Text = followupVisit[8].ToString();
+                    string procedureCode = followupVisit[7].ToString();
+                    lst62ProcedureCodes.DataSource = procedureCodes;
+                    lst62ProcedureCodes.DisplayMember = procedureCode;
+                    string hmCode = followupVisit[8].ToString();
+                    lst62HMCodes.DataSource = hmCodes;
+                    lst62HMCodes.DisplayMember = hmCode;
+                    
+                    //this.lst62ProcedureCodes.Text = followupVisit[7].ToString();
+                    //this.lst62HMCodes.Text = followupVisit[8].ToString();
 
                     //Load Customer Name
                     DataTable customer = this.customerService.SearchCustomers(CustomerID.ToString(), "", " Or");
@@ -1701,8 +1728,10 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             this.txt62Subject.Text = "";
             this.txt62Object.Text = "";
             this.txt62AddNotePlan.Text = "";
-            this.txt62ProcedureCode.Text = "";
-            this.txt62HMCode.Text = "";
+            this.lst62ProcedureCodes.Items.Clear();
+            this.lst62ProcedureCodes.Text = "";
+            this.lst62HMCodes.Items.Clear();
+            this.lst62HMCodes.Text = "";
 
         }
 
@@ -1938,8 +1967,8 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                     Subjective = this.txt62Subject.Text.Trim(),
                     Objective = this.txt62Object.Text.Trim(),
                     AddNotePlan = this.txt62AddNotePlan.Text.Trim(),
-                    ProcedureCode = this.txt62ProcedureCode.Text.Trim(),
-                    HM_Code = this.txt62HMCode.Text.Trim()
+                    ProcedureCode = this.lst62ProcedureCodes.Text.Trim(),
+                    HM_Code = this.lst62HMCodes.Text.Trim()
                 };
 
 
@@ -1990,8 +2019,8 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         Subjective = this.txt62Subject.Text.Trim(),
                         Objective = this.txt62Object.Text.Trim(),
                         AddNotePlan = this.txt62AddNotePlan.Text.Trim(),
-                        ProcedureCode = this.txt62ProcedureCode.Text.Trim(),
-                        HM_Code = this.txt62HMCode.Text.Trim()
+                        ProcedureCode = this.lst62ProcedureCodes.Text.Trim(),
+                        HM_Code = this.lst62HMCodes.Text.Trim()
                     };
 
                     // Call the service method and assign the return status to variable
@@ -2575,6 +2604,16 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 }
             }
         }
+
+        private void lbl62ProcedureCodes_Click(object sender, EventArgs e)
+        {
+            var frmProcedureCodeEditor = new frmProcedureCode(this, lst62ProcedureCodes);
+            //frmProcedureCodeEditor.Closing += frmProcedureCode.frmProcedureCode_Closing;
+            frmProcedureCodeEditor.Show();
+            frmProcedureCodeEditor.BringToFront();
+            //this.Hide();
+        }
+
 
     }     
 }
