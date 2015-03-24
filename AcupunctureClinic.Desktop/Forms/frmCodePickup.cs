@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace AcupunctureClinic.Desktop.Forms
 {
     using AcupunctureClinic.Desktop.Forms.Membership;
-    public partial class frmProcedureCode : Form
+    public partial class frmCodePickup : Form
     {
         protected Manage manage;
         protected ListBox codes;
@@ -18,7 +18,7 @@ namespace AcupunctureClinic.Desktop.Forms
         public ListBox SelectedProcedureCodes
         { get { return lstbSelectedProcedureCodes; } }
 
-        public frmProcedureCode(Manage _manage, ListBox _codes )
+        public frmCodePickup(Manage _manage, ListBox _codes )
         {
             manage = _manage;
             codes = _codes;

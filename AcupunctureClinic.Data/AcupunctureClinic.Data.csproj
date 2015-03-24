@@ -81,14 +81,13 @@
     <Compile Include="DataAccess\CustomerAccess.cs" />
     <Compile Include="DataAccess\ICustomerAccess.cs" />
     <Compile Include="DataModel\AccountModel.cs" />
+    <Compile Include="DataModel\DataCodeModel.cs" />
     <Compile Include="DataModel\FollowUpVisitModel.cs" />
     <Compile Include="DataModel\HealthInfor.cs" />
-    <Compile Include="DataModel\HMCodeModel.cs" />
     <Compile Include="DataModel\InitVisitModel.cs" />
     <Compile Include="DataModel\InvoiceModel.cs" />
     <Compile Include="DataModel\ContactModel.cs" />
     <Compile Include="DataModel\CustomerModel.cs" />
-    <Compile Include="DataModel\ProcedureCodeModel.cs" />
     <Compile Include="Enums\CardTypes.cs" />
     <Compile Include="Enums\PaymentMethods.cs" />
     <Compile Include="Enums\MaritalStatus.cs" />

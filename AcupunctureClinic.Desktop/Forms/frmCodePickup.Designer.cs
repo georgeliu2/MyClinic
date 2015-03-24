@@ -1,6 +1,6 @@
 ﻿namespace AcupunctureClinic.Desktop.Forms
 {
-    partial class frmProcedureCode
+    partial class frmCodePickup
     {
         /// <summary>
         /// Required designer variable.
@@ -127,7 +127,7 @@
             this.btn1Clear.UseVisualStyleBackColor = true;
             this.btn1Clear.Click += new System.EventHandler(this.btn1Clear_Click);
             // 
-            // frmProcedureCode
+            // frmCodePickup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +142,7 @@
             this.Controls.Add(this.btn1Add);
             this.Controls.Add(this.lblSelectedCodeList);
             this.Location = new System.Drawing.Point(400, 200);
-            this.Name = "frmProcedureCode";
+            this.Name = "frmCodePickup";
             this.Text = "Procedure Code Editor";
             this.ResumeLayout(false);
             this.PerformLayout();

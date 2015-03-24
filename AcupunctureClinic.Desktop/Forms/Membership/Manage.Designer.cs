@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -278,38 +276,12 @@
             this.label152 = new System.Windows.Forms.Label();
             this.txt62Name = new System.Windows.Forms.TextBox();
             this.label153 = new System.Windows.Forms.Label();
-            this.tabpProcedure = new System.Windows.Forms.TabPage();
-            this.txt7Price = new System.Windows.Forms.TextBox();
-            this.txt7ProcedureName = new System.Windows.Forms.TextBox();
-            this.txt7ProcedureCode = new System.Windows.Forms.TextBox();
-            this.label165 = new System.Windows.Forms.Label();
-            this.label164 = new System.Windows.Forms.Label();
-            this.label163 = new System.Windows.Forms.Label();
-            this.btn7Delete = new System.Windows.Forms.Button();
-            this.btn7Add = new System.Windows.Forms.Button();
-            this.btn7Update = new System.Windows.Forms.Button();
-            this.btn7Search = new System.Windows.Forms.Button();
-            this.dtgv7ProcedureCodeList = new System.Windows.Forms.DataGridView();
-            this.Procedure_Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Procedure_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label162 = new System.Windows.Forms.Label();
-            this.tabpHMCode = new System.Windows.Forms.TabPage();
-            this.txt8Price = new System.Windows.Forms.TextBox();
-            this.txt8HMName = new System.Windows.Forms.TextBox();
-            this.txt8HMCode = new System.Windows.Forms.TextBox();
-            this.label166 = new System.Windows.Forms.Label();
-            this.label167 = new System.Windows.Forms.Label();
-            this.label168 = new System.Windows.Forms.Label();
-            this.btn8Delete = new System.Windows.Forms.Button();
-            this.btn8Add = new System.Windows.Forms.Button();
-            this.btn8Update = new System.Windows.Forms.Button();
-            this.btn8Search = new System.Windows.Forms.Button();
-            this.dtgv8HMCodeList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label169 = new System.Windows.Forms.Label();
+            this.tabPpSet = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lbl6SetDiagnosticsCodes = new System.Windows.Forms.Label();
+            this.lbl7SetHMCode = new System.Windows.Forms.Label();
+            this.label157 = new System.Windows.Forms.Label();
+            this.lbl7SetProcedureCodes = new System.Windows.Forms.Label();
             this.Header = new System.Windows.Forms.TextBox();
             this.PrintReport = new System.Drawing.Printing.PrintDocument();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -519,10 +491,8 @@
             this.panel4.SuspendLayout();
             this.tabpFollowUp.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.tabpProcedure.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv7ProcedureCodeList)).BeginInit();
-            this.tabpHMCode.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv8HMCodeList)).BeginInit();
+            this.tabPpSet.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl4.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -549,14 +519,13 @@
             this.tab.Controls.Add(this.tabpAccount);
             this.tab.Controls.Add(this.tabpHealthInfor);
             this.tab.Controls.Add(this.tabpVisit);
-            this.tab.Controls.Add(this.tabpProcedure);
-            this.tab.Controls.Add(this.tabpHMCode);
+            this.tab.Controls.Add(this.tabPpSet);
             this.tab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab.Location = new System.Drawing.Point(8, 43);
             this.tab.Margin = new System.Windows.Forms.Padding(4);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(1114, 684);
+            this.tab.Size = new System.Drawing.Size(1114, 635);
             this.tab.TabIndex = 0;
             this.tab.SelectedIndexChanged += new System.EventHandler(this.tab_SelectedIndexChanged);
             // 
@@ -569,7 +538,7 @@
             this.tabRegistration.Margin = new System.Windows.Forms.Padding(4);
             this.tabRegistration.Name = "tabRegistration";
             this.tabRegistration.Padding = new System.Windows.Forms.Padding(4);
-            this.tabRegistration.Size = new System.Drawing.Size(1106, 653);
+            this.tabRegistration.Size = new System.Drawing.Size(1106, 604);
             this.tabRegistration.TabIndex = 0;
             this.tabRegistration.Text = "New Customer";
             this.tabRegistration.UseVisualStyleBackColor = true;
@@ -915,7 +884,7 @@
             this.tabSearchManager.Margin = new System.Windows.Forms.Padding(4);
             this.tabSearchManager.Name = "tabSearchManager";
             this.tabSearchManager.Padding = new System.Windows.Forms.Padding(4);
-            this.tabSearchManager.Size = new System.Drawing.Size(1106, 653);
+            this.tabSearchManager.Size = new System.Drawing.Size(1106, 604);
             this.tabSearchManager.TabIndex = 1;
             this.tabSearchManager.Text = "Customers";
             this.tabSearchManager.UseVisualStyleBackColor = true;
@@ -1307,14 +1276,14 @@
             this.dataGridViewMembers.AllowUserToAddRows = false;
             this.dataGridViewMembers.AllowUserToOrderColumns = true;
             this.dataGridViewMembers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMembers.Location = new System.Drawing.Point(4, 204);
             this.dataGridViewMembers.Margin = new System.Windows.Forms.Padding(4);
@@ -1359,7 +1328,7 @@
             this.tabpContact.Controls.Add(this.btn3Delete);
             this.tabpContact.Location = new System.Drawing.Point(4, 27);
             this.tabpContact.Name = "tabpContact";
-            this.tabpContact.Size = new System.Drawing.Size(1106, 653);
+            this.tabpContact.Size = new System.Drawing.Size(1106, 604);
             this.tabpContact.TabIndex = 2;
             this.tabpContact.Text = "Contact";
             this.tabpContact.UseVisualStyleBackColor = true;
@@ -1679,7 +1648,7 @@
             this.tabpAccount.Controls.Add(this.label101);
             this.tabpAccount.Location = new System.Drawing.Point(4, 27);
             this.tabpAccount.Name = "tabpAccount";
-            this.tabpAccount.Size = new System.Drawing.Size(1106, 653);
+            this.tabpAccount.Size = new System.Drawing.Size(1106, 604);
             this.tabpAccount.TabIndex = 3;
             this.tabpAccount.Text = "Account";
             this.tabpAccount.UseVisualStyleBackColor = true;
@@ -2154,14 +2123,14 @@
             this.dataGridView4Invoices.AllowUserToAddRows = false;
             this.dataGridView4Invoices.AllowUserToOrderColumns = true;
             this.dataGridView4Invoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4Invoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4Invoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView4Invoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4Invoices.Location = new System.Drawing.Point(25, 213);
             this.dataGridView4Invoices.Margin = new System.Windows.Forms.Padding(4);
@@ -2328,7 +2297,7 @@
             this.tabpHealthInfor.Controls.Add(this.panel1);
             this.tabpHealthInfor.Location = new System.Drawing.Point(4, 27);
             this.tabpHealthInfor.Name = "tabpHealthInfor";
-            this.tabpHealthInfor.Size = new System.Drawing.Size(1106, 653);
+            this.tabpHealthInfor.Size = new System.Drawing.Size(1106, 604);
             this.tabpHealthInfor.TabIndex = 5;
             this.tabpHealthInfor.Text = "Health Infor";
             this.tabpHealthInfor.UseVisualStyleBackColor = true;
@@ -2600,7 +2569,7 @@
             this.tabpVisit.Controls.Add(this.tabControlVisit);
             this.tabpVisit.Location = new System.Drawing.Point(4, 27);
             this.tabpVisit.Name = "tabpVisit";
-            this.tabpVisit.Size = new System.Drawing.Size(1106, 653);
+            this.tabpVisit.Size = new System.Drawing.Size(1106, 604);
             this.tabpVisit.TabIndex = 6;
             this.tabpVisit.Text = "Visiting";
             this.tabpVisit.UseVisualStyleBackColor = true;
@@ -3404,341 +3373,72 @@
             this.label153.TabIndex = 33;
             this.label153.Text = "Date of Birth";
             // 
-            // tabpProcedure
+            // tabPpSet
             // 
-            this.tabpProcedure.Controls.Add(this.txt7Price);
-            this.tabpProcedure.Controls.Add(this.txt7ProcedureName);
-            this.tabpProcedure.Controls.Add(this.txt7ProcedureCode);
-            this.tabpProcedure.Controls.Add(this.label165);
-            this.tabpProcedure.Controls.Add(this.label164);
-            this.tabpProcedure.Controls.Add(this.label163);
-            this.tabpProcedure.Controls.Add(this.btn7Delete);
-            this.tabpProcedure.Controls.Add(this.btn7Add);
-            this.tabpProcedure.Controls.Add(this.btn7Update);
-            this.tabpProcedure.Controls.Add(this.btn7Search);
-            this.tabpProcedure.Controls.Add(this.dtgv7ProcedureCodeList);
-            this.tabpProcedure.Controls.Add(this.label162);
-            this.tabpProcedure.Location = new System.Drawing.Point(4, 27);
-            this.tabpProcedure.Name = "tabpProcedure";
-            this.tabpProcedure.Size = new System.Drawing.Size(1106, 653);
-            this.tabpProcedure.TabIndex = 7;
-            this.tabpProcedure.Text = "Procedure Codes";
-            this.tabpProcedure.UseVisualStyleBackColor = true;
+            this.tabPpSet.Controls.Add(this.panel6);
+            this.tabPpSet.Location = new System.Drawing.Point(4, 27);
+            this.tabPpSet.Name = "tabPpSet";
+            this.tabPpSet.Size = new System.Drawing.Size(1106, 604);
+            this.tabPpSet.TabIndex = 9;
+            this.tabPpSet.Text = "Settings";
+            this.tabPpSet.UseVisualStyleBackColor = true;
             // 
-            // txt7Price
+            // panel6
             // 
-            this.txt7Price.Location = new System.Drawing.Point(623, 280);
-            this.txt7Price.Name = "txt7Price";
-            this.txt7Price.Size = new System.Drawing.Size(130, 24);
-            this.txt7Price.TabIndex = 106;
+            this.panel6.Controls.Add(this.lbl6SetDiagnosticsCodes);
+            this.panel6.Controls.Add(this.lbl7SetHMCode);
+            this.panel6.Controls.Add(this.label157);
+            this.panel6.Controls.Add(this.lbl7SetProcedureCodes);
+            this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel6.Location = new System.Drawing.Point(27, 36);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(436, 371);
+            this.panel6.TabIndex = 2;
             // 
-            // txt7ProcedureName
+            // lbl6SetDiagnosticsCodes
             // 
-            this.txt7ProcedureName.Location = new System.Drawing.Point(623, 237);
-            this.txt7ProcedureName.Name = "txt7ProcedureName";
-            this.txt7ProcedureName.Size = new System.Drawing.Size(130, 24);
-            this.txt7ProcedureName.TabIndex = 105;
+            this.lbl6SetDiagnosticsCodes.AutoSize = true;
+            this.lbl6SetDiagnosticsCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl6SetDiagnosticsCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbl6SetDiagnosticsCodes.Location = new System.Drawing.Point(113, 214);
+            this.lbl6SetDiagnosticsCodes.Name = "lbl6SetDiagnosticsCodes";
+            this.lbl6SetDiagnosticsCodes.Size = new System.Drawing.Size(185, 20);
+            this.lbl6SetDiagnosticsCodes.TabIndex = 3;
+            this.lbl6SetDiagnosticsCodes.Text = "Edit Diagnostics Codes";
             // 
-            // txt7ProcedureCode
+            // lbl7SetHMCode
             // 
-            this.txt7ProcedureCode.Location = new System.Drawing.Point(623, 198);
-            this.txt7ProcedureCode.Name = "txt7ProcedureCode";
-            this.txt7ProcedureCode.Size = new System.Drawing.Size(130, 24);
-            this.txt7ProcedureCode.TabIndex = 104;
+            this.lbl7SetHMCode.AutoSize = true;
+            this.lbl7SetHMCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl7SetHMCode.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbl7SetHMCode.Location = new System.Drawing.Point(116, 153);
+            this.lbl7SetHMCode.Name = "lbl7SetHMCode";
+            this.lbl7SetHMCode.Size = new System.Drawing.Size(217, 20);
+            this.lbl7SetHMCode.TabIndex = 2;
+            this.lbl7SetHMCode.Text = "Edit Health/Medicine Codes";
+            this.lbl7SetHMCode.Click += new System.EventHandler(this.lbl7SetHMCode_Click);
             // 
-            // label165
+            // label157
             // 
-            this.label165.AutoSize = true;
-            this.label165.Location = new System.Drawing.Point(478, 283);
-            this.label165.Name = "label165";
-            this.label165.Size = new System.Drawing.Size(115, 18);
-            this.label165.TabIndex = 103;
-            this.label165.Text = "Procedure Price";
+            this.label157.AutoSize = true;
+            this.label157.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label157.Location = new System.Drawing.Point(112, 29);
+            this.label157.Name = "label157";
+            this.label157.Size = new System.Drawing.Size(190, 25);
+            this.label157.TabIndex = 0;
+            this.label157.Text = "System Data Setting";
             // 
-            // label164
+            // lbl7SetProcedureCodes
             // 
-            this.label164.AutoSize = true;
-            this.label164.Location = new System.Drawing.Point(478, 244);
-            this.label164.Name = "label164";
-            this.label164.Size = new System.Drawing.Size(121, 18);
-            this.label164.TabIndex = 102;
-            this.label164.Text = "Procedure Name";
-            // 
-            // label163
-            // 
-            this.label163.AutoSize = true;
-            this.label163.Location = new System.Drawing.Point(478, 203);
-            this.label163.Name = "label163";
-            this.label163.Size = new System.Drawing.Size(117, 18);
-            this.label163.TabIndex = 101;
-            this.label163.Text = "Procedure Code";
-            // 
-            // btn7Delete
-            // 
-            this.btn7Delete.Location = new System.Drawing.Point(622, 79);
-            this.btn7Delete.Name = "btn7Delete";
-            this.btn7Delete.Size = new System.Drawing.Size(75, 26);
-            this.btn7Delete.TabIndex = 100;
-            this.btn7Delete.Text = "Delete";
-            this.btn7Delete.UseVisualStyleBackColor = true;
-            this.btn7Delete.Click += new System.EventHandler(this.btn7Delete_Click);
-            // 
-            // btn7Add
-            // 
-            this.btn7Add.Location = new System.Drawing.Point(530, 116);
-            this.btn7Add.Name = "btn7Add";
-            this.btn7Add.Size = new System.Drawing.Size(75, 26);
-            this.btn7Add.TabIndex = 99;
-            this.btn7Add.Text = "Add";
-            this.btn7Add.UseVisualStyleBackColor = true;
-            this.btn7Add.Click += new System.EventHandler(this.btn7Add_Click);
-            // 
-            // btn7Update
-            // 
-            this.btn7Update.Location = new System.Drawing.Point(623, 115);
-            this.btn7Update.Name = "btn7Update";
-            this.btn7Update.Size = new System.Drawing.Size(75, 27);
-            this.btn7Update.TabIndex = 98;
-            this.btn7Update.Text = "Update";
-            this.btn7Update.UseVisualStyleBackColor = true;
-            this.btn7Update.Click += new System.EventHandler(this.btn7Update_Click);
-            // 
-            // btn7Search
-            // 
-            this.btn7Search.Location = new System.Drawing.Point(530, 80);
-            this.btn7Search.Name = "btn7Search";
-            this.btn7Search.Size = new System.Drawing.Size(75, 26);
-            this.btn7Search.TabIndex = 97;
-            this.btn7Search.Text = "Search";
-            this.btn7Search.UseVisualStyleBackColor = true;
-            this.btn7Search.Click += new System.EventHandler(this.btn7Search_Click);
-            // 
-            // dtgv7ProcedureCodeList
-            // 
-            this.dtgv7ProcedureCodeList.AllowUserToAddRows = false;
-            this.dtgv7ProcedureCodeList.AllowUserToOrderColumns = true;
-            this.dtgv7ProcedureCodeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv7ProcedureCodeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dtgv7ProcedureCodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv7ProcedureCodeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Procedure_Code,
-            this.Procedure_Name,
-            this.Price});
-            this.dtgv7ProcedureCodeList.Location = new System.Drawing.Point(42, 120);
-            this.dtgv7ProcedureCodeList.Margin = new System.Windows.Forms.Padding(4);
-            this.dtgv7ProcedureCodeList.Name = "dtgv7ProcedureCodeList";
-            this.dtgv7ProcedureCodeList.ReadOnly = true;
-            this.dtgv7ProcedureCodeList.RowTemplate.Height = 24;
-            this.dtgv7ProcedureCodeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv7ProcedureCodeList.Size = new System.Drawing.Size(402, 453);
-            this.dtgv7ProcedureCodeList.TabIndex = 96;
-            this.dtgv7ProcedureCodeList.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgv7ProcedureCodeList_RowHeaderMouseDoubleClick);
-            // 
-            // Procedure_Code
-            // 
-            this.Procedure_Code.HeaderText = "Procedure Code";
-            this.Procedure_Code.Name = "Procedure_Code";
-            this.Procedure_Code.ReadOnly = true;
-            this.Procedure_Code.Width = 120;
-            // 
-            // Procedure_Name
-            // 
-            this.Procedure_Name.HeaderText = "Procedure Name";
-            this.Procedure_Name.Name = "Procedure_Name";
-            this.Procedure_Name.ReadOnly = true;
-            this.Procedure_Name.Width = 120;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 120;
-            // 
-            // label162
-            // 
-            this.label162.AutoSize = true;
-            this.label162.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label162.Location = new System.Drawing.Point(102, 60);
-            this.label162.Name = "label162";
-            this.label162.Size = new System.Drawing.Size(261, 31);
-            this.label162.TabIndex = 0;
-            this.label162.Text = "Procedure Code List";
-            // 
-            // tabpHMCode
-            // 
-            this.tabpHMCode.Controls.Add(this.txt8Price);
-            this.tabpHMCode.Controls.Add(this.txt8HMName);
-            this.tabpHMCode.Controls.Add(this.txt8HMCode);
-            this.tabpHMCode.Controls.Add(this.label166);
-            this.tabpHMCode.Controls.Add(this.label167);
-            this.tabpHMCode.Controls.Add(this.label168);
-            this.tabpHMCode.Controls.Add(this.btn8Delete);
-            this.tabpHMCode.Controls.Add(this.btn8Add);
-            this.tabpHMCode.Controls.Add(this.btn8Update);
-            this.tabpHMCode.Controls.Add(this.btn8Search);
-            this.tabpHMCode.Controls.Add(this.dtgv8HMCodeList);
-            this.tabpHMCode.Controls.Add(this.label169);
-            this.tabpHMCode.Location = new System.Drawing.Point(4, 27);
-            this.tabpHMCode.Name = "tabpHMCode";
-            this.tabpHMCode.Size = new System.Drawing.Size(1106, 653);
-            this.tabpHMCode.TabIndex = 8;
-            this.tabpHMCode.Text = "H/M Codes";
-            this.tabpHMCode.UseVisualStyleBackColor = true;
-            // 
-            // txt8Price
-            // 
-            this.txt8Price.Location = new System.Drawing.Point(630, 253);
-            this.txt8Price.Name = "txt8Price";
-            this.txt8Price.Size = new System.Drawing.Size(130, 24);
-            this.txt8Price.TabIndex = 118;
-            // 
-            // txt8HMName
-            // 
-            this.txt8HMName.Location = new System.Drawing.Point(630, 210);
-            this.txt8HMName.Name = "txt8HMName";
-            this.txt8HMName.Size = new System.Drawing.Size(130, 24);
-            this.txt8HMName.TabIndex = 117;
-            // 
-            // txt8HMCode
-            // 
-            this.txt8HMCode.Location = new System.Drawing.Point(630, 171);
-            this.txt8HMCode.Name = "txt8HMCode";
-            this.txt8HMCode.Size = new System.Drawing.Size(130, 24);
-            this.txt8HMCode.TabIndex = 116;
-            // 
-            // label166
-            // 
-            this.label166.AutoSize = true;
-            this.label166.Location = new System.Drawing.Point(485, 256);
-            this.label166.Name = "label166";
-            this.label166.Size = new System.Drawing.Size(42, 18);
-            this.label166.TabIndex = 115;
-            this.label166.Text = "Price";
-            // 
-            // label167
-            // 
-            this.label167.AutoSize = true;
-            this.label167.Location = new System.Drawing.Point(485, 217);
-            this.label167.Name = "label167";
-            this.label167.Size = new System.Drawing.Size(80, 18);
-            this.label167.TabIndex = 114;
-            this.label167.Text = "H/M Name";
-            // 
-            // label168
-            // 
-            this.label168.AutoSize = true;
-            this.label168.Location = new System.Drawing.Point(485, 176);
-            this.label168.Name = "label168";
-            this.label168.Size = new System.Drawing.Size(76, 18);
-            this.label168.TabIndex = 113;
-            this.label168.Text = "H/M Code";
-            // 
-            // btn8Delete
-            // 
-            this.btn8Delete.Location = new System.Drawing.Point(629, 52);
-            this.btn8Delete.Name = "btn8Delete";
-            this.btn8Delete.Size = new System.Drawing.Size(75, 26);
-            this.btn8Delete.TabIndex = 112;
-            this.btn8Delete.Text = "Delete";
-            this.btn8Delete.UseVisualStyleBackColor = true;
-            this.btn8Delete.Click += new System.EventHandler(this.btn8Delete_Click);
-            // 
-            // btn8Add
-            // 
-            this.btn8Add.Location = new System.Drawing.Point(537, 89);
-            this.btn8Add.Name = "btn8Add";
-            this.btn8Add.Size = new System.Drawing.Size(75, 26);
-            this.btn8Add.TabIndex = 111;
-            this.btn8Add.Text = "Add";
-            this.btn8Add.UseVisualStyleBackColor = true;
-            this.btn8Add.Click += new System.EventHandler(this.btn8Add_Click);
-            // 
-            // btn8Update
-            // 
-            this.btn8Update.Location = new System.Drawing.Point(630, 88);
-            this.btn8Update.Name = "btn8Update";
-            this.btn8Update.Size = new System.Drawing.Size(75, 27);
-            this.btn8Update.TabIndex = 110;
-            this.btn8Update.Text = "Update";
-            this.btn8Update.UseVisualStyleBackColor = true;
-            this.btn8Update.Click += new System.EventHandler(this.btn8Update_Click);
-            // 
-            // btn8Search
-            // 
-            this.btn8Search.Location = new System.Drawing.Point(537, 53);
-            this.btn8Search.Name = "btn8Search";
-            this.btn8Search.Size = new System.Drawing.Size(75, 26);
-            this.btn8Search.TabIndex = 109;
-            this.btn8Search.Text = "Search";
-            this.btn8Search.UseVisualStyleBackColor = true;
-            this.btn8Search.Click += new System.EventHandler(this.btn8Search_Click);
-            // 
-            // dtgv8HMCodeList
-            // 
-            this.dtgv8HMCodeList.AllowUserToAddRows = false;
-            this.dtgv8HMCodeList.AllowUserToOrderColumns = true;
-            this.dtgv8HMCodeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv8HMCodeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dtgv8HMCodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv8HMCodeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.dtgv8HMCodeList.Location = new System.Drawing.Point(49, 93);
-            this.dtgv8HMCodeList.Margin = new System.Windows.Forms.Padding(4);
-            this.dtgv8HMCodeList.Name = "dtgv8HMCodeList";
-            this.dtgv8HMCodeList.ReadOnly = true;
-            this.dtgv8HMCodeList.RowTemplate.Height = 24;
-            this.dtgv8HMCodeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv8HMCodeList.Size = new System.Drawing.Size(402, 453);
-            this.dtgv8HMCodeList.TabIndex = 108;
-            this.dtgv8HMCodeList.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgv8HMCodeList_RowHeaderMouseDoubleClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "H/M Code";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "H/M Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 120;
-            // 
-            // label169
-            // 
-            this.label169.AutoSize = true;
-            this.label169.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label169.Location = new System.Drawing.Point(109, 33);
-            this.label169.Name = "label169";
-            this.label169.Size = new System.Drawing.Size(186, 31);
-            this.label169.TabIndex = 107;
-            this.label169.Text = "H/M Code List";
+            this.lbl7SetProcedureCodes.AutoSize = true;
+            this.lbl7SetProcedureCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl7SetProcedureCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbl7SetProcedureCodes.Location = new System.Drawing.Point(116, 100);
+            this.lbl7SetProcedureCodes.Name = "lbl7SetProcedureCodes";
+            this.lbl7SetProcedureCodes.Size = new System.Drawing.Size(173, 20);
+            this.lbl7SetProcedureCodes.TabIndex = 1;
+            this.lbl7SetProcedureCodes.Text = "Edit Procedure Codes";
+            this.lbl7SetProcedureCodes.Click += new System.EventHandler(this.lbl7SetProcedureCodes_Click);
             // 
             // Header
             // 
@@ -4498,14 +4198,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(4, 204);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
@@ -5579,14 +5279,14 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(4, 204);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
@@ -5927,7 +5627,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1122, 755);
+            this.ClientSize = new System.Drawing.Size(1122, 758);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.tab);
             this.IsMdiContainer = true;
@@ -5972,12 +5672,9 @@
             this.tabpFollowUp.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.tabpProcedure.ResumeLayout(false);
-            this.tabpProcedure.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv7ProcedureCodeList)).EndInit();
-            this.tabpHMCode.ResumeLayout(false);
-            this.tabpHMCode.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv8HMCodeList)).EndInit();
+            this.tabPpSet.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -6437,39 +6134,13 @@
         private System.Windows.Forms.Button btn61Search;
         private System.Windows.Forms.Button btn4PrintPreview;
         private System.Windows.Forms.Button btn4Print;
-        private System.Windows.Forms.TabPage tabpProcedure;
-        private System.Windows.Forms.Button btn7Delete;
-        private System.Windows.Forms.Button btn7Add;
-        private System.Windows.Forms.Button btn7Update;
-        private System.Windows.Forms.Button btn7Search;
-        private System.Windows.Forms.DataGridView dtgv7ProcedureCodeList;
-        private System.Windows.Forms.Label label162;
-        private System.Windows.Forms.TextBox txt7Price;
-        private System.Windows.Forms.TextBox txt7ProcedureName;
-        private System.Windows.Forms.TextBox txt7ProcedureCode;
-        private System.Windows.Forms.Label label165;
-        private System.Windows.Forms.Label label164;
-        private System.Windows.Forms.Label label163;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Procedure_Code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Procedure_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.TabPage tabpHMCode;
-        private System.Windows.Forms.TextBox txt8Price;
-        private System.Windows.Forms.TextBox txt8HMName;
-        private System.Windows.Forms.TextBox txt8HMCode;
-        private System.Windows.Forms.Label label166;
-        private System.Windows.Forms.Label label167;
-        private System.Windows.Forms.Label label168;
-        private System.Windows.Forms.Button btn8Delete;
-        private System.Windows.Forms.Button btn8Add;
-        private System.Windows.Forms.Button btn8Update;
-        private System.Windows.Forms.Button btn8Search;
-        private System.Windows.Forms.DataGridView dtgv8HMCodeList;
-        private System.Windows.Forms.Label label169;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.ListBox lst62HMCodes;
         private System.Windows.Forms.ListBox lst62ProcedureCodes;
+        private System.Windows.Forms.TabPage tabPpSet;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label lbl6SetDiagnosticsCodes;
+        private System.Windows.Forms.Label lbl7SetHMCode;
+        private System.Windows.Forms.Label label157;
+        private System.Windows.Forms.Label lbl7SetProcedureCodes;
     }
 }

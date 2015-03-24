@@ -325,8 +325,8 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <summary>
         /// AddProcedureCode
         /// </summary>
-        /// <returns>ProcedureCodeModel</returns>
-        public bool AddProcedureCode(ProcedureCodeModel procedureCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool AddProcedureCode(DataCodeModel procedureCodeModel)
         {
             return this.customerAccess.AddProcedureCode(procedureCodeModel);
         }
@@ -344,8 +344,8 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <summary>
         /// UpdateProcedureCode
         /// </summary>
-        /// <returns>ProcedureCodeModel</returns>
-        public bool UpdateProcedureCode(ProcedureCodeModel procedureCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool UpdateProcedureCode(DataCodeModel procedureCodeModel)
         {
             return this.customerAccess.UpdateProcedureCode(procedureCodeModel);
         }
@@ -364,8 +364,8 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <summary>
         /// AddHMCode
         /// </summary>
-        /// <returns>HMCodeModel</returns>
-        public bool AddHMCode(HMCodeModel hmCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool AddHMCode(DataCodeModel hmCodeModel)
         {
             return this.customerAccess.AddHMCode(hmCodeModel);
         }
@@ -383,8 +383,8 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <summary>
         /// UpdateHMCode
         /// </summary>
-        /// <returns>HMCodeModel</returns>
-        public bool UpdateHMCode(HMCodeModel hmCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool UpdateHMCode(DataCodeModel hmCodeModel)
         {
             return this.customerAccess.UpdateHMCode(hmCodeModel);
         }

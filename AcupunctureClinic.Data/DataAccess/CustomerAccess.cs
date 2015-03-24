@@ -1019,8 +1019,8 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <summary>
         /// AddProcedureCode
         /// </summary>
-        /// <returns>ProcedureCodeModel</returns>
-        public bool AddProcedureCode(ProcedureCodeModel procedureCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool AddProcedureCode(DataCodeModel procedureCodeModel)
         {
             using (OleDbCommand dbCommand = new OleDbCommand())
             {
@@ -1030,9 +1030,9 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.CommandText = Scripts.sqlAddProcedureCode;
 
                 // Add the input parameters to the parameter collection
-                dbCommand.Parameters.AddWithValue("@ProcedureCode", procedureCodeModel.ProcedureCode);
-                dbCommand.Parameters.AddWithValue("@ProcedureName", procedureCodeModel.ProcedureName);
-                dbCommand.Parameters.AddWithValue("@Price", procedureCodeModel.Price/100.00);               
+                dbCommand.Parameters.AddWithValue("@ProcedureCode", procedureCodeModel.DataCode);
+                dbCommand.Parameters.AddWithValue("@ProcedureName", procedureCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Price", procedureCodeModel.DataPrice/100.00);               
 
                 // Open the connection, execute the query and close the connection
                 dbCommand.Connection.Open();
@@ -1070,8 +1070,8 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <summary>
         /// UpdateProcedureCode
         /// </summary>
-        /// <returns>ProcedureCodeModel</returns>
-        public bool UpdateProcedureCode(ProcedureCodeModel procedureCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool UpdateProcedureCode(DataCodeModel procedureCodeModel)
         {
             using (OleDbCommand dbCommand = new OleDbCommand())
             {
@@ -1081,9 +1081,9 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.CommandText = Scripts.sqlUpdateProcedureCode;
 
                 // Add the input parameter to the parameter collection
-                dbCommand.Parameters.AddWithValue("@ProcedureName", procedureCodeModel.ProcedureName);
-                dbCommand.Parameters.AddWithValue("@Price", procedureCodeModel.Price / 100.00);
-                dbCommand.Parameters.AddWithValue("@ProcedureCode", procedureCodeModel.ProcedureCode);
+                dbCommand.Parameters.AddWithValue("@ProcedureName", procedureCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Price", procedureCodeModel.DataPrice / 100.00);
+                dbCommand.Parameters.AddWithValue("@ProcedureCode", procedureCodeModel.DataCode);
 
                 // Open the connection, execute the query and close the connection
                 dbCommand.Connection.Open();
@@ -1123,8 +1123,8 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <summary>
         /// AddHMCode
         /// </summary>
-        /// <returns>HMCodeModel</returns>
-        public bool AddHMCode(HMCodeModel hmCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool AddHMCode(DataCodeModel hmCodeModel)
         {
             using (OleDbCommand dbCommand = new OleDbCommand())
             {
@@ -1134,9 +1134,9 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.CommandText = Scripts.sqlAddHMCode;
 
                 // Add the input parameters to the parameter collection
-                dbCommand.Parameters.AddWithValue("@HMCode", hmCodeModel.HMCode);
-                dbCommand.Parameters.AddWithValue("@HMName", hmCodeModel.HMName);
-                dbCommand.Parameters.AddWithValue("@Price", hmCodeModel.Price / 100.00);
+                dbCommand.Parameters.AddWithValue("@HMCode", hmCodeModel.DataCode);
+                dbCommand.Parameters.AddWithValue("@HMName", hmCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Price", hmCodeModel.DataPrice / 100.00);
 
                 // Open the connection, execute the query and close the connection
                 dbCommand.Connection.Open();
@@ -1174,8 +1174,8 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <summary>
         /// UpdateHMCode
         /// </summary>
-        /// <returns>HMCodeModel</returns>
-        public bool UpdateHMCode(HMCodeModel hmCodeModel)
+        /// <returns>DataCodeModel</returns>
+        public bool UpdateHMCode(DataCodeModel hmCodeModel)
         {
             using (OleDbCommand dbCommand = new OleDbCommand())
             {
@@ -1185,9 +1185,9 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.CommandText = Scripts.sqlUpdateHMCode;
 
                 // Add the input parameter to the parameter collection
-                dbCommand.Parameters.AddWithValue("@HMName", hmCodeModel.HMName);
-                dbCommand.Parameters.AddWithValue("@Price", hmCodeModel.Price / 100.00);
-                dbCommand.Parameters.AddWithValue("@HMCode", hmCodeModel.HMCode);
+                dbCommand.Parameters.AddWithValue("@HMName", hmCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Price", hmCodeModel.DataPrice / 100.00);
+                dbCommand.Parameters.AddWithValue("@HMCode", hmCodeModel.DataCode);
 
                 // Open the connection, execute the query and close the connection
                 dbCommand.Connection.Open();

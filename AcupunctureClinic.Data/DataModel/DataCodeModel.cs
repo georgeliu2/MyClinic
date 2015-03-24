@@ -5,28 +5,25 @@ using System.Text;
 
 namespace AcupunctureClinic.Data.DataModel
 {
-    using System;
-
     /// <summary>
     /// Member model
     /// </summary>
-    public class ProcedureCodeModel
+    public class DataCodeModel
     {
         /// <summary>
-        /// Gets or sets Procedure Code
+        /// Gets or sets Data Code
         /// </summary>
-        public string ProcedureCode { get; set; }
+        public string DataCode { get; set; }
 
         /// <summary>
-        /// Gets or sets Procedure Name
+        /// Gets or sets Data Name
         /// </summary>
-        public string ProcedureName { get; set; }
+        public string DataName { get; set; }
 
         /// <summary>
-        /// Gets or sets Price
+        /// Gets or sets Data Price
         /// </summary>
-        public long Price { get; set; }
+        public long DataPrice { get; set; }
      
     }
-
 }

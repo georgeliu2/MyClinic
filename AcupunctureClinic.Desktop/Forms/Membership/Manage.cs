@@ -240,7 +240,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         /// <summary>
         /// Method to show general error message on any system level exception
         /// </summary>
-        private void ShowErrorMessage(Exception ex)
+        public void ShowErrorMessage(Exception ex)
         {
             MessageBox.Show(
                 ex.Message,
@@ -442,7 +442,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 {
                     this.LoadHealthInfor();
                 }
-                else if (tab.SelectedIndex == 6) //Tab Procedure Code
+                /*else if (tab.SelectedIndex == 6) //Tab Procedure Code
                 {
                     Initilizedtgv7ProcedureCodeListStyle();
                     this.LoadProcedureCodes();
@@ -451,7 +451,9 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 {
                     Initilizedtgv8HMCodeListStyle();
                     this.LoadHMCodes();
-                }
+                }*/
+                else if(tab.SelectedIndex == 6) //Tab Setting Code)
+                { ; }
             }
             catch (Exception ex)
             {
@@ -2139,476 +2141,10 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             this.customerService.CloseExcel();
         }
 
-        /// tab page Procedure Code  Methods
-        /// <summary>
-        /// Initializes data grid view dtgv7ProcedureCodeList style
-        /// </summary>
-        private void Initilizedtgv7ProcedureCodeListStyle()
-        {
-            // Setting the style of the DataGridView control
-            dtgv7ProcedureCodeList.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold, GraphicsUnit.Point);
-            dtgv7ProcedureCodeList.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.ControlDark;
-            dtgv7ProcedureCodeList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dtgv7ProcedureCodeList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgv7ProcedureCodeList.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
-            dtgv7ProcedureCodeList.DefaultCellStyle.BackColor = Color.Empty;
-            dtgv7ProcedureCodeList.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.Info;
-            dtgv7ProcedureCodeList.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dtgv7ProcedureCodeList.GridColor = SystemColors.ControlDarkDark;
-            dtgv7ProcedureCodeList.ColumnCount = 3;
-            dtgv7ProcedureCodeList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }
-
-        /*private void LoadInvoicesForDataGridView(System.Data.DataTable data)
-        {
-            // Data grid view column setting            
-            this.dataGridView4Invoices.DataSource = data;
-            this.dataGridView4Invoices.DataMember = data.TableName;
-            this.dataGridView4Invoices.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }*/
-
-        //Load all procedure codes
-        private bool LoadProcedureCodes()
-        {                     
-            try
-            {
-                DataTable procedureCodes = this.customerService.LoadProcedureCodes();
-                // DataTable followupVisits = this.customerService.SelectFollowupVisitById(CustomerID);
-                if (procedureCodes != null)
-                {
-                      this.dtgv7ProcedureCodeList.RowHeadersVisible = true;
-
-                      dtgv7ProcedureCodeList.DataSource = null;
-                      dtgv7ProcedureCodeList.Rows.Clear();
-                    
-                    
-                    dtgv7ProcedureCodeList.Columns[0].HeaderCell.Value = "Procedure Code";
-                    dtgv7ProcedureCodeList.Columns[1].HeaderCell.Value = "Procedure Name";
-                    dtgv7ProcedureCodeList.Columns[2].HeaderCell.Value = "Price.";
-
-                    string procedureCode = txt7ProcedureCode.Text.Trim();   
-                    int currentRowIndex = -1;
-
-                    for (int i = 0; i < procedureCodes.Rows.Count; i++)
-                    {
-                        dtgv7ProcedureCodeList.Rows.Add(procedureCodes.Rows[i][0].ToString(), procedureCodes.Rows[i][1].ToString(), "$ " + procedureCodes.Rows[i][2].ToString());
-                        if (i==0 ||(procedureCode != "" && procedureCode == procedureCodes.Rows[i][0].ToString()))
-                        {
-                            txt7ProcedureCode.Text = procedureCodes.Rows[i][0].ToString();
-                            txt7ProcedureName.Text = procedureCodes.Rows[i][1].ToString();
-                            txt7Price.Text = "$ " + procedureCodes.Rows[i][2].ToString();
-                            currentRowIndex = i;
-                        }
-
-                    }
-
-                    if(currentRowIndex >=0 )
-                    {
-                        dtgv7ProcedureCodeList.CurrentCell = dtgv7ProcedureCodeList.Rows[currentRowIndex].Cells[0];
-                       // dtgv7ProcedureCodeList.Rows[0].Selected = false;
-                       // dtgv7ProcedureCodeList.Rows[currentRowIndex].Selected = true;
-                    }
-
-
-                    
-
-                    return true;
-                }
-                else
-                {
-                    //ResetFollowUpVisitInfor();
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Load Initial Visit Information error: " + e.ToString());
-            }
-            return false;
-        }
-
-        private void dtgv7ProcedureCodeList_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DataGridViewRow currentRow = dtgv7ProcedureCodeList.CurrentRow;
-            txt7ProcedureCode.Text = currentRow.Cells[0].Value.ToString();
-            txt7ProcedureName.Text = currentRow.Cells[1].Value.ToString();
-            txt7Price.Text = currentRow.Cells[2].Value.ToString();
-        }
-
-        private void btn7Search_Click(object sender, EventArgs e)
-        {
-            string procedureCode = txt7ProcedureCode.Text.Trim();
-            LoadProcedureCodes();
-            if (procedureCode != txt7ProcedureCode.Text.Trim())
-            {
-                //Not find the record
-                txt7ProcedureCode.Text = procedureCode;
-                txt7ProcedureName.Text = "";
-                txt7Price.Text = "";
-                MessageBox.Show("Not find the procedure code record!");
-            }
-        }
-
-        private void btn7Add_Click(object sender, EventArgs e)
-        {
-            // Check if the validation passes
-            if (true) //this.FollowUpVisitModel())
-            {
-                // Assign the values to the model
-                ProcedureCodeModel procedureCodeModel = new ProcedureCodeModel()
-                {
-                    ProcedureCode = this.txt7ProcedureCode.Text.Trim(),
-                    ProcedureName = this.txt7ProcedureName.Text.Trim(),
-                    Price = (long)(float.Parse(this.txt7Price.Text.Replace('$', ' ').Trim()) * 100)
-                };
-
-                // Call the service method and assign the return status to variable
-                try
-                {
-                    var success = this.customerService.AddProcedureCode(procedureCodeModel);
-
-                    // if status of success variable is true then display a information else display the error message
-                    if (success)
-                    {
-                        //Update customer information
-                        LoadProcedureCodes();
-                        // display the message box
-                        MessageBox.Show(
-                            Resources.Registration_Successful_Message,
-                            Resources.Registration_Successful_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        // display the error messge
-                        MessageBox.Show(
-                            Resources.Registration_Error_Message,
-                            Resources.Registration_Error_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
-                    /*else
-                    {
-                        // Display the validation failed message
-                        MessageBox.Show(
-                            this.errorMessage,
-                            Resources.Registration_Error_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }*/
-                }
-                catch (Exception ex)
-                {
-                    this.ShowErrorMessage(ex);
-                }
-            }
-               
-        }
-
-        private void btn7Delete_Click(object sender, EventArgs e)
-        {            
-            string procedureCode = this.txt7ProcedureCode.Text.Trim();
-            if (procedureCode == "")
-                return;
-            try
-            {
-                var flag = this.customerService.DeleteProcedureCode(procedureCode);
-
-                if (flag)
-                {
-                    txt7ProcedureCode.Text = "";
-                    LoadProcedureCodes();
-                   
-                    MessageBox.Show(
-                        Resources.Delete_Successful_Message,
-                        Resources.Delete_Successful_Message_Title,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                this.ShowErrorMessage(ex);
-            }
-        }
-
-        private void btn7Update_Click(object sender, EventArgs e)
-        {
-            // Assign the values to the model
-            // Check if the validation passes
-            if (true) //this.FollowUpVisitModel())
-            {
-                // Assign the values to the model
-                ProcedureCodeModel procedureCodeModel = new ProcedureCodeModel()
-                {
-                    ProcedureCode = this.txt7ProcedureCode.Text.Trim(),
-                    ProcedureName = this.txt7ProcedureName.Text.Trim(),
-                    Price = (long)(float.Parse(this.txt7Price.Text.Replace('$', ' ').Trim()) * 100)
-                };
-
-
-
-
-                var flag = this.customerService.UpdateProcedureCode(procedureCodeModel);
-
-                if (flag)
-                {
-                        LoadHMCodes();
-                        // display the message box
-                        MessageBox.Show(
-                            Resources.Registration_Successful_Message,
-                            Resources.Registration_Successful_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // display the error messge
-                    MessageBox.Show(
-                        Resources.Registration_Error_Message,
-                        Resources.Registration_Error_Message_Title,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
-        ///tab page H/M Code Methods
-        /// <summary>
-        /// Initializes data grid view dtgv8HMCodeList style
-        /// </summary>
-        private void Initilizedtgv8HMCodeListStyle()
-        {
-            // Setting the style of the DataGridView control
-            dtgv8HMCodeList.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold, GraphicsUnit.Point);
-            dtgv8HMCodeList.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.ControlDark;
-            dtgv8HMCodeList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dtgv8HMCodeList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgv8HMCodeList.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
-            dtgv8HMCodeList.DefaultCellStyle.BackColor = Color.Empty;
-            dtgv8HMCodeList.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.Info;
-            dtgv8HMCodeList.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dtgv8HMCodeList.GridColor = SystemColors.ControlDarkDark;
-            dtgv8HMCodeList.ColumnCount = 3;
-            dtgv8HMCodeList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }
-
-
-        //Load all H/M codes
-        private bool LoadHMCodes()
-        {
-            try
-            {
-                DataTable hmCodes = this.customerService.LoadHMCodes();
-                // DataTable followupVisits = this.customerService.SelectFollowupVisitById(CustomerID);
-                if (hmCodes != null)
-                {
-                    this.dtgv8HMCodeList.RowHeadersVisible = true;
-
-                    dtgv8HMCodeList.DataSource = null;
-                    dtgv8HMCodeList.Rows.Clear();
-
-
-                    dtgv8HMCodeList.Columns[0].HeaderCell.Value = "H/M Code";
-                    dtgv8HMCodeList.Columns[1].HeaderCell.Value = "H/M Name";
-                    dtgv8HMCodeList.Columns[2].HeaderCell.Value = "Price.";
-
-                    string hmCode = txt8HMCode.Text.Trim();
-                    int currentRowIndex = -1;
-
-                    for (int i = 0; i < hmCodes.Rows.Count; i++)
-                    {
-                        dtgv8HMCodeList.Rows.Add(hmCodes.Rows[i][0].ToString(), hmCodes.Rows[i][1].ToString(), "$ " + hmCodes.Rows[i][2].ToString());
-                        if (i == 0 || (hmCode != "" && hmCode == hmCodes.Rows[i][0].ToString()))
-                        {
-                            txt8HMCode.Text = hmCodes.Rows[i][0].ToString();
-                            txt8HMName.Text = hmCodes.Rows[i][1].ToString();
-                            txt8Price.Text = "$ " + hmCodes.Rows[i][2].ToString();
-                            currentRowIndex = i;
-                        }
-
-                    }
-
-                    if (currentRowIndex >= 0)
-                    {
-                        dtgv8HMCodeList.CurrentCell = dtgv8HMCodeList.Rows[currentRowIndex].Cells[0];
-                        // dtgv8HMCodeList.Rows[0].Selected = false;
-                        // dtgv8HMCodeList.Rows[currentRowIndex].Selected = true;
-                    }
-
-
-
-
-                    return true;
-                }
-                else
-                {
-                    //ResetFollowUpVisitInfor();
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Load Initial H/M codes error: " + e.ToString());
-            }
-            return false;
-        }
-
-        private void dtgv8HMCodeList_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DataGridViewRow currentRow = dtgv8HMCodeList.CurrentRow;
-            txt8HMCode.Text = currentRow.Cells[0].Value.ToString();
-            txt8HMName.Text = currentRow.Cells[1].Value.ToString();
-            txt8Price.Text = currentRow.Cells[2].Value.ToString();
-        }
-
-
-        private void btn8Search_Click(object sender, EventArgs e)
-        {     
-            string hmCode = txt8HMCode.Text.Trim();
-            LoadHMCodes();
-            if (hmCode != txt8HMCode.Text.Trim())
-            {
-                //Not find the record
-                txt8HMCode.Text = hmCode;
-                txt8HMName.Text = "";
-                txt8Price.Text = "";
-                MessageBox.Show("Not find the H/M code record!");
-            }
-        }
-
-        private void btn8Add_Click(object sender, EventArgs e)
-        {
-            // Check if the validation passes
-            if (true) //this.FollowUpVisitModel())
-            {
-                // Assign the values to the model
-                HMCodeModel hmCodeModel = new HMCodeModel()
-                {
-                    HMCode = this.txt8HMCode.Text.Trim(),
-                    HMName = this.txt8HMName.Text.Trim(),
-                    Price = (long)(float.Parse(this.txt8Price.Text.Replace('$', ' ').Trim()) * 100)
-                };
-
-                // Call the service method and assign the return status to variable
-                try
-                {
-                    var success = this.customerService.AddHMCode(hmCodeModel);
-
-                    // if status of success variable is true then display a information else display the error message
-                    if (success)
-                    {
-                        //Update customer information
-                        LoadHMCodes();
-                        // display the message box
-                        MessageBox.Show(
-                            Resources.Registration_Successful_Message,
-                            Resources.Registration_Successful_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        // display the error messge
-                        MessageBox.Show(
-                            Resources.Registration_Error_Message,
-                            Resources.Registration_Error_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
-                    /*else
-                    {
-                        // Display the validation failed message
-                        MessageBox.Show(
-                            this.errorMessage,
-                            Resources.Registration_Error_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }*/
-                }
-                catch (Exception ex)
-                {
-                    this.ShowErrorMessage(ex);
-                }
-            }
-        }
-
-        private void btn8Delete_Click(object sender, EventArgs e)
-        {
-            string hmCodeModel = this.txt8HMCode.Text.Trim();
-            if (hmCodeModel == "")
-                return;
-            try
-            {
-                var flag = this.customerService.DeleteHMCode(hmCodeModel);
-
-                if (flag)
-                {
-                    txt8HMCode.Text = "";
-                    LoadHMCodes();
-
-                    MessageBox.Show(
-                        Resources.Delete_Successful_Message,
-                        Resources.Delete_Successful_Message_Title,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                this.ShowErrorMessage(ex);
-            }
-        }
-
-        private void btn8Update_Click(object sender, EventArgs e)
-        {
-            // Assign the values to the model
-            // Check if the validation passes
-            if (true) //this.FollowUpVisitModel())
-            {
-                // Assign the values to the model
-                HMCodeModel hmCodeModel = new HMCodeModel()
-                {
-                    HMCode = this.txt8HMCode.Text.Trim(),
-                    HMName = this.txt8HMName.Text.Trim(),
-                    Price = (long)(float.Parse(this.txt8Price.Text.Replace('$', ' ').Trim()) * 100)
-                };
-
-
-
-
-                var flag = this.customerService.UpdateHMCode(hmCodeModel);
-
-                if (flag)
-                {
-                    LoadHMCodes();
-                    // display the message box
-                    MessageBox.Show(
-                        Resources.Registration_Successful_Message,
-                        Resources.Registration_Successful_Message_Title,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // display the error messge
-                    MessageBox.Show(
-                        Resources.Registration_Error_Message,
-                        Resources.Registration_Error_Message_Title,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void lbl62ProcedureCodes_Click(object sender, EventArgs e)
         {
-            var procedureCodeEditor = new frmProcedureCode(this, lst62ProcedureCodes);
-            //frmProcedureCodeEditor.Closing += frmProcedureCode.frmProcedureCode_Closing;
+            var procedureCodeEditor = new frmCodePickup(this, lst62ProcedureCodes);
+            //frmCodePickupEditor.Closing += frmCodePickup.frmCodePickup_Closing;
             procedureCodeEditor.Show();
             procedureCodeEditor.BringToFront();
             //this.Hide();
@@ -2616,11 +2152,31 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
         private void lbl62HMCodes_Click(object sender, EventArgs e)
         {
-            var hmCodeEditor = new HMCodeEditor(this, lst62HMCodes);
+            var hmCodeEditor = new HMCodePickup(this, lst62HMCodes);
             hmCodeEditor.Show();
             hmCodeEditor.BringToFront();
 
         }
+
+        private void lbl7SetProcedureCodes_Click(object sender, EventArgs e)
+        {
+            var procedureCodeEditor = new frmCodeEditor(this);
+            procedureCodeEditor.Show();
+            procedureCodeEditor.BringToFront();
+            this.Hide();
+        }
+
+        private void lbl7SetHMCode_Click(object sender, EventArgs e)
+        {
+            var hmCodeEditor = new HMCodeEditor(this);
+            hmCodeEditor.Show();
+            hmCodeEditor.BringToFront();
+            this.Hide();
+        }
+
+
+
+
 
 
     }     

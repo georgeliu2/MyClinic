@@ -229,7 +229,7 @@ namespace AcupunctureClinic.Data.BusinessService
         /// AddProcedureCode
         /// </summary>
         /// <returns>ProcedureCodeModel</returns>
-        bool AddProcedureCode(ProcedureCodeModel procedureCodeModel);
+        bool AddProcedureCode(DataCodeModel procedureCodeModel);
         
         /// <summary>
         /// DeleteProcedureCode
@@ -240,8 +240,8 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <summary>
         /// UpdateProcedureCode
         /// </summary>
-        /// <returns>ProcedureCodeModel</returns>
-        bool UpdateProcedureCode(ProcedureCodeModel procedureCodeModel);
+        /// <returns>DataCodeModel</returns>
+        bool UpdateProcedureCode(DataCodeModel procedureCodeModel);
         
         ///H/M Code Methods
         /// <summary>
@@ -253,8 +253,8 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <summary>
         /// AddHMCode
         /// </summary>
-        /// <returns>HMCodeModel</returns>
-        bool AddHMCode(HMCodeModel hmCodeModel);
+        /// <returns>DataCodeModel</returns>
+        bool AddHMCode(DataCodeModel hmCodeModel);
 
         /// <summary>
         /// DeleteHMCode
@@ -265,7 +265,7 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <summary>
         /// UpdateHMCode
         /// </summary>
-        /// <returns>HMCodeModel</returns>
-        bool UpdateHMCode(HMCodeModel hmCodeModel);
+        /// <returns>DataCodeModel</returns>
+        bool UpdateHMCode(DataCodeModel hmCodeModel);
     }
 }
