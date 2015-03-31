@@ -853,7 +853,7 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.Parameters.AddWithValue("@FollowUpDate", followUpVisittModel.FollowUpDate.ToShortDateString());
                 dbCommand.Parameters.AddWithValue("@Subjective", followUpVisittModel.Subjective);
                 dbCommand.Parameters.AddWithValue("@Objective", followUpVisittModel.Objective);
-                dbCommand.Parameters.AddWithValue("@AddNotePlan", followUpVisittModel.AddNotePlan);
+                dbCommand.Parameters.AddWithValue("@DiagnosticsCode", followUpVisittModel.DiagCode);
                 dbCommand.Parameters.AddWithValue("@ProcedureCode", followUpVisittModel.ProcedureCode);
                 dbCommand.Parameters.AddWithValue("@HM_Code", followUpVisittModel.HM_Code);
 
@@ -883,7 +883,7 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.Parameters.AddWithValue("@FollowUpDate", followUpVisittModel.FollowUpDate.ToShortDateString());
                 dbCommand.Parameters.AddWithValue("@Subjective", followUpVisittModel.Subjective);
                 dbCommand.Parameters.AddWithValue("@Objective", followUpVisittModel.Objective);
-                dbCommand.Parameters.AddWithValue("@AddNotePlan", followUpVisittModel.AddNotePlan);
+                dbCommand.Parameters.AddWithValue("@DiagnosticsCode", followUpVisittModel.DiagCode);
                 dbCommand.Parameters.AddWithValue("@ProcedureCode", followUpVisittModel.ProcedureCode);
                 dbCommand.Parameters.AddWithValue("@HM_Code", followUpVisittModel.HM_Code);
                 dbCommand.Parameters.AddWithValue("@CustomerID", followUpVisittModel.CustomerID);
@@ -1259,6 +1259,109 @@ namespace AcupunctureClinic.Data.DataAccess
 
                 return dataRow==null? 0 : (dataRow[0] == null? 0 : (dataRow[0].ToString() == "" ? 0 
                         :int.Parse(dataRow[0].ToString())));
+            }
+        }
+
+        /// Diagnostics Code Methds
+        /// <summary>
+        /// LoadDiagCodes
+        /// </summary>
+        /// <returns>void</returns>
+        public DataTable LoadDiagCodes()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter())
+            {
+                // Create the command and set its properties
+                dataAdapter.SelectCommand = new OleDbCommand();
+                dataAdapter.SelectCommand.Connection = new OleDbConnection(this.DBConnectionString);
+                dataAdapter.SelectCommand.CommandType = CommandType.Text;
+
+                dataAdapter.SelectCommand.CommandText = Scripts.sqlLoadDiagCodes;
+
+
+                // Fill the datatable From adapter
+                dataAdapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+        /// <summary>
+        /// AddDiagCode
+        /// </summary>
+        /// <returns>true or false</returns>
+        public bool AddDiagCode(DataCodeModel diagCodeModel)
+        {
+            using (OleDbCommand dbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                dbCommand.Connection = new OleDbConnection(this.DBConnectionString);
+                dbCommand.CommandType = CommandType.Text;
+                dbCommand.CommandText = Scripts.sqlAddDiagCode;
+
+                // Add the input parameters to the parameter collection
+                dbCommand.Parameters.AddWithValue("@DiagnosticsCode", diagCodeModel.DataCode);
+                dbCommand.Parameters.AddWithValue("@DiagnosticsCodeName", diagCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Price", diagCodeModel.DataPrice / 100.00);
+
+                // Open the connection, execute the query and close the connection
+                dbCommand.Connection.Open();
+                var rowsAffected = dbCommand.ExecuteNonQuery();
+                dbCommand.Connection.Close();
+                return rowsAffected > 0;
+            }
+        }
+
+        /// <summary>
+        /// DeleteDiagCode
+        /// </summary>
+        /// <returns>true or false</returns>
+        public bool DeleteDiagCode(string diagCode)
+        {
+            using (OleDbCommand dbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                dbCommand.Connection = new OleDbConnection(this.DBConnectionString);
+                dbCommand.CommandType = CommandType.Text;
+                dbCommand.CommandText = Scripts.sqlDeleteDiagCode;
+
+                // Add the input parameter to the parameter collection
+                dbCommand.Parameters.AddWithValue("@DiagnosticsCode", diagCode);
+
+                // Open the connection, execute the query and close the connection
+                dbCommand.Connection.Open();
+                var rowsAffected = dbCommand.ExecuteNonQuery();
+                dbCommand.Connection.Close();
+
+                return rowsAffected > 0;
+            }
+        }
+
+        /// <summary>
+        /// UpdateDiagCode
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool UpdateDiagCode(DataCodeModel diagCodeModel)
+        {
+            using (OleDbCommand dbCommand = new OleDbCommand())
+            {
+                // Set the command object properties
+                dbCommand.Connection = new OleDbConnection(this.DBConnectionString);
+                dbCommand.CommandType = CommandType.Text;
+                dbCommand.CommandText = Scripts.sqlUpdateDiagCode;
+
+                // Add the input parameter to the parameter collection
+                dbCommand.Parameters.AddWithValue("@DiagnosticsCodeName", diagCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Price", diagCodeModel.DataPrice / 100.00);
+                dbCommand.Parameters.AddWithValue("@DiagnosticsCode", diagCodeModel.DataCode);
+
+                // Open the connection, execute the query and close the connection
+                dbCommand.Connection.Open();
+                var rowsAffected = dbCommand.ExecuteNonQuery();
+                dbCommand.Connection.Close();
+                return rowsAffected > 0;
             }
         }
     }

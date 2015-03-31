@@ -42,9 +42,9 @@ namespace AcupunctureClinic.Data.DataModel
         public string Objective { get; set; }
 
         /// <summary>
-        /// Gets or sets AddNotePlan
+        /// Gets or sets DiagCode
         /// </summary>
-        public string AddNotePlan { get; set; }
+        public string DiagCode { get; set; }
 
         /// <summary>
         /// Gets or sets ProcedureCode

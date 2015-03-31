@@ -1688,7 +1688,11 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                     this.dtp62VisitDate.Value = (DateTime)followupVisit[3];                    
                     this.txt62Subject.Text = followupVisit[4].ToString();
                     this.txt62Object.Text = followupVisit[5].ToString();
-                    this.txt62AddNotePlan.Text = followupVisit[6].ToString();
+                    string diagCodes = followupVisit[6].ToString();
+                    lst62DiagCodes.Items.Clear();
+                    foreach (string code in SplitCodes(diagCodes))
+                        lst62DiagCodes.Items.Add(code);
+
                     string procedureCode = followupVisit[7].ToString();
                     lst62ProcedureCodes.Items.Clear();
                     foreach (string code in SplitCodes(procedureCode))
@@ -1733,7 +1737,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             this.txt62followUpNo.Text = "";
             this.txt62Subject.Text = "";
             this.txt62Object.Text = "";
-            this.txt62AddNotePlan.Text = "";
+            this.lst62DiagCodes.Items.Clear();
             this.lst62ProcedureCodes.Items.Clear();
             this.lst62ProcedureCodes.Text = "";
             this.lst62HMCodes.Items.Clear();
@@ -1973,7 +1977,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                     FollowUpDate = this.dtp62VisitDate.Value,
                     Subjective = this.txt62Subject.Text.Trim(),
                     Objective = this.txt62Object.Text.Trim(),
-                    AddNotePlan = this.txt62AddNotePlan.Text.Trim(),
+                    DiagCode = this.AssembleCodes(this.lst62DiagCodes),
                     ProcedureCode = this.AssembleCodes(this.lst62ProcedureCodes),
                     HM_Code = this.AssembleCodes(this.lst62HMCodes)
                 };
@@ -2028,7 +2032,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         FollowUpDate = this.dtp62VisitDate.Value,
                         Subjective = this.txt62Subject.Text.Trim(),
                         Objective = this.txt62Object.Text.Trim(),
-                        AddNotePlan = this.txt62AddNotePlan.Text.Trim(),
+                        DiagCode = AssembleCodes(this.lst62DiagCodes),
                         ProcedureCode = AssembleCodes(lst62ProcedureCodes),
                         HM_Code = AssembleCodes(this.lst62HMCodes)
                     };
@@ -2220,13 +2224,12 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             var procedureCodeEditor = new frmCodePickup(this, lst62ProcedureCodes);
             //frmCodePickupEditor.Closing += frmCodePickup.frmCodePickup_Closing;
             procedureCodeEditor.Show();
-            procedureCodeEditor.BringToFront();
-            //this.Hide();
+            procedureCodeEditor.BringToFront();          
         }
 
         private void lbl62HMCodes_Click(object sender, EventArgs e)
         {
-            var hmCodeEditor = new HMCodePickup(this, lst62HMCodes);
+            var hmCodeEditor = new frmHMCodePickup(this, lst62HMCodes);
             hmCodeEditor.Show();
             hmCodeEditor.BringToFront();
 
@@ -2266,6 +2269,23 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 return null;
             string codes = procedureCodes.Trim(';');
             return procedureCodes.Split(';');
+        }
+
+        private void lbl62DiagnosticsCodes_Click(object sender, EventArgs e)
+        {
+            var diagCodeEditor = new frmDiagCodePickup(this, lst62DiagCodes);
+
+            diagCodeEditor.Show();
+            diagCodeEditor.BringToFront();
+            //this.Hide();
+        }
+
+        private void lbl7SetDiagnosticsCodes_Click(object sender, EventArgs e)
+        {
+            var diagCodeEditor = new DiagCodeEditor(this);
+            diagCodeEditor.Show();
+            diagCodeEditor.BringToFront();
+            this.Hide();
         }
 
 

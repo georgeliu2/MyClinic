@@ -280,5 +280,36 @@ namespace AcupunctureClinic.Data.BusinessService
         /// </summary>
         /// <returns>Follow up No.</returns>
         int CreateFollowupNo(long customerID, int initialNo);
+
+
+        /// Diagnostics Code Methds
+        /// <summary>
+        /// LoadDiagCodes
+        /// </summary>
+        /// <returns>void</returns>
+        DataTable LoadDiagCodes();    
+    
+        
+
+
+        /// <summary>
+        /// AddDiagCode
+        /// </summary>
+        /// <returns>true or false</returns>
+        bool AddDiagCode(DataCodeModel diagCodeModel);
+        
+        /// <summary>
+        /// DeleteDiagCode
+        /// </summary>
+        /// <returns>true or false</returns>
+        bool DeleteDiagCode(string diagCode);
+        
+        /// <summary>
+        /// UpdateDiagCode
+        /// </summary>
+        /// <returns>bool</returns>
+        bool UpdateDiagCode(DataCodeModel diagCodeModel);
+        
+
     }
 }

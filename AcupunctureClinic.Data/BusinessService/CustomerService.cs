@@ -406,5 +406,43 @@ namespace AcupunctureClinic.Data.BusinessService
         {
             return this.customerAccess.CreateFollowupNo(customerID, initNo )+1;
         }
+
+
+        /// Diagnostics Code Methds
+        /// <summary>
+        /// LoadDiagCodes
+        /// </summary>
+        /// <returns>void</returns>
+        public DataTable LoadDiagCodes()
+        {
+            return this.customerAccess.LoadDiagCodes();
+        }
+
+        /// <summary>
+        /// AddDiagCode
+        /// </summary>
+        /// <returns>true or false</returns>
+        public bool AddDiagCode(DataCodeModel diagCodeModel)
+        {
+            return this.customerAccess.AddDiagCode(diagCodeModel);
+        }
+
+        /// <summary>
+        /// DeleteDiagCode
+        /// </summary>
+        /// <returns>true or false</returns>
+        public bool DeleteDiagCode(string diagCode)
+        {
+            return this.customerAccess.DeleteDiagCode(diagCode);
+        }
+
+        /// <summary>
+        /// UpdateDiagCode
+        /// </summary>
+        /// <returns>bool</returns>
+        public bool UpdateDiagCode(DataCodeModel diagCodeModel)
+        {
+            return this.customerAccess.UpdateDiagCode(diagCodeModel);
+        }
     }
 }

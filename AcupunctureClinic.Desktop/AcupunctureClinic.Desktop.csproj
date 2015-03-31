@@ -107,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataGridViewPrinter.cs" />
+    <Compile Include="Forms\DiagCodeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDiagCodePickup.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\CodeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,7 +122,7 @@
     <Compile Include="Forms\HMCodeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\HMCodePickup.cs">
+    <Compile Include="Forms\frmHMCodePickup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmCodePickup.cs">

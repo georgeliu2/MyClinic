@@ -184,9 +184,9 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql add a record to Follow_Up_Visit 
         /// </summary>
         public static readonly string sqlAddFollowUpVisit = "Insert Into" +
-            " Follow_Up_Visit (CustomerID, InitialNo, FollowUpNo, FollowUpDate, Subjective, Objective, AddNotePlan, " +
+            " Follow_Up_Visit (CustomerID, InitialNo, FollowUpNo, FollowUpDate, Subjective, Objective, DiagnosticsCode, " +
             " ProcedureCode, HM_Code ) " +
-            "  Values(@CustomerID,@InitialNo, @FollowUpNo, @FollowUpDate, @Subjective, @Objective, @AddNotePlan, " +
+            "  Values(@CustomerID,@InitialNo, @FollowUpNo, @FollowUpDate, @Subjective, @Objective, @DiagnosticsCode, " +
             " @ProcedureCode, @HM_Code )";
         
         /// <summary>
@@ -194,7 +194,7 @@ namespace AcupunctureClinic.Data.Sql
         /// </summary>
         public static readonly string sqlUpdateFollowUpVisit = "Update Follow_Up_Visit " +
         " Set [FollowUpDate] = @FollowUpDate, [Subjective] = @Subjective, [Objective] = @Objective," +
-        " [AddNotePlan] = @AddNotePlan, [ProcedureCode] = @ProcedureCode, [HM_Code] = @HM_Code " +
+        " [DiagnosticsCode] = @DiagnosticsCode, [ProcedureCode] = @ProcedureCode, [HM_Code] = @HM_Code " +
         " where ([CustomerID] = @CustomerID and [InitialNo] = @InitialNo) and [FollowUpNo] = @FollowUpNo";
  
         ///SQL Codes accessing Treatment_Procedure table
@@ -258,6 +258,32 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql Get the last Follow up No for the customer and Initial No
         /// </summary>
         public static readonly string sqlCreateFollowupNoByID = "Select  MAX(FollowUpNo) From Follow_Up_Visit Where CustomerID = @CustomerID AND InitialNo = @InitialNo";
+
+        ///SQL Codes accessing Diagnostics table
+        /// <summary>
+        /// Sql Select all records in Treatment_Procedure 
+        /// </summary>
+        public static readonly string sqlLoadDiagCodes = "Select * From Diagnostics_Codes ORDER BY Diagnostics_Code  ASC"; //DESC"; ASC ";
+
+        /// <summary>
+        /// Sql add a record to Trement_Procedure 
+        /// </summary>
+        public static readonly string sqlAddDiagCode = "Insert Into" +
+            " Diagnostics_Codes (Diagnostics_Code, Diagnostics_Code_Name, Price ) " +
+            "  Values(@DiagnosticsCode,@DiagnosticsCodeName, @Price ) ";
+     
+       /// <summary>
+        /// sql to delete diagnostics code record
+        /// </summary>
+        public static readonly string sqlDeleteDiagCode = "Delete From Diagnostics_Codes Where (Diagnostics_Code = @DiagnosticsCode)";
+
+
+        /// <summary>
+        /// Sql update a record in Diagnostics_Codes 
+        /// </summary>
+        public static readonly string sqlUpdateDiagCode = "Update Diagnostics_Codes " +
+        " Set [Diagnostics_Code_Name] = @Diagnostics_CodeName, [Price] = @Price " +
+        " where [Diagnostics_Code] = @DiagnosticsCode";
 
     }
 }

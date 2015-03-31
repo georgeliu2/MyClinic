@@ -247,14 +247,14 @@
             this.txt61Name = new System.Windows.Forms.TextBox();
             this.label137 = new System.Windows.Forms.Label();
             this.tabpFollowUp = new System.Windows.Forms.TabPage();
+            this.lst62DiagCodes = new System.Windows.Forms.ListBox();
+            this.lbl62DiagnosticsCodes = new System.Windows.Forms.Label();
             this.lst62HMCodes = new System.Windows.Forms.ListBox();
             this.lst62ProcedureCodes = new System.Windows.Forms.ListBox();
             this.txt62Object = new System.Windows.Forms.TextBox();
             this.label161 = new System.Windows.Forms.Label();
             this.txt62Subject = new System.Windows.Forms.TextBox();
             this.label160 = new System.Windows.Forms.Label();
-            this.txt62AddNotePlan = new System.Windows.Forms.TextBox();
-            this.label159 = new System.Windows.Forms.Label();
             this.lbl62HMCodes = new System.Windows.Forms.Label();
             this.lbl62ProcedureCodes = new System.Windows.Forms.Label();
             this.txt62followUpNo = new System.Windows.Forms.TextBox();
@@ -276,7 +276,7 @@
             this.label153 = new System.Windows.Forms.Label();
             this.tabPpSet = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.lbl6SetDiagnosticsCodes = new System.Windows.Forms.Label();
+            this.lbl7SetDiagnosticsCodes = new System.Windows.Forms.Label();
             this.lbl7SetHMCode = new System.Windows.Forms.Label();
             this.label157 = new System.Windows.Forms.Label();
             this.lbl7SetProcedureCodes = new System.Windows.Forms.Label();
@@ -3024,14 +3024,14 @@
             // 
             // tabpFollowUp
             // 
+            this.tabpFollowUp.Controls.Add(this.lst62DiagCodes);
+            this.tabpFollowUp.Controls.Add(this.lbl62DiagnosticsCodes);
             this.tabpFollowUp.Controls.Add(this.lst62HMCodes);
             this.tabpFollowUp.Controls.Add(this.lst62ProcedureCodes);
             this.tabpFollowUp.Controls.Add(this.txt62Object);
             this.tabpFollowUp.Controls.Add(this.label161);
             this.tabpFollowUp.Controls.Add(this.txt62Subject);
             this.tabpFollowUp.Controls.Add(this.label160);
-            this.tabpFollowUp.Controls.Add(this.txt62AddNotePlan);
-            this.tabpFollowUp.Controls.Add(this.label159);
             this.tabpFollowUp.Controls.Add(this.lbl62HMCodes);
             this.tabpFollowUp.Controls.Add(this.lbl62ProcedureCodes);
             this.tabpFollowUp.Controls.Add(this.txt62followUpNo);
@@ -3046,6 +3046,28 @@
             this.tabpFollowUp.TabIndex = 1;
             this.tabpFollowUp.Text = "Follow Up";
             this.tabpFollowUp.UseVisualStyleBackColor = true;
+            // 
+            // lst62DiagCodes
+            // 
+            this.lst62DiagCodes.FormattingEnabled = true;
+            this.lst62DiagCodes.ItemHeight = 18;
+            this.lst62DiagCodes.Location = new System.Drawing.Point(479, 180);
+            this.lst62DiagCodes.Name = "lst62DiagCodes";
+            this.lst62DiagCodes.Size = new System.Drawing.Size(176, 58);
+            this.lst62DiagCodes.TabIndex = 66;
+            // 
+            // lbl62DiagnosticsCodes
+            // 
+            this.lbl62DiagnosticsCodes.AutoSize = true;
+            this.lbl62DiagnosticsCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl62DiagnosticsCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbl62DiagnosticsCodes.Location = new System.Drawing.Point(497, 152);
+            this.lbl62DiagnosticsCodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl62DiagnosticsCodes.Name = "lbl62DiagnosticsCodes";
+            this.lbl62DiagnosticsCodes.Size = new System.Drawing.Size(138, 18);
+            this.lbl62DiagnosticsCodes.TabIndex = 65;
+            this.lbl62DiagnosticsCodes.Text = "Diagnostics Codes:";
+            this.lbl62DiagnosticsCodes.Click += new System.EventHandler(this.lbl62DiagnosticsCodes_Click);
             // 
             // lst62HMCodes
             // 
@@ -3069,7 +3091,7 @@
             // 
             this.txt62Object.AcceptsReturn = true;
             this.txt62Object.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt62Object.Location = new System.Drawing.Point(22, 517);
+            this.txt62Object.Location = new System.Drawing.Point(22, 446);
             this.txt62Object.Margin = new System.Windows.Forms.Padding(4);
             this.txt62Object.MaxLength = 128;
             this.txt62Object.Multiline = true;
@@ -3080,7 +3102,7 @@
             // label161
             // 
             this.label161.AutoSize = true;
-            this.label161.Location = new System.Drawing.Point(19, 483);
+            this.label161.Location = new System.Drawing.Point(19, 412);
             this.label161.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label161.Name = "label161";
             this.label161.Size = new System.Drawing.Size(55, 18);
@@ -3091,7 +3113,7 @@
             // 
             this.txt62Subject.AcceptsReturn = true;
             this.txt62Subject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt62Subject.Location = new System.Drawing.Point(22, 372);
+            this.txt62Subject.Location = new System.Drawing.Point(22, 301);
             this.txt62Subject.Margin = new System.Windows.Forms.Padding(4);
             this.txt62Subject.MaxLength = 128;
             this.txt62Subject.Multiline = true;
@@ -3102,34 +3124,12 @@
             // label160
             // 
             this.label160.AutoSize = true;
-            this.label160.Location = new System.Drawing.Point(20, 342);
+            this.label160.Location = new System.Drawing.Point(20, 271);
             this.label160.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label160.Name = "label160";
             this.label160.Size = new System.Drawing.Size(61, 18);
             this.label160.TabIndex = 59;
             this.label160.Text = "Subject:";
-            // 
-            // txt62AddNotePlan
-            // 
-            this.txt62AddNotePlan.AcceptsReturn = true;
-            this.txt62AddNotePlan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt62AddNotePlan.Location = new System.Drawing.Point(23, 285);
-            this.txt62AddNotePlan.Margin = new System.Windows.Forms.Padding(4);
-            this.txt62AddNotePlan.MaxLength = 128;
-            this.txt62AddNotePlan.Multiline = true;
-            this.txt62AddNotePlan.Name = "txt62AddNotePlan";
-            this.txt62AddNotePlan.Size = new System.Drawing.Size(724, 38);
-            this.txt62AddNotePlan.TabIndex = 58;
-            // 
-            // label159
-            // 
-            this.label159.AutoSize = true;
-            this.label159.Location = new System.Drawing.Point(19, 248);
-            this.label159.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label159.Name = "label159";
-            this.label159.Size = new System.Drawing.Size(106, 18);
-            this.label159.TabIndex = 57;
-            this.label159.Text = "Add Note Plan:";
             // 
             // lbl62HMCodes
             // 
@@ -3360,7 +3360,7 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.lbl6SetDiagnosticsCodes);
+            this.panel6.Controls.Add(this.lbl7SetDiagnosticsCodes);
             this.panel6.Controls.Add(this.lbl7SetHMCode);
             this.panel6.Controls.Add(this.label157);
             this.panel6.Controls.Add(this.lbl7SetProcedureCodes);
@@ -3370,16 +3370,17 @@
             this.panel6.Size = new System.Drawing.Size(436, 371);
             this.panel6.TabIndex = 2;
             // 
-            // lbl6SetDiagnosticsCodes
+            // lbl7SetDiagnosticsCodes
             // 
-            this.lbl6SetDiagnosticsCodes.AutoSize = true;
-            this.lbl6SetDiagnosticsCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl6SetDiagnosticsCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbl6SetDiagnosticsCodes.Location = new System.Drawing.Point(113, 214);
-            this.lbl6SetDiagnosticsCodes.Name = "lbl6SetDiagnosticsCodes";
-            this.lbl6SetDiagnosticsCodes.Size = new System.Drawing.Size(185, 20);
-            this.lbl6SetDiagnosticsCodes.TabIndex = 3;
-            this.lbl6SetDiagnosticsCodes.Text = "Edit Diagnostics Codes";
+            this.lbl7SetDiagnosticsCodes.AutoSize = true;
+            this.lbl7SetDiagnosticsCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl7SetDiagnosticsCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbl7SetDiagnosticsCodes.Location = new System.Drawing.Point(113, 214);
+            this.lbl7SetDiagnosticsCodes.Name = "lbl7SetDiagnosticsCodes";
+            this.lbl7SetDiagnosticsCodes.Size = new System.Drawing.Size(185, 20);
+            this.lbl7SetDiagnosticsCodes.TabIndex = 3;
+            this.lbl7SetDiagnosticsCodes.Text = "Edit Diagnostics Codes";
+            this.lbl7SetDiagnosticsCodes.Click += new System.EventHandler(this.lbl7SetDiagnosticsCodes_Click);
             // 
             // lbl7SetHMCode
             // 
@@ -6089,8 +6090,6 @@
         private System.Windows.Forms.Label label153;
         private System.Windows.Forms.DateTimePicker dtp62VisitDate;
         private System.Windows.Forms.Label label155;
-        private System.Windows.Forms.TextBox txt62AddNotePlan;
-        private System.Windows.Forms.Label label159;
         private System.Windows.Forms.Label lbl62HMCodes;
         private System.Windows.Forms.Label lbl62ProcedureCodes;
         private System.Windows.Forms.TextBox txt62followUpNo;
@@ -6111,9 +6110,11 @@
         private System.Windows.Forms.ListBox lst62ProcedureCodes;
         private System.Windows.Forms.TabPage tabPpSet;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label lbl6SetDiagnosticsCodes;
+        private System.Windows.Forms.Label lbl7SetDiagnosticsCodes;
         private System.Windows.Forms.Label lbl7SetHMCode;
         private System.Windows.Forms.Label label157;
         private System.Windows.Forms.Label lbl7SetProcedureCodes;
+        private System.Windows.Forms.ListBox lst62DiagCodes;
+        private System.Windows.Forms.Label lbl62DiagnosticsCodes;
     }
 }
