@@ -441,6 +441,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 else if (tab.SelectedIndex == 4) //Tab Health Infor
                 {
                     this.LoadHealthInfor();
+                    this.LoadVisits();
                 }
                 /*else if (tab.SelectedIndex == 6) //Tab Procedure Code
                 {
@@ -1361,8 +1362,10 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         private bool LoadVisits()
         {
             string customerIdStr = txt5CuctomerID.Text.Trim();
-            if (customerIdStr != null || customerIdStr != "")
+            if (customerIdStr != null && customerIdStr !="")
                 CustomerID = long.Parse(customerIdStr);
+            else
+                return true;
             dtgv5VisitingHistory.RowHeadersVisible = true;
             try
             {                
@@ -1665,8 +1668,11 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 return true;
             }
 
-            int initNo = txt62InitNo.Text.Trim() =="" ? -1 : int.Parse(txt62InitNo.Text.Trim());
-            int followupNo = txt62followUpNo.Text.Trim() == "" ? -1 : int.Parse(txt62followUpNo.Text.Trim());
+            int[] splitedFollowupNo = SplitFollowupNoToInt(txt62followUpNo.Text.Trim());
+            int initNo = splitedFollowupNo[0];
+            int followupNo = splitedFollowupNo[1];
+
+
             try
             {
                 DataRow followupVisit = this.customerService.SelectFollowUpVisitByInitNo(CustomerID, initNo, followupNo);
@@ -1678,21 +1684,20 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
                 if (followupVisit != null)
                 {
-                    this.txt62InitNo.Text = followupVisit[1].ToString();
-                    this.dtp62VisitDate.Value = (DateTime)followupVisit[3];
-                    this.txt62followUpNo.Text = followupVisit[2].ToString();
+                    this.txt62followUpNo.Text = AssembleFollowupNo(followupVisit[1].ToString(), followupVisit[2].ToString());
+                    this.dtp62VisitDate.Value = (DateTime)followupVisit[3];                    
                     this.txt62Subject.Text = followupVisit[4].ToString();
                     this.txt62Object.Text = followupVisit[5].ToString();
                     this.txt62AddNotePlan.Text = followupVisit[6].ToString();
                     string procedureCode = followupVisit[7].ToString();
-                    lst62ProcedureCodes.DataSource = procedureCodes;
-                    lst62ProcedureCodes.DisplayMember = procedureCode;
+                    lst62ProcedureCodes.Items.Clear();
+                    foreach (string code in SplitCodes(procedureCode))
+                        lst62ProcedureCodes.Items.Add(code);
+
                     string hmCode = followupVisit[8].ToString();
-                    lst62HMCodes.DataSource = hmCodes;
-                    lst62HMCodes.DisplayMember = hmCode;
-                    
-                    //this.lst62ProcedureCodes.Text = followupVisit[7].ToString();
-                    //this.lst62HMCodes.Text = followupVisit[8].ToString();
+                    lst62HMCodes.Items.Clear();
+                    foreach (string code in SplitCodes(hmCode))
+                        lst62HMCodes.Items.Add(code);                    
 
                     //Load Customer Name
                     DataTable customer = this.customerService.SearchCustomers(CustomerID.ToString(), "", " Or");
@@ -1724,7 +1729,6 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             txt62DoB.Text = "";
             txt62Sex.Text = "";
 
-            this.txt62InitNo.Text = "";
             this.dtp62VisitDate.Text = "";
             this.txt62followUpNo.Text = "";
             this.txt62Subject.Text = "";
@@ -1742,6 +1746,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             this.LoadFollowUpVisitInfor();
         }
 
+        //Add initial visiting record
         private void btn61Add_Click(object sender, EventArgs e)
         {
             try
@@ -1749,7 +1754,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 // Check if the validation passes
                 if (true) //this.ValidateHealthInfor())
                 {
-                    // Assign the values to the model
+                    // Assign the values to the model`
                     InitVisitModel initVisitModel = new InitVisitModel()
                     {
                         CustomerID = this.txt61CustomerID.Text.Trim() == "" ? this.CustomerID : long.Parse(this.txt61CustomerID.Text.Trim()),
@@ -1766,13 +1771,15 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                         Sensory = txt61Sensor.Text.Trim(),
                         Impression = txt61Impression.Text.Trim()
                     };
-
+                    //Get a new initial No.
+                    initVisitModel.InitialNo = this.customerService.CreateInitialNo(initVisitModel.CustomerID);
                     // Call the service method and assign the return status to variable
                     var success = this.customerService.AddInitVisit(initVisitModel);
 
                     // if status of success variable is true then display a information else display the error message
                     if (success)
                     {
+                        txt61InitNo.Text = initVisitModel.InitialNo.ToString();
                         //Update customer information
                         LoadInitVisitInfor();
                         // display the message box
@@ -1792,15 +1799,6 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                             MessageBoxIcon.Error);
                     }
                 }
-               /* else
-                {
-                    // Display the validation failed message
-                    MessageBox.Show(
-                        this.errorMessage,
-                        Resources.Registration_Error_Message_Title,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }*/
             }
             catch (Exception ex)
             {
@@ -1942,14 +1940,19 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 txt61InitNo.Text = currentRow.Cells[1].Value.ToString();
                 LoadInitVisitInfor();
                 //Swatch to tabControlVisit tabpInitVisit
-                 tabControlVisit.SelectedIndex = 0;
+                if (tabControlVisit.SelectedIndex == 1)
+                    tabControlVisit.SelectedIndex = 0;
+                else
+                    this.LoadInitVisitInfor();
             }
             else
             {
                 //Load Follow Up visit infor to FollowUp TabPage
-                txt62InitNo.Text = currentRow.Cells[1].Value.ToString();
-                txt62followUpNo.Text = currentRow.Cells[2].Value.ToString();
-                tabControlVisit.SelectedIndex = 1;
+                txt62followUpNo.Text = AssembleFollowupNo(currentRow.Cells[1].Value.ToString(), currentRow.Cells[2].Value.ToString());
+                if(tabControlVisit.SelectedIndex == 0)
+                    tabControlVisit.SelectedIndex = 1;
+                else
+                    this.LoadFollowUpVisitInfor();
             }
         }
 
@@ -1960,17 +1963,19 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             if (true) //this.FollowUpVisitModel())
             {
                 // Assign the values to the model
+                int[] splitedFollowupNo = SplitFollowupNoToInt(txt62followUpNo.Text.Trim());
+
                 FollowUpVisitModel followUpVisitModel = new FollowUpVisitModel()
                 {
                     CustomerID = this.txt62CustomerID.Text.Trim() == "" ? this.CustomerID : long.Parse(this.txt62CustomerID.Text.Trim()),
-                    InitialNo = this.txt62InitNo.Text.Trim() == "" ? -1 : int.Parse(txt62InitNo.Text.Trim()),
-                    FollowUpNo = this.txt62followUpNo.Text.Trim() == "" ? -1 : int.Parse(txt62followUpNo.Text.Trim()),
+                    InitialNo = splitedFollowupNo[0],
+                    FollowUpNo = splitedFollowupNo[1],
                     FollowUpDate = this.dtp62VisitDate.Value,
                     Subjective = this.txt62Subject.Text.Trim(),
                     Objective = this.txt62Object.Text.Trim(),
                     AddNotePlan = this.txt62AddNotePlan.Text.Trim(),
-                    ProcedureCode = this.lst62ProcedureCodes.Text.Trim(),
-                    HM_Code = this.lst62HMCodes.Text.Trim()
+                    ProcedureCode = this.AssembleCodes(this.lst62ProcedureCodes),
+                    HM_Code = this.AssembleCodes(this.lst62HMCodes)
                 };
 
 
@@ -2004,6 +2009,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
         }
 
+        //Add follow up record
         private void btn62Add_Click(object sender, EventArgs e)
         {
             try
@@ -2012,25 +2018,42 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 if (true) //this.FollowUpVisitModel())
                 {
                     // Assign the values to the model
+                    int[] splitedFollowupNo = SplitFollowupNoToInt(this.txt62followUpNo.Text.Trim());
+                    
                     FollowUpVisitModel followUpVisitModel = new FollowUpVisitModel()
                     {
                         CustomerID = this.txt62CustomerID.Text.Trim() == "" ? this.CustomerID : long.Parse(this.txt62CustomerID.Text.Trim()),
-                        InitialNo = this.txt62InitNo.Text.Trim() == "" ? -1 : int.Parse(txt62InitNo.Text.Trim()),
-                        FollowUpNo = this.txt62followUpNo.Text.Trim() == "" ? -1 : int.Parse(txt62followUpNo.Text.Trim()),
+                        InitialNo = splitedFollowupNo[0],
+                        FollowUpNo = splitedFollowupNo[1],
                         FollowUpDate = this.dtp62VisitDate.Value,
                         Subjective = this.txt62Subject.Text.Trim(),
                         Objective = this.txt62Object.Text.Trim(),
                         AddNotePlan = this.txt62AddNotePlan.Text.Trim(),
-                        ProcedureCode = this.lst62ProcedureCodes.Text.Trim(),
-                        HM_Code = this.lst62HMCodes.Text.Trim()
+                        ProcedureCode = AssembleCodes(lst62ProcedureCodes),
+                        HM_Code = AssembleCodes(this.lst62HMCodes)
                     };
 
+                    //Check if the initial no is OK
+                    if (followUpVisitModel.InitialNo <= 0)
+                    {
+                        //No initial no.
+                        // display the message box
+                        MessageBox.Show(
+                            "Cannot add pollow up record. Please create initial record first!");
+                        return;
+                    }
+
+                    //Create follow up No.
+                    followUpVisitModel.FollowUpNo = this.customerService.CreateFollowupNo(followUpVisitModel.CustomerID, followUpVisitModel.InitialNo);
                     // Call the service method and assign the return status to variable
                     var success = this.customerService.AddFollowUpVisit(followUpVisitModel);
 
                     // if status of success variable is true then display a information else display the error message
                     if (success)
                     {
+                        txt62CustomerID.Text = followUpVisitModel.CustomerID.ToString();
+                        txt62followUpNo.Text = AssembleFollowupNo(followUpVisitModel.InitialNo.ToString(), 
+                                                                    followUpVisitModel.FollowUpNo.ToString());
                         //Update customer information
                         LoadFollowUpVisitInfor();
                         // display the message box
@@ -2064,6 +2087,57 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             {
                 this.ShowErrorMessage(ex);
             }      
+        }
+
+        private bool validateFollowupNo(string followupNo)
+        {
+            if (followupNo == null || followupNo == "")
+                return false;
+            bool rv = true;
+            foreach(char c in followupNo)
+                rv = rv && (c=='-' ||(c>='0' && c<='9'));
+            return rv && followupNo[0] != '-' && followupNo[followupNo.Length - 1] != '-';
+         
+        }
+        //Dis-assemable follow up no
+        private string[] SplitFollowupNo(string followupNo)
+        {
+            if (!validateFollowupNo(followupNo))
+                return null;
+
+            return followupNo.Trim().Split('-');
+        }
+
+        private int[] SplitFollowupNoToInt(string followupNo)
+        {
+            string[] splitedNo = SplitFollowupNo(followupNo);
+            int[] nos = new int[2];   
+            if(splitedNo== null)
+            {
+                nos[0] = -1;
+                nos[1] = -1;
+                return nos;
+            }
+
+            if (splitedNo.Length == 2)
+            {
+                nos[0] = int.Parse(splitedNo[0]);
+                nos[1] = int.Parse(splitedNo[1]);
+            }
+            else if (splitedNo.Length == 1)
+            {
+                nos[0] = int.Parse(splitedNo[0]);
+                nos[1] = -1;
+            }
+
+            return nos;
+        }
+
+        private string AssembleFollowupNo(string initNo, string followup)
+        {
+            if (initNo == null || initNo == "" || followup == null || followup == "")
+                return null;
+            return initNo.Trim() + "-" + followup.Trim();
         }
 
         private InvoiceModel  CreateInvoiceModel()
@@ -2176,7 +2250,23 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
 
 
+        private string AssembleCodes(ListBox lstPprocedureCodes)
+        {
+            if (lstPprocedureCodes == null || lstPprocedureCodes.Items.Count == 0 )
+                return null;
+            string procedureCodes = "";
+            foreach (var item in lstPprocedureCodes.Items)
+                procedureCodes += item.ToString() + ";";
+            return procedureCodes;
+        }
 
+        private string[] SplitCodes(string procedureCodes)
+        {
+            if(procedureCodes==null || procedureCodes.Trim() == "")
+                return null;
+            string codes = procedureCodes.Trim(';');
+            return procedureCodes.Split(';');
+        }
 
 
     }     

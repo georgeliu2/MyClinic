@@ -18,7 +18,7 @@ namespace AcupunctureClinic.Desktop.Forms
         public ListBox SelectedProcedureCodes
         { get { return lstbSelectedProcedureCodes; } }
 
-        public frmCodePickup(Manage _manage, ListBox _codes )
+        public frmCodePickup(Manage _manage, ListBox _codes)
         {
             manage = _manage;
             codes = _codes;
@@ -26,7 +26,8 @@ namespace AcupunctureClinic.Desktop.Forms
             LoadProcedureCodeList();
             lstbSelectedProcedureCodes.Items.Clear();
             foreach (Object code in codes.Items)
-                lstbSelectedProcedureCodes.Items.Add(code);
+                if(code.ToString().Trim() != "" )
+                    lstbSelectedProcedureCodes.Items.Add(code);
             foreach (var item in lstbSelectedProcedureCodes.Items)
                 lstbProcedureCodes.Items.Remove(item);
             lstbSelectedProcedureCodes.Sorted = true;
@@ -36,7 +37,8 @@ namespace AcupunctureClinic.Desktop.Forms
         {
             codes.Items.Clear();
             foreach (Object code in lstbSelectedProcedureCodes.Items)
-                codes.Items.Add(code);
+                if (code.ToString().Trim() != "")
+                    codes.Items.Add(code);
             this.Close();
         }
 

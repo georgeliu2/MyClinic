@@ -259,8 +259,6 @@
             this.lbl62ProcedureCodes = new System.Windows.Forms.Label();
             this.txt62followUpNo = new System.Windows.Forms.TextBox();
             this.label156 = new System.Windows.Forms.Label();
-            this.txt62InitNo = new System.Windows.Forms.TextBox();
-            this.label154 = new System.Windows.Forms.Label();
             this.dtp62VisitDate = new System.Windows.Forms.DateTimePicker();
             this.label155 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -3038,8 +3036,6 @@
             this.tabpFollowUp.Controls.Add(this.lbl62ProcedureCodes);
             this.tabpFollowUp.Controls.Add(this.txt62followUpNo);
             this.tabpFollowUp.Controls.Add(this.label156);
-            this.tabpFollowUp.Controls.Add(this.txt62InitNo);
-            this.tabpFollowUp.Controls.Add(this.label154);
             this.tabpFollowUp.Controls.Add(this.dtp62VisitDate);
             this.tabpFollowUp.Controls.Add(this.label155);
             this.tabpFollowUp.Controls.Add(this.panel5);
@@ -3165,43 +3161,22 @@
             // 
             this.txt62followUpNo.AcceptsReturn = true;
             this.txt62followUpNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt62followUpNo.Location = new System.Drawing.Point(551, 116);
+            this.txt62followUpNo.Location = new System.Drawing.Point(411, 116);
             this.txt62followUpNo.Margin = new System.Windows.Forms.Padding(4);
             this.txt62followUpNo.MaxLength = 128;
             this.txt62followUpNo.Name = "txt62followUpNo";
-            this.txt62followUpNo.Size = new System.Drawing.Size(97, 24);
+            this.txt62followUpNo.Size = new System.Drawing.Size(136, 24);
             this.txt62followUpNo.TabIndex = 52;
             // 
             // label156
             // 
             this.label156.AutoSize = true;
-            this.label156.Location = new System.Drawing.Point(449, 118);
+            this.label156.Location = new System.Drawing.Point(256, 118);
             this.label156.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label156.Name = "label156";
             this.label156.Size = new System.Drawing.Size(99, 18);
             this.label156.TabIndex = 51;
             this.label156.Text = "Follow Up No";
-            // 
-            // txt62InitNo
-            // 
-            this.txt62InitNo.AcceptsReturn = true;
-            this.txt62InitNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt62InitNo.Location = new System.Drawing.Point(308, 116);
-            this.txt62InitNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt62InitNo.MaxLength = 128;
-            this.txt62InitNo.Name = "txt62InitNo";
-            this.txt62InitNo.Size = new System.Drawing.Size(97, 24);
-            this.txt62InitNo.TabIndex = 50;
-            // 
-            // label154
-            // 
-            this.label154.AutoSize = true;
-            this.label154.Location = new System.Drawing.Point(236, 118);
-            this.label154.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label154.Name = "label154";
-            this.label154.Size = new System.Drawing.Size(64, 18);
-            this.label154.TabIndex = 49;
-            this.label154.Text = "Initial No";
             // 
             // dtp62VisitDate
             // 
@@ -6112,8 +6087,6 @@
         private System.Windows.Forms.Label label152;
         private System.Windows.Forms.TextBox txt62Name;
         private System.Windows.Forms.Label label153;
-        private System.Windows.Forms.TextBox txt62InitNo;
-        private System.Windows.Forms.Label label154;
         private System.Windows.Forms.DateTimePicker dtp62VisitDate;
         private System.Windows.Forms.Label label155;
         private System.Windows.Forms.TextBox txt62AddNotePlan;

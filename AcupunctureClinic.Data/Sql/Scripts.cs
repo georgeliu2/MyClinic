@@ -249,5 +249,15 @@ namespace AcupunctureClinic.Data.Sql
         " Set [H_M_Name] = @HMName, [Price] = @Price " +
         " where [H_M_Code] = @HMCode";
  
+        /// <summary>
+        /// Sql Get the last initial No for the customer 
+        /// </summary>
+        public static readonly string sqlCreateInitialNoByID = "Select  MAX(InitialNo) From Initial_Visit Where CustomerID = @CustomerID";
+
+              /// <summary>
+        /// Sql Get the last Follow up No for the customer and Initial No
+        /// </summary>
+        public static readonly string sqlCreateFollowupNoByID = "Select  MAX(FollowUpNo) From Follow_Up_Visit Where CustomerID = @CustomerID AND InitialNo = @InitialNo";
+
     }
 }

@@ -263,5 +263,16 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <returns>DataCodeModel</returns>
         bool UpdateHMCode(DataCodeModel hmCodeModel);
 
+        /// <summary>
+        /// CreateInitialNo
+        /// </summary>
+        /// <returns>initial No.</returns>
+        int CreateInitialNo(long customerID);
+
+        /// <summary>
+        /// CreateFollowupNo
+        /// </summary>
+        /// <returns>follow up No No.</returns>
+        int CreateFollowupNo(long customerID, int initNo);
     }              
 }

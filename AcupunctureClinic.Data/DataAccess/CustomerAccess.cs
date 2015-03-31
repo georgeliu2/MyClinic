@@ -522,7 +522,7 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <param name="CustomerID">CustomerID</param>
         /// <returns></returns>
         public DataRow SelectHealthInforById(long customerId)
-        {            
+        {
             DataTable dataTable = new DataTable();
             DataRow dataRow;
 
@@ -761,6 +761,9 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <returns>bool</returns>
         public bool AddInitVisit(InitVisitModel initVisitModel)
         {
+            //Check if initial no is valid
+            if (initVisitModel.InitialNo <= 0)
+                return false;
             using (OleDbCommand dbCommand = new OleDbCommand())
             {
                 // Set the command object properties
@@ -921,15 +924,15 @@ namespace AcupunctureClinic.Data.DataAccess
             try
             {
                 //ExcelApp = new Excel.Application();
-                ExcelApp = new Excel.ApplicationClass(); 
-                    
+                ExcelApp = new Excel.ApplicationClass();
+
                 //InvoiceBook = ExcelApp.Workbooks.Open(this.ExcelConnectionString);
                 InvoiceBook = ExcelApp.Workbooks.Open(this.ExcelConnectionString,
                          Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                          Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                          Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                          Type.Missing, Type.Missing);
-                
+
                 InvoiceSheet = (Excel.Worksheet)InvoiceBook.Sheets[1]; // Explicit cast is not required here
 
                 ClearInvoice(InvoiceSheet);
@@ -951,12 +954,12 @@ namespace AcupunctureClinic.Data.DataAccess
                 InvoiceSheet.Cells[30, 9] = invoiceModel.Total;     //Total
 
                 ExcelApp.Visible = true;
-                
+
                 //InvoiceSheet.Activate(); 
-                
-                
+
+
             }
-            catch (Exception )
+            catch (Exception)
             {
                 ;
             }
@@ -964,16 +967,16 @@ namespace AcupunctureClinic.Data.DataAccess
             return InvoiceSheet;
         }
 
-        
+
         /// <summary>
         /// Close connecting to Excel
         /// </summary>
         /// <returns>void</returns>
-        public void CloseExcel() 
+        public void CloseExcel()
         {
             if (InvoiceBook != null)
                 InvoiceBook.Close(false, Type.Missing, Type.Missing);
-            InvoiceSheet = null;  
+            InvoiceSheet = null;
             ExcelApp.Quit();
             System.Diagnostics.Process[] process = System.Diagnostics.Process.GetProcessesByName("Excel");
             foreach (System.Diagnostics.Process p in process)
@@ -1005,9 +1008,9 @@ namespace AcupunctureClinic.Data.DataAccess
                 dataAdapter.SelectCommand = new OleDbCommand();
                 dataAdapter.SelectCommand.Connection = new OleDbConnection(this.DBConnectionString);
                 dataAdapter.SelectCommand.CommandType = CommandType.Text;
-               
+
                 dataAdapter.SelectCommand.CommandText = Scripts.sqlLoadProcedureCodes;
-              
+
 
                 // Fill the datatable From adapter
                 dataAdapter.Fill(dataTable);
@@ -1032,7 +1035,7 @@ namespace AcupunctureClinic.Data.DataAccess
                 // Add the input parameters to the parameter collection
                 dbCommand.Parameters.AddWithValue("@ProcedureCode", procedureCodeModel.DataCode);
                 dbCommand.Parameters.AddWithValue("@ProcedureName", procedureCodeModel.DataName);
-                dbCommand.Parameters.AddWithValue("@Price", procedureCodeModel.DataPrice/100.00);               
+                dbCommand.Parameters.AddWithValue("@Price", procedureCodeModel.DataPrice / 100.00);
 
                 // Open the connection, execute the query and close the connection
                 dbCommand.Connection.Open();
@@ -1194,6 +1197,68 @@ namespace AcupunctureClinic.Data.DataAccess
                 var rowsAffected = dbCommand.ExecuteNonQuery();
                 dbCommand.Connection.Close();
                 return rowsAffected > 0;
+            }
+        }
+
+        /// <summary>
+        /// CreateInitialNo
+        /// </summary>
+        /// <returns>initial No.</returns>
+        public int CreateInitialNo(long customerID)
+        {
+            DataTable dataTable = new DataTable();
+            DataRow dataRow;
+
+            using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter())
+            {
+                // Create the command and set its properties
+                dataAdapter.SelectCommand = new OleDbCommand();
+                dataAdapter.SelectCommand.Connection = new OleDbConnection(this.DBConnectionString);
+                dataAdapter.SelectCommand.CommandType = CommandType.Text;
+                dataAdapter.SelectCommand.CommandText = Scripts.sqlCreateInitialNoByID;
+
+                // Add the parameter to the parameter collection
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@CustomerID", customerID);
+
+                // Fill the datatable From adapter
+                dataAdapter.Fill(dataTable);
+
+                // Get the datarow from the table
+                dataRow = dataTable.Rows.Count > 0 ? dataTable.Rows[0] : null;
+
+                return dataRow ==null? 0: int.Parse(dataRow[0].ToString());
+            }
+        }
+
+        /// <summary>
+        /// CreateFollowupNo
+        /// </summary>
+        /// <returns>follow up No No.</returns>
+        public int CreateFollowupNo(long customerID, int initNo)       
+        {
+            DataTable dataTable = new DataTable();
+            DataRow dataRow;
+
+            using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter())
+            {
+                // Create the command and set its properties
+                dataAdapter.SelectCommand = new OleDbCommand();
+                dataAdapter.SelectCommand.Connection = new OleDbConnection(this.DBConnectionString);
+                dataAdapter.SelectCommand.CommandType = CommandType.Text;
+                dataAdapter.SelectCommand.CommandText = Scripts.sqlCreateFollowupNoByID;
+
+                // Add the parameter to the parameter collection
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@CustomerID", customerID);
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@InitialNo", initNo);
+
+                // Fill the datatable From adapter
+                dataAdapter.Fill(dataTable);
+
+                // Get the datarow from the table
+                dataRow = dataTable.Rows.Count > 0 ? dataTable.Rows[0] : null;
+
+                return dataRow==null? 0 : (dataRow[0] == null? 0 : (dataRow[0].ToString() == "" ? 0 
+                        :int.Parse(dataRow[0].ToString())));
             }
         }
     }

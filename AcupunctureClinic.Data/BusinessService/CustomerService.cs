@@ -389,5 +389,22 @@ namespace AcupunctureClinic.Data.BusinessService
             return this.customerAccess.UpdateHMCode(hmCodeModel);
         }
 
+        /// <summary>
+        /// CreateInitialNo
+        /// </summary>
+        /// <returns>initial No.</returns>
+        public int CreateInitialNo(long customerID)
+        {
+            return this.customerAccess.CreateInitialNo(customerID)+1;
+        }
+
+        /// <summary>
+        /// CreateFollowupNo
+        /// </summary>
+        /// <returns>follow up No.</returns>
+        public int CreateFollowupNo(long customerID, int initNo)
+        {
+            return this.customerAccess.CreateFollowupNo(customerID, initNo )+1;
+        }
     }
 }
