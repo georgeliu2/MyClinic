@@ -27,7 +27,7 @@ namespace AcupunctureClinic.Desktop.Forms
         /// <summary>
         /// Initializes data grid view dtgvCodeList style
         /// </summary>
-        protected void InitilizedtgvProcedureCodeListStyle()
+        protected virtual void InitilizedtgvProcedureCodeListStyle()
         {
             // Setting the style of the DataGridView control
             dtgvCodeList.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold, GraphicsUnit.Point);
@@ -60,7 +60,7 @@ namespace AcupunctureClinic.Desktop.Forms
 
 
                     dtgvCodeList.Columns[0].HeaderCell.Value = "Procedure Code";
-                    dtgvCodeList.Columns[1].HeaderCell.Value = "Procedure Name";
+                    dtgvCodeList.Columns[1].HeaderCell.Value = "Description";
                     dtgvCodeList.Columns[2].HeaderCell.Value = "Price.";
 
                     string procedureCode = txtCode.Text.Trim();

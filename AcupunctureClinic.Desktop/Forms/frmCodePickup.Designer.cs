@@ -34,9 +34,11 @@
             this.lblCodeList = new System.Windows.Forms.Label();
             this.btn1Done = new System.Windows.Forms.Button();
             this.btn1Quite = new System.Windows.Forms.Button();
-            this.lstbSelectedProcedureCodes = new System.Windows.Forms.ListBox();
-            this.lstbProcedureCodes = new System.Windows.Forms.ListBox();
             this.btn1Clear = new System.Windows.Forms.Button();
+            this.dtgvCodes = new System.Windows.Forms.DataGridView();
+            this.dtgvSelectedCodes = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvCodes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSelectedCodes)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSelectedCodeList
@@ -50,7 +52,7 @@
             // 
             // btn1Add
             // 
-            this.btn1Add.Location = new System.Drawing.Point(261, 96);
+            this.btn1Add.Location = new System.Drawing.Point(468, 107);
             this.btn1Add.Name = "btn1Add";
             this.btn1Add.Size = new System.Drawing.Size(75, 23);
             this.btn1Add.TabIndex = 3;
@@ -60,7 +62,7 @@
             // 
             // btn1Remove
             // 
-            this.btn1Remove.Location = new System.Drawing.Point(252, 155);
+            this.btn1Remove.Location = new System.Drawing.Point(468, 167);
             this.btn1Remove.Name = "btn1Remove";
             this.btn1Remove.Size = new System.Drawing.Size(95, 23);
             this.btn1Remove.TabIndex = 4;
@@ -89,7 +91,7 @@
             // 
             // btn1Quite
             // 
-            this.btn1Quite.Location = new System.Drawing.Point(261, 368);
+            this.btn1Quite.Location = new System.Drawing.Point(336, 368);
             this.btn1Quite.Name = "btn1Quite";
             this.btn1Quite.Size = new System.Drawing.Size(75, 23);
             this.btn1Quite.TabIndex = 7;
@@ -97,29 +99,9 @@
             this.btn1Quite.UseVisualStyleBackColor = true;
             this.btn1Quite.Click += new System.EventHandler(this.btn1Quite_Click);
             // 
-            // lstbSelectedProcedureCodes
-            // 
-            this.lstbSelectedProcedureCodes.FormattingEnabled = true;
-            this.lstbSelectedProcedureCodes.ItemHeight = 16;
-            this.lstbSelectedProcedureCodes.Location = new System.Drawing.Point(53, 81);
-            this.lstbSelectedProcedureCodes.Name = "lstbSelectedProcedureCodes";
-            this.lstbSelectedProcedureCodes.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstbSelectedProcedureCodes.Size = new System.Drawing.Size(166, 100);
-            this.lstbSelectedProcedureCodes.TabIndex = 8;
-            // 
-            // lstbProcedureCodes
-            // 
-            this.lstbProcedureCodes.FormattingEnabled = true;
-            this.lstbProcedureCodes.ItemHeight = 16;
-            this.lstbProcedureCodes.Location = new System.Drawing.Point(395, 81);
-            this.lstbProcedureCodes.Name = "lstbProcedureCodes";
-            this.lstbProcedureCodes.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstbProcedureCodes.Size = new System.Drawing.Size(166, 356);
-            this.lstbProcedureCodes.TabIndex = 9;
-            // 
             // btn1Clear
             // 
-            this.btn1Clear.Location = new System.Drawing.Point(165, 368);
+            this.btn1Clear.Location = new System.Drawing.Point(189, 368);
             this.btn1Clear.Name = "btn1Clear";
             this.btn1Clear.Size = new System.Drawing.Size(75, 23);
             this.btn1Clear.TabIndex = 10;
@@ -127,14 +109,34 @@
             this.btn1Clear.UseVisualStyleBackColor = true;
             this.btn1Clear.Click += new System.EventHandler(this.btn1Clear_Click);
             // 
+            // dtgvCodes
+            // 
+            this.dtgvCodes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvCodes.Location = new System.Drawing.Point(602, 81);
+            this.dtgvCodes.Name = "dtgvCodes";
+            this.dtgvCodes.RowTemplate.Height = 24;
+            this.dtgvCodes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvCodes.Size = new System.Drawing.Size(347, 356);
+            this.dtgvCodes.TabIndex = 11;
+            // 
+            // dtgvSelectedCodes
+            // 
+            this.dtgvSelectedCodes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvSelectedCodes.Location = new System.Drawing.Point(64, 81);
+            this.dtgvSelectedCodes.Name = "dtgvSelectedCodes";
+            this.dtgvSelectedCodes.RowTemplate.Height = 24;
+            this.dtgvSelectedCodes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvSelectedCodes.Size = new System.Drawing.Size(347, 152);
+            this.dtgvSelectedCodes.TabIndex = 12;
+            // 
             // frmCodePickup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 459);
+            this.ClientSize = new System.Drawing.Size(961, 459);
+            this.Controls.Add(this.dtgvSelectedCodes);
+            this.Controls.Add(this.dtgvCodes);
             this.Controls.Add(this.btn1Clear);
-            this.Controls.Add(this.lstbProcedureCodes);
-            this.Controls.Add(this.lstbSelectedProcedureCodes);
             this.Controls.Add(this.btn1Quite);
             this.Controls.Add(this.btn1Done);
             this.Controls.Add(this.lblCodeList);
@@ -144,6 +146,8 @@
             this.Location = new System.Drawing.Point(400, 200);
             this.Name = "frmCodePickup";
             this.Text = "Procedure Code Editor";
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvCodes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSelectedCodes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,8 +161,8 @@
         protected System.Windows.Forms.Label lblCodeList;
         private System.Windows.Forms.Button btn1Done;
         private System.Windows.Forms.Button btn1Quite;
-        protected System.Windows.Forms.ListBox lstbSelectedProcedureCodes;
-        protected System.Windows.Forms.ListBox lstbProcedureCodes;
         private System.Windows.Forms.Button btn1Clear;
+        private System.Windows.Forms.DataGridView dtgvCodes;
+        private System.Windows.Forms.DataGridView dtgvSelectedCodes;
     }
 }

@@ -41,7 +41,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.dtgvCodeList = new System.Windows.Forms.DataGridView();
             this.Procedure_Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Procedure_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblListTitle = new System.Windows.Forms.Label();
             this.btnQuite = new System.Windows.Forms.Button();
@@ -85,7 +85,7 @@
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(115, 17);
             this.lblName.TabIndex = 114;
-            this.lblName.Text = "Procedure Name";
+            this.lblName.Text = "Description";
             // 
             // lblCode
             // 
@@ -152,7 +152,7 @@
             this.dtgvCodeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvCodeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Procedure_Code,
-            this.Procedure_Name,
+            this.Description,
             this.Price});
             this.dtgvCodeList.Location = new System.Drawing.Point(56, 73);
             this.dtgvCodeList.Margin = new System.Windows.Forms.Padding(4);
@@ -171,12 +171,12 @@
             this.Procedure_Code.ReadOnly = true;
             this.Procedure_Code.Width = 120;
             // 
-            // Procedure_Name
+            // Description
             // 
-            this.Procedure_Name.HeaderText = "Procedure Name";
-            this.Procedure_Name.Name = "Procedure_Name";
-            this.Procedure_Name.ReadOnly = true;
-            this.Procedure_Name.Width = 120;
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 120;
             // 
             // Price
             // 
@@ -247,7 +247,7 @@
         protected System.Windows.Forms.Button btnSearch;
         protected System.Windows.Forms.DataGridView dtgvCodeList;
         protected System.Windows.Forms.DataGridViewTextBoxColumn Procedure_Code;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn Procedure_Name;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn Description;
         protected System.Windows.Forms.DataGridViewTextBoxColumn Price;
         protected System.Windows.Forms.Label lblListTitle;
         protected System.Windows.Forms.Button btnQuite;

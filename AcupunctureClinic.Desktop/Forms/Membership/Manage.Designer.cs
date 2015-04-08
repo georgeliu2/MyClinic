@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -185,14 +185,14 @@
             this.dtgv5VisitingHistory = new System.Windows.Forms.DataGridView();
             this.label133 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label128 = new System.Windows.Forms.Label();
+            this.label126 = new System.Windows.Forms.Label();
             this.txt5Motor = new System.Windows.Forms.TextBox();
             this.label132 = new System.Windows.Forms.Label();
             this.txt5Musculoskeletal = new System.Windows.Forms.TextBox();
             this.label129 = new System.Windows.Forms.Label();
             this.txt5Allergies = new System.Windows.Forms.TextBox();
-            this.label128 = new System.Windows.Forms.Label();
             this.txt5FamilyHistory = new System.Windows.Forms.TextBox();
-            this.label126 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn5Refresh = new System.Windows.Forms.Button();
             this.btn5Add = new System.Windows.Forms.Button();
@@ -248,15 +248,15 @@
             this.label137 = new System.Windows.Forms.Label();
             this.tabpFollowUp = new System.Windows.Forms.TabPage();
             this.lst62DiagCodes = new System.Windows.Forms.ListBox();
-            this.lbl62DiagnosticsCodes = new System.Windows.Forms.Label();
-            this.lst62HMCodes = new System.Windows.Forms.ListBox();
-            this.lst62ProcedureCodes = new System.Windows.Forms.ListBox();
             this.txt62Object = new System.Windows.Forms.TextBox();
-            this.label161 = new System.Windows.Forms.Label();
-            this.txt62Subject = new System.Windows.Forms.TextBox();
-            this.label160 = new System.Windows.Forms.Label();
             this.lbl62HMCodes = new System.Windows.Forms.Label();
             this.lbl62ProcedureCodes = new System.Windows.Forms.Label();
+            this.label161 = new System.Windows.Forms.Label();
+            this.lbl62DiagnosticsCodes = new System.Windows.Forms.Label();
+            this.txt62Subject = new System.Windows.Forms.TextBox();
+            this.label160 = new System.Windows.Forms.Label();
+            this.lst62HMCodes = new System.Windows.Forms.ListBox();
+            this.lst62ProcedureCodes = new System.Windows.Forms.ListBox();
             this.txt62followUpNo = new System.Windows.Forms.TextBox();
             this.label156 = new System.Windows.Forms.Label();
             this.dtp62VisitDate = new System.Windows.Forms.DateTimePicker();
@@ -1274,14 +1274,14 @@
             this.dataGridViewMembers.AllowUserToAddRows = false;
             this.dataGridViewMembers.AllowUserToOrderColumns = true;
             this.dataGridViewMembers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMembers.Location = new System.Drawing.Point(4, 204);
             this.dataGridViewMembers.Margin = new System.Windows.Forms.Padding(4);
@@ -2121,14 +2121,14 @@
             this.dataGridView4Invoices.AllowUserToAddRows = false;
             this.dataGridView4Invoices.AllowUserToOrderColumns = true;
             this.dataGridView4Invoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4Invoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4Invoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView4Invoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4Invoices.Location = new System.Drawing.Point(25, 213);
             this.dataGridView4Invoices.Margin = new System.Windows.Forms.Padding(4);
@@ -2332,18 +2332,37 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label128);
+            this.panel2.Controls.Add(this.label126);
             this.panel2.Controls.Add(this.txt5Motor);
             this.panel2.Controls.Add(this.label132);
             this.panel2.Controls.Add(this.txt5Musculoskeletal);
             this.panel2.Controls.Add(this.label129);
             this.panel2.Controls.Add(this.txt5Allergies);
-            this.panel2.Controls.Add(this.label128);
             this.panel2.Controls.Add(this.txt5FamilyHistory);
-            this.panel2.Controls.Add(this.label126);
             this.panel2.Location = new System.Drawing.Point(4, 117);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(741, 304);
             this.panel2.TabIndex = 1;
+            // 
+            // label128
+            // 
+            this.label128.AutoSize = true;
+            this.label128.Location = new System.Drawing.Point(10, 155);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(67, 18);
+            this.label128.TabIndex = 50;
+            this.label128.Text = "Allergies:";
+            // 
+            // label126
+            // 
+            this.label126.AutoSize = true;
+            this.label126.Location = new System.Drawing.Point(6, 18);
+            this.label126.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(106, 18);
+            this.label126.TabIndex = 49;
+            this.label126.Text = "Family History:";
             // 
             // txt5Motor
             // 
@@ -2356,10 +2375,9 @@
             // label132
             // 
             this.label132.AutoSize = true;
-            this.label132.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label132.Location = new System.Drawing.Point(388, 242);
             this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(54, 20);
+            this.label132.Size = new System.Drawing.Size(52, 18);
             this.label132.TabIndex = 6;
             this.label132.Text = "Motor:";
             // 
@@ -2374,10 +2392,9 @@
             // label129
             // 
             this.label129.AutoSize = true;
-            this.label129.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label129.Location = new System.Drawing.Point(6, 242);
             this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(135, 20);
+            this.label129.Size = new System.Drawing.Size(133, 18);
             this.label129.TabIndex = 4;
             this.label129.Text = "Musculoskeletal E:";
             // 
@@ -2389,33 +2406,13 @@
             this.txt5Allergies.Size = new System.Drawing.Size(729, 49);
             this.txt5Allergies.TabIndex = 3;
             // 
-            // label128
-            // 
-            this.label128.AutoSize = true;
-            this.label128.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label128.Location = new System.Drawing.Point(9, 158);
-            this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(69, 20);
-            this.label128.TabIndex = 2;
-            this.label128.Text = "Allergies:";
-            // 
             // txt5FamilyHistory
             // 
-            this.txt5FamilyHistory.Location = new System.Drawing.Point(6, 48);
+            this.txt5FamilyHistory.Location = new System.Drawing.Point(6, 42);
             this.txt5FamilyHistory.Multiline = true;
             this.txt5FamilyHistory.Name = "txt5FamilyHistory";
             this.txt5FamilyHistory.Size = new System.Drawing.Size(729, 99);
             this.txt5FamilyHistory.TabIndex = 1;
-            // 
-            // label126
-            // 
-            this.label126.AutoSize = true;
-            this.label126.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label126.Location = new System.Drawing.Point(9, 17);
-            this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(108, 20);
-            this.label126.TabIndex = 0;
-            this.label126.Text = "Family History:";
             // 
             // panel1
             // 
@@ -3025,15 +3022,15 @@
             // tabpFollowUp
             // 
             this.tabpFollowUp.Controls.Add(this.lst62DiagCodes);
-            this.tabpFollowUp.Controls.Add(this.lbl62DiagnosticsCodes);
-            this.tabpFollowUp.Controls.Add(this.lst62HMCodes);
-            this.tabpFollowUp.Controls.Add(this.lst62ProcedureCodes);
             this.tabpFollowUp.Controls.Add(this.txt62Object);
-            this.tabpFollowUp.Controls.Add(this.label161);
-            this.tabpFollowUp.Controls.Add(this.txt62Subject);
-            this.tabpFollowUp.Controls.Add(this.label160);
             this.tabpFollowUp.Controls.Add(this.lbl62HMCodes);
             this.tabpFollowUp.Controls.Add(this.lbl62ProcedureCodes);
+            this.tabpFollowUp.Controls.Add(this.label161);
+            this.tabpFollowUp.Controls.Add(this.lbl62DiagnosticsCodes);
+            this.tabpFollowUp.Controls.Add(this.txt62Subject);
+            this.tabpFollowUp.Controls.Add(this.label160);
+            this.tabpFollowUp.Controls.Add(this.lst62HMCodes);
+            this.tabpFollowUp.Controls.Add(this.lst62ProcedureCodes);
             this.tabpFollowUp.Controls.Add(this.txt62followUpNo);
             this.tabpFollowUp.Controls.Add(this.label156);
             this.tabpFollowUp.Controls.Add(this.dtp62VisitDate);
@@ -3051,47 +3048,16 @@
             // 
             this.lst62DiagCodes.FormattingEnabled = true;
             this.lst62DiagCodes.ItemHeight = 18;
-            this.lst62DiagCodes.Location = new System.Drawing.Point(479, 180);
+            this.lst62DiagCodes.Location = new System.Drawing.Point(513, 487);
             this.lst62DiagCodes.Name = "lst62DiagCodes";
             this.lst62DiagCodes.Size = new System.Drawing.Size(176, 58);
             this.lst62DiagCodes.TabIndex = 66;
-            // 
-            // lbl62DiagnosticsCodes
-            // 
-            this.lbl62DiagnosticsCodes.AutoSize = true;
-            this.lbl62DiagnosticsCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl62DiagnosticsCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbl62DiagnosticsCodes.Location = new System.Drawing.Point(497, 152);
-            this.lbl62DiagnosticsCodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl62DiagnosticsCodes.Name = "lbl62DiagnosticsCodes";
-            this.lbl62DiagnosticsCodes.Size = new System.Drawing.Size(138, 18);
-            this.lbl62DiagnosticsCodes.TabIndex = 65;
-            this.lbl62DiagnosticsCodes.Text = "Diagnostics Codes:";
-            this.lbl62DiagnosticsCodes.Click += new System.EventHandler(this.lbl62DiagnosticsCodes_Click);
-            // 
-            // lst62HMCodes
-            // 
-            this.lst62HMCodes.FormattingEnabled = true;
-            this.lst62HMCodes.ItemHeight = 18;
-            this.lst62HMCodes.Location = new System.Drawing.Point(249, 181);
-            this.lst62HMCodes.Name = "lst62HMCodes";
-            this.lst62HMCodes.Size = new System.Drawing.Size(176, 58);
-            this.lst62HMCodes.TabIndex = 64;
-            // 
-            // lst62ProcedureCodes
-            // 
-            this.lst62ProcedureCodes.FormattingEnabled = true;
-            this.lst62ProcedureCodes.ItemHeight = 18;
-            this.lst62ProcedureCodes.Location = new System.Drawing.Point(23, 180);
-            this.lst62ProcedureCodes.Name = "lst62ProcedureCodes";
-            this.lst62ProcedureCodes.Size = new System.Drawing.Size(176, 58);
-            this.lst62ProcedureCodes.TabIndex = 63;
             // 
             // txt62Object
             // 
             this.txt62Object.AcceptsReturn = true;
             this.txt62Object.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt62Object.Location = new System.Drawing.Point(22, 446);
+            this.txt62Object.Location = new System.Drawing.Point(22, 344);
             this.txt62Object.Margin = new System.Windows.Forms.Padding(4);
             this.txt62Object.MaxLength = 128;
             this.txt62Object.Multiline = true;
@@ -3099,44 +3065,12 @@
             this.txt62Object.Size = new System.Drawing.Size(724, 91);
             this.txt62Object.TabIndex = 62;
             // 
-            // label161
-            // 
-            this.label161.AutoSize = true;
-            this.label161.Location = new System.Drawing.Point(19, 412);
-            this.label161.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label161.Name = "label161";
-            this.label161.Size = new System.Drawing.Size(55, 18);
-            this.label161.TabIndex = 61;
-            this.label161.Text = "Object:";
-            // 
-            // txt62Subject
-            // 
-            this.txt62Subject.AcceptsReturn = true;
-            this.txt62Subject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt62Subject.Location = new System.Drawing.Point(22, 301);
-            this.txt62Subject.Margin = new System.Windows.Forms.Padding(4);
-            this.txt62Subject.MaxLength = 128;
-            this.txt62Subject.Multiline = true;
-            this.txt62Subject.Name = "txt62Subject";
-            this.txt62Subject.Size = new System.Drawing.Size(724, 91);
-            this.txt62Subject.TabIndex = 60;
-            // 
-            // label160
-            // 
-            this.label160.AutoSize = true;
-            this.label160.Location = new System.Drawing.Point(20, 271);
-            this.label160.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label160.Name = "label160";
-            this.label160.Size = new System.Drawing.Size(61, 18);
-            this.label160.TabIndex = 59;
-            this.label160.Text = "Subject:";
-            // 
             // lbl62HMCodes
             // 
             this.lbl62HMCodes.AutoSize = true;
             this.lbl62HMCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl62HMCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbl62HMCodes.Location = new System.Drawing.Point(267, 153);
+            this.lbl62HMCodes.Location = new System.Drawing.Point(322, 459);
             this.lbl62HMCodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl62HMCodes.Name = "lbl62HMCodes";
             this.lbl62HMCodes.Size = new System.Drawing.Size(88, 18);
@@ -3149,13 +3083,76 @@
             this.lbl62ProcedureCodes.AutoSize = true;
             this.lbl62ProcedureCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl62ProcedureCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbl62ProcedureCodes.Location = new System.Drawing.Point(52, 153);
+            this.lbl62ProcedureCodes.Location = new System.Drawing.Point(85, 459);
             this.lbl62ProcedureCodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl62ProcedureCodes.Name = "lbl62ProcedureCodes";
             this.lbl62ProcedureCodes.Size = new System.Drawing.Size(129, 18);
             this.lbl62ProcedureCodes.TabIndex = 53;
             this.lbl62ProcedureCodes.Text = "Procedure Codes:";
             this.lbl62ProcedureCodes.Click += new System.EventHandler(this.lbl62ProcedureCodes_Click);
+            // 
+            // label161
+            // 
+            this.label161.AutoSize = true;
+            this.label161.Location = new System.Drawing.Point(22, 177);
+            this.label161.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label161.Name = "label161";
+            this.label161.Size = new System.Drawing.Size(55, 18);
+            this.label161.TabIndex = 61;
+            this.label161.Text = "Object:";
+            // 
+            // lbl62DiagnosticsCodes
+            // 
+            this.lbl62DiagnosticsCodes.AutoSize = true;
+            this.lbl62DiagnosticsCodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl62DiagnosticsCodes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbl62DiagnosticsCodes.Location = new System.Drawing.Point(531, 459);
+            this.lbl62DiagnosticsCodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl62DiagnosticsCodes.Name = "lbl62DiagnosticsCodes";
+            this.lbl62DiagnosticsCodes.Size = new System.Drawing.Size(138, 18);
+            this.lbl62DiagnosticsCodes.TabIndex = 65;
+            this.lbl62DiagnosticsCodes.Text = "Diagnostics Codes:";
+            this.lbl62DiagnosticsCodes.Click += new System.EventHandler(this.lbl62DiagnosticsCodes_Click);
+            // 
+            // txt62Subject
+            // 
+            this.txt62Subject.AcceptsReturn = true;
+            this.txt62Subject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt62Subject.Location = new System.Drawing.Point(22, 210);
+            this.txt62Subject.Margin = new System.Windows.Forms.Padding(4);
+            this.txt62Subject.MaxLength = 128;
+            this.txt62Subject.Multiline = true;
+            this.txt62Subject.Name = "txt62Subject";
+            this.txt62Subject.Size = new System.Drawing.Size(724, 91);
+            this.txt62Subject.TabIndex = 60;
+            // 
+            // label160
+            // 
+            this.label160.AutoSize = true;
+            this.label160.Location = new System.Drawing.Point(19, 312);
+            this.label160.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label160.Name = "label160";
+            this.label160.Size = new System.Drawing.Size(61, 18);
+            this.label160.TabIndex = 59;
+            this.label160.Text = "Subject:";
+            // 
+            // lst62HMCodes
+            // 
+            this.lst62HMCodes.FormattingEnabled = true;
+            this.lst62HMCodes.ItemHeight = 18;
+            this.lst62HMCodes.Location = new System.Drawing.Point(283, 488);
+            this.lst62HMCodes.Name = "lst62HMCodes";
+            this.lst62HMCodes.Size = new System.Drawing.Size(176, 58);
+            this.lst62HMCodes.TabIndex = 64;
+            // 
+            // lst62ProcedureCodes
+            // 
+            this.lst62ProcedureCodes.FormattingEnabled = true;
+            this.lst62ProcedureCodes.ItemHeight = 18;
+            this.lst62ProcedureCodes.Location = new System.Drawing.Point(57, 487);
+            this.lst62ProcedureCodes.Name = "lst62ProcedureCodes";
+            this.lst62ProcedureCodes.Size = new System.Drawing.Size(176, 58);
+            this.lst62ProcedureCodes.TabIndex = 63;
             // 
             // txt62followUpNo
             // 
@@ -4174,14 +4171,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(4, 204);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
@@ -5255,14 +5252,14 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(4, 204);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
@@ -6025,9 +6022,7 @@
         private System.Windows.Forms.TextBox txt5DoB;
         private System.Windows.Forms.TextBox txt5CuctomerID;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label128;
         private System.Windows.Forms.TextBox txt5FamilyHistory;
-        private System.Windows.Forms.Label label126;
         private System.Windows.Forms.TextBox txt5Motor;
         private System.Windows.Forms.Label label132;
         private System.Windows.Forms.TextBox txt5Musculoskeletal;
@@ -6116,5 +6111,7 @@
         private System.Windows.Forms.Label lbl7SetProcedureCodes;
         private System.Windows.Forms.ListBox lst62DiagCodes;
         private System.Windows.Forms.Label lbl62DiagnosticsCodes;
+        private System.Windows.Forms.Label label128;
+        private System.Windows.Forms.Label label126;
     }
 }

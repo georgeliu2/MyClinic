@@ -207,7 +207,7 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql add a record to Trement_Procedure 
         /// </summary>
         public static readonly string sqlAddProcedureCode = "Insert Into" +
-            " Treatment_Procedure (Procedure_Code, Procedure_Name, Price ) " +
+            " Treatment_Procedure (Procedure_Code, Description, Price ) " +
             "  Values(@ProcedureCode,@ProcedureName, @Price ) ";
         
         /// <summary>
@@ -220,7 +220,7 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql update a record in Follow_Up_Visit 
         /// </summary>
         public static readonly string sqlUpdateProcedureCode = "Update Treatment_Procedure " +
-        " Set [Procedure_Name] = @ProcedureName, [Price] = @Price " +
+        " Set [Description] = @ProcedureName, [Price] = @Price " +
         " where [Procedure_Code] = @ProcedureCode";
 
         ///SQL Codes accessing Herbs_Medicines table
@@ -233,8 +233,8 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql add a record to Trement_HM 
         /// </summary>
         public static readonly string sqlAddHMCode = "Insert Into" +
-            " Herbs_Medicines (H_M_Code, H_M_Name, Price ) " +
-            "  Values(@HMCode,@HMName, @Price ) ";
+            " Herbs_Medicines (H_M_Code, Description, Price ) " +
+            "  Values(@HMCode,@Description, @Price ) ";
 
         /// <summary>
         /// sql to delete procedure code record
@@ -246,7 +246,7 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql update a record in Follow_Up_Visit 
         /// </summary>
         public static readonly string sqlUpdateHMCode = "Update Herbs_Medicines " +
-        " Set [H_M_Name] = @HMName, [Price] = @Price " +
+        " Set [Description] = @Description, [Price] = @Price " +
         " where [H_M_Code] = @HMCode";
  
         /// <summary>
@@ -263,14 +263,14 @@ namespace AcupunctureClinic.Data.Sql
         /// <summary>
         /// Sql Select all records in Treatment_Procedure 
         /// </summary>
-        public static readonly string sqlLoadDiagCodes = "Select * From Diagnostics_Codes ORDER BY Diagnostics_Code  ASC"; //DESC"; ASC ";
+        public static readonly string sqlLoadDiagCodes = "Select Diagnostics_Code, Description From Diagnostics_Codes ORDER BY Diagnostics_Code  ASC"; //DESC"; ASC ";
 
         /// <summary>
         /// Sql add a record to Trement_Procedure 
         /// </summary>
         public static readonly string sqlAddDiagCode = "Insert Into" +
-            " Diagnostics_Codes (Diagnostics_Code, Diagnostics_Code_Name, Price ) " +
-            "  Values(@DiagnosticsCode,@DiagnosticsCodeName, @Price ) ";
+            " Diagnostics_Codes (Diagnostics_Code, Description ) " +
+            "  Values(@DiagnosticsCode,@Description ) ";
      
        /// <summary>
         /// sql to delete diagnostics code record
@@ -282,7 +282,7 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql update a record in Diagnostics_Codes 
         /// </summary>
         public static readonly string sqlUpdateDiagCode = "Update Diagnostics_Codes " +
-        " Set [Diagnostics_Code_Name] = @Diagnostics_CodeName, [Price] = @Price " +
+        " Set [Description] = @Description " +
         " where [Diagnostics_Code] = @DiagnosticsCode";
 
     }

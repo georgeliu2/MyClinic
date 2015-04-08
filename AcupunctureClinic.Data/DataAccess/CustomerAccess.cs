@@ -1138,7 +1138,7 @@ namespace AcupunctureClinic.Data.DataAccess
 
                 // Add the input parameters to the parameter collection
                 dbCommand.Parameters.AddWithValue("@HMCode", hmCodeModel.DataCode);
-                dbCommand.Parameters.AddWithValue("@HMName", hmCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Description", hmCodeModel.DataName);
                 dbCommand.Parameters.AddWithValue("@Price", hmCodeModel.DataPrice / 100.00);
 
                 // Open the connection, execute the query and close the connection
@@ -1188,7 +1188,7 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.CommandText = Scripts.sqlUpdateHMCode;
 
                 // Add the input parameter to the parameter collection
-                dbCommand.Parameters.AddWithValue("@HMName", hmCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Description", hmCodeModel.DataName);
                 dbCommand.Parameters.AddWithValue("@Price", hmCodeModel.DataPrice / 100.00);
                 dbCommand.Parameters.AddWithValue("@HMCode", hmCodeModel.DataCode);
 
@@ -1303,7 +1303,7 @@ namespace AcupunctureClinic.Data.DataAccess
 
                 // Add the input parameters to the parameter collection
                 dbCommand.Parameters.AddWithValue("@DiagnosticsCode", diagCodeModel.DataCode);
-                dbCommand.Parameters.AddWithValue("@DiagnosticsCodeName", diagCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Description", diagCodeModel.DataName);
                 dbCommand.Parameters.AddWithValue("@Price", diagCodeModel.DataPrice / 100.00);
 
                 // Open the connection, execute the query and close the connection
@@ -1353,7 +1353,7 @@ namespace AcupunctureClinic.Data.DataAccess
                 dbCommand.CommandText = Scripts.sqlUpdateDiagCode;
 
                 // Add the input parameter to the parameter collection
-                dbCommand.Parameters.AddWithValue("@DiagnosticsCodeName", diagCodeModel.DataName);
+                dbCommand.Parameters.AddWithValue("@Description", diagCodeModel.DataName);
                 dbCommand.Parameters.AddWithValue("@Price", diagCodeModel.DataPrice / 100.00);
                 dbCommand.Parameters.AddWithValue("@DiagnosticsCode", diagCodeModel.DataCode);
 
