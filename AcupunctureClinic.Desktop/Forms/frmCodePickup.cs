@@ -9,21 +9,31 @@ using System.Windows.Forms;
 
 namespace AcupunctureClinic.Desktop.Forms
 {
+    using AcupunctureClinic.Data.BusinessService;
     using AcupunctureClinic.Desktop.Forms.Membership;
     public partial class frmCodePickup : Form
     {
-        protected Manage manage;
-        protected ListBox codes;   
+        protected ICodePickup targetObj;
+
+        protected ICodePickup TargetObj
+        {
+            get { return targetObj; }
+            set { targetObj = value; }
+        }
+        //protected Manage manage;
+        //protected ListBox codes;   
         protected DataGridView DtgvCodes
         { get { return dtgvCodes; } }
 
         protected DataGridView DtgvSelectedCodes
         { get { return dtgvSelectedCodes; } }
 
-        public frmCodePickup(Manage _manage, ListBox _codes)
+        //public frmCodePickup(Manage _manage, ListBox _codes)
+        public frmCodePickup(ICodePickup target)  
         {
-            manage = _manage;
-            codes = _codes;
+            targetObj = target;
+            //manage = _manage;
+            //codes = _codes;
             InitializeComponent();
             LoadProcedureCodeList();
             PopulateSelectedCodes();
@@ -43,9 +53,10 @@ namespace AcupunctureClinic.Desktop.Forms
         private void PopulateSelectedCodes()
         {
             initialSelectedList();
-            foreach (Object code in codes.Items)
+            List<string> codes = targetObj.GetSelectedCodes();
+            foreach (string code in codes)
             {
-                DataGridViewRow row = PickupRow(dtgvCodes, code.ToString());
+                DataGridViewRow row = PickupRow(dtgvCodes, code);
                 if (row != null)
                 {
                     AddRowValue(dtgvSelectedCodes, row);
@@ -71,7 +82,8 @@ namespace AcupunctureClinic.Desktop.Forms
 
         private void btn1Done_Click(object sender, EventArgs e)
         {
-            codes.Items.Clear();
+            targetObj.PopulateCodes(dtgvSelectedCodes);
+            /*codes.Items.Clear();
             foreach (DataGridViewRow row in dtgvSelectedCodes.Rows)
             {
                 if (row.Cells[0].Value != null)
@@ -80,41 +92,36 @@ namespace AcupunctureClinic.Desktop.Forms
                     if (code != "")
                         codes.Items.Add(code);
                 }
-            }
+            }*/
             this.Close();
         }
 
         protected virtual void LoadProcedureCodeList()
         {
-            DataTable procedureCodes = manage.CustomerServiceObj.LoadProcedureCodes();
-            if (procedureCodes == null || procedureCodes.Rows.Count == 0)
+            //DataTable procedureCodes = manage.CustomerServiceObj.LoadProcedureCodes();
+            DataTable codes = targetObj.GetCodeTable();
+            if (codes == null || codes.Rows.Count == 0)
                 return;
 
             //Fill out dtgvProcedureCodes
             dtgvCodes.RowHeadersVisible = true;
-
-            if (procedureCodes != null)
+            dtgvCodes.DataSource = null;
+            dtgvCodes.Rows.Clear();
+            int columns = 3;
+            dtgvCodes.ColumnCount = columns;
+            dtgvCodes.Columns[0].HeaderCell.Value = "Procedure Code";
+            dtgvCodes.Columns[1].HeaderCell.Value = "Description";
+            dtgvCodes.Columns[2].HeaderCell.Value = "Price";
+            int cl = codes.Columns.Count;
+            for (int i = 0; i < codes.Rows.Count; i++)
             {
-                dtgvCodes.DataSource = null;
-                dtgvCodes.Rows.Clear();
-                int columns = 3;
-                dtgvCodes.ColumnCount = columns;
-                dtgvCodes.Columns[0].HeaderCell.Value = "Procedure Code";
-                dtgvCodes.Columns[1].HeaderCell.Value = "Description";
-                dtgvCodes.Columns[2].HeaderCell.Value = "Price";
-                int cl = procedureCodes.Columns.Count;
-                for (int i = 0; i < procedureCodes.Rows.Count; i++)
-                {
-                    DataRow procedureCode = procedureCodes.Rows[i];
-                    if (cl == 3)
-                        AddRowValue(dtgvCodes, procedureCode[0].ToString(), procedureCode[1].ToString(), procedureCode[2].ToString());
-                    else
-                        AddRowValue(dtgvCodes, procedureCode[0].ToString(), procedureCode[1].ToString());
-
-                }
+                DataRow codeRow = codes.Rows[i];
+                if (cl == 3)
+                    AddRowValue(dtgvCodes, codeRow[0].ToString(), codeRow[1].ToString(), codeRow[2].ToString());
+                else
+                    AddRowValue(dtgvCodes, codeRow[0].ToString(), codeRow[1].ToString());
 
             }
-
         }
 
         private void btn1Clear_Click(object sender, EventArgs e)
@@ -133,9 +140,17 @@ namespace AcupunctureClinic.Desktop.Forms
 
         private void btn1Quite_Click(object sender, EventArgs e)
         {
-            manage.Show();
+            //targetObj.ActiveForm();
+            //manage.Show();
             this.Close();
-            manage.BringToFront();
+            //manage.BringToFront();
+        }
+
+        private void frmCodePickup_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //manage.Show();
+            //manage.BringToFront();
+            targetObj.ActiveObj();
         }
 
         private void btn1Add_Click(object sender, EventArgs e)
@@ -171,7 +186,7 @@ namespace AcupunctureClinic.Desktop.Forms
         protected virtual void AddRowValue(DataGridView vlist, string v1, string v2, string v3 = null)
         {
             if(v1 != null && v1 != "")
-                vlist.Rows.Add(v1, v1, "$ " + v3);
+                vlist.Rows.Add(v1, v2, "$ " + v3);
         }
 
         protected virtual void AddRowValue(DataGridView vlist, DataGridViewRow row)

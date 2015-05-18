@@ -269,6 +269,8 @@ namespace AcupunctureClinic.Desktop.Forms
         protected void btnQuite_Click(object sender, EventArgs e)
         {
             this.Close();
+            manage.Show();
+            manage.BringToFront();
            
         }
 
@@ -278,5 +280,6 @@ namespace AcupunctureClinic.Desktop.Forms
             manage.Show();
             manage.BringToFront();
         }
+
     }
 }

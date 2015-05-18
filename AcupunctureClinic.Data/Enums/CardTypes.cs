@@ -8,6 +8,11 @@ namespace AcupunctureClinic.Data.Enums
         using System.ComponentModel;
         /// <summary>
         /// Enumerator for occupation
+        /// 0 -- None
+        /// Master
+        /// Visa
+        /// Discover
+        /// AmExpr
         /// </summary>
         public enum CardTypes
         {

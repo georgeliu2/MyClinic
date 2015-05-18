@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -126,54 +126,23 @@
             this.btn3Update = new System.Windows.Forms.Button();
             this.btn3Delete = new System.Windows.Forms.Button();
             this.tabpAccount = new System.Windows.Forms.TabPage();
-            this.label124 = new System.Windows.Forms.Label();
-            this.panl4Inv = new System.Windows.Forms.Panel();
-            this.btn4PrintPreview = new System.Windows.Forms.Button();
-            this.btn4Print = new System.Windows.Forms.Button();
-            this.cmb4CardType = new System.Windows.Forms.ComboBox();
-            this.label114 = new System.Windows.Forms.Label();
-            this.label112 = new System.Windows.Forms.Label();
-            this.btn4DeleteInv = new System.Windows.Forms.Button();
-            this.dtInvDate = new System.Windows.Forms.DateTimePicker();
-            this.txt4InvNo = new System.Windows.Forms.TextBox();
-            this.label115 = new System.Windows.Forms.Label();
-            this.txt4HMCode = new System.Windows.Forms.TextBox();
-            this.label111 = new System.Windows.Forms.Label();
-            this.cmb4PayMethod = new System.Windows.Forms.ComboBox();
-            this.label113 = new System.Windows.Forms.Label();
-            this.dt4ExpDate = new System.Windows.Forms.DateTimePicker();
-            this.txt4ProcedureCode = new System.Windows.Forms.TextBox();
-            this.label117 = new System.Windows.Forms.Label();
-            this.label123 = new System.Windows.Forms.Label();
-            this.label122 = new System.Windows.Forms.Label();
-            this.label110 = new System.Windows.Forms.Label();
-            this.label121 = new System.Windows.Forms.Label();
-            this.btn4AddInv = new System.Windows.Forms.Button();
-            this.label119 = new System.Windows.Forms.Label();
-            this.btn4UpdateInv = new System.Windows.Forms.Button();
-            this.label108 = new System.Windows.Forms.Label();
-            this.label107 = new System.Windows.Forms.Label();
-            this.txt4CardNo = new System.Windows.Forms.TextBox();
-            this.label116 = new System.Windows.Forms.Label();
-            this.label120 = new System.Windows.Forms.Label();
-            this.label105 = new System.Windows.Forms.Label();
-            this.txt4Total = new System.Windows.Forms.TextBox();
-            this.txt4SubTotal = new System.Windows.Forms.TextBox();
-            this.label118 = new System.Windows.Forms.Label();
-            this.txt4DiscRate = new System.Windows.Forms.TextBox();
-            this.txt4AmtPaid = new System.Windows.Forms.TextBox();
-            this.label109 = new System.Windows.Forms.Label();
-            this.txt4Balance = new System.Windows.Forms.TextBox();
-            this.label106 = new System.Windows.Forms.Label();
-            this.dataGridView4Invoices = new System.Windows.Forms.DataGridView();
-            this.txt4SearchBalance = new System.Windows.Forms.TextBox();
-            this.label104 = new System.Windows.Forms.Label();
-            this.txt4SearchInvNo = new System.Windows.Forms.TextBox();
+            this.btn4Quit = new System.Windows.Forms.Button();
+            this.btn4Save = new System.Windows.Forms.Button();
             this.label103 = new System.Windows.Forms.Label();
+            this.btn4Invdetail = new System.Windows.Forms.Button();
+            this.btn4AddInvoice = new System.Windows.Forms.Button();
+            this.label124 = new System.Windows.Forms.Label();
+            this.dtgv4Invoices = new System.Windows.Forms.DataGridView();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaidAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt4Balance = new System.Windows.Forms.TextBox();
+            this.label104 = new System.Windows.Forms.Label();
             this.dt4LastVisit = new System.Windows.Forms.DateTimePicker();
             this.label102 = new System.Windows.Forms.Label();
             this.label98 = new System.Windows.Forms.Label();
-            this.btn4Refresh = new System.Windows.Forms.Button();
             this.btn4Search = new System.Windows.Forms.Button();
             this.txt4CustomerID = new System.Windows.Forms.TextBox();
             this.label99 = new System.Windows.Forms.Label();
@@ -476,8 +445,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).BeginInit();
             this.tabpContact.SuspendLayout();
             this.tabpAccount.SuspendLayout();
-            this.panl4Inv.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4Invoices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv4Invoices)).BeginInit();
             this.tabpHealthInfor.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv5VisitingHistory)).BeginInit();
@@ -1274,14 +1242,14 @@
             this.dataGridViewMembers.AllowUserToAddRows = false;
             this.dataGridViewMembers.AllowUserToOrderColumns = true;
             this.dataGridViewMembers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMembers.Location = new System.Drawing.Point(4, 204);
             this.dataGridViewMembers.Margin = new System.Windows.Forms.Padding(4);
@@ -1627,23 +1595,25 @@
             // 
             // tabpAccount
             // 
-            this.tabpAccount.Controls.Add(this.label124);
-            this.tabpAccount.Controls.Add(this.panl4Inv);
-            this.tabpAccount.Controls.Add(this.dataGridView4Invoices);
-            this.tabpAccount.Controls.Add(this.txt4SearchBalance);
-            this.tabpAccount.Controls.Add(this.label104);
-            this.tabpAccount.Controls.Add(this.txt4SearchInvNo);
+            this.tabpAccount.Controls.Add(this.btn4Quit);
+            this.tabpAccount.Controls.Add(this.btn4Save);
             this.tabpAccount.Controls.Add(this.label103);
+            this.tabpAccount.Controls.Add(this.btn4Invdetail);
+            this.tabpAccount.Controls.Add(this.btn4AddInvoice);
+            this.tabpAccount.Controls.Add(this.label124);
+            this.tabpAccount.Controls.Add(this.dtgv4Invoices);
+            this.tabpAccount.Controls.Add(this.txt4Balance);
+            this.tabpAccount.Controls.Add(this.label104);
             this.tabpAccount.Controls.Add(this.dt4LastVisit);
             this.tabpAccount.Controls.Add(this.label102);
             this.tabpAccount.Controls.Add(this.label98);
-            this.tabpAccount.Controls.Add(this.btn4Refresh);
             this.tabpAccount.Controls.Add(this.btn4Search);
             this.tabpAccount.Controls.Add(this.txt4CustomerID);
             this.tabpAccount.Controls.Add(this.label99);
             this.tabpAccount.Controls.Add(this.label100);
             this.tabpAccount.Controls.Add(this.txt4Name);
             this.tabpAccount.Controls.Add(this.label101);
+            this.tabpAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabpAccount.Location = new System.Drawing.Point(4, 27);
             this.tabpAccount.Name = "tabpAccount";
             this.tabpAccount.Size = new System.Drawing.Size(1106, 604);
@@ -1651,10 +1621,64 @@
             this.tabpAccount.Text = "Account";
             this.tabpAccount.UseVisualStyleBackColor = true;
             // 
+            // btn4Quit
+            // 
+            this.btn4Quit.Location = new System.Drawing.Point(360, 4);
+            this.btn4Quit.Margin = new System.Windows.Forms.Padding(4);
+            this.btn4Quit.Name = "btn4Quit";
+            this.btn4Quit.Size = new System.Drawing.Size(63, 27);
+            this.btn4Quit.TabIndex = 149;
+            this.btn4Quit.Text = "Quit";
+            this.btn4Quit.UseVisualStyleBackColor = true;
+            this.btn4Quit.Click += new System.EventHandler(this.btn4Quit_Click);
+            // 
+            // btn4Save
+            // 
+            this.btn4Save.Location = new System.Drawing.Point(299, 4);
+            this.btn4Save.Margin = new System.Windows.Forms.Padding(4);
+            this.btn4Save.Name = "btn4Save";
+            this.btn4Save.Size = new System.Drawing.Size(63, 27);
+            this.btn4Save.TabIndex = 148;
+            this.btn4Save.Text = "Save";
+            this.btn4Save.UseVisualStyleBackColor = true;
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label103.Location = new System.Drawing.Point(309, 50);
+            this.label103.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(208, 29);
+            this.label103.TabIndex = 147;
+            this.label103.Text = "Customer Account";
+            // 
+            // btn4Invdetail
+            // 
+            this.btn4Invdetail.Location = new System.Drawing.Point(196, 4);
+            this.btn4Invdetail.Margin = new System.Windows.Forms.Padding(4);
+            this.btn4Invdetail.Name = "btn4Invdetail";
+            this.btn4Invdetail.Size = new System.Drawing.Size(109, 27);
+            this.btn4Invdetail.TabIndex = 146;
+            this.btn4Invdetail.Text = "Invoice Detail";
+            this.btn4Invdetail.UseVisualStyleBackColor = true;
+            this.btn4Invdetail.Click += new System.EventHandler(this.btnInvdetail_Click);
+            // 
+            // btn4AddInvoice
+            // 
+            this.btn4AddInvoice.Location = new System.Drawing.Point(106, 4);
+            this.btn4AddInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.btn4AddInvoice.Name = "btn4AddInvoice";
+            this.btn4AddInvoice.Size = new System.Drawing.Size(92, 27);
+            this.btn4AddInvoice.TabIndex = 145;
+            this.btn4AddInvoice.Text = "Add Invoice";
+            this.btn4AddInvoice.UseVisualStyleBackColor = true;
+            this.btn4AddInvoice.Click += new System.EventHandler(this.btn4AddInvoice_Click);
+            // 
             // label124
             // 
             this.label124.AutoSize = true;
-            this.label124.Location = new System.Drawing.Point(488, 168);
+            this.label124.Location = new System.Drawing.Point(487, 141);
             this.label124.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label124.Name = "label124";
             this.label124.Size = new System.Drawing.Size(16, 18);
@@ -1662,542 +1686,104 @@
             this.label124.Text = "$";
             this.label124.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // panl4Inv
-            // 
-            this.panl4Inv.Controls.Add(this.btn4PrintPreview);
-            this.panl4Inv.Controls.Add(this.btn4Print);
-            this.panl4Inv.Controls.Add(this.cmb4CardType);
-            this.panl4Inv.Controls.Add(this.label114);
-            this.panl4Inv.Controls.Add(this.label112);
-            this.panl4Inv.Controls.Add(this.btn4DeleteInv);
-            this.panl4Inv.Controls.Add(this.dtInvDate);
-            this.panl4Inv.Controls.Add(this.txt4InvNo);
-            this.panl4Inv.Controls.Add(this.label115);
-            this.panl4Inv.Controls.Add(this.txt4HMCode);
-            this.panl4Inv.Controls.Add(this.label111);
-            this.panl4Inv.Controls.Add(this.cmb4PayMethod);
-            this.panl4Inv.Controls.Add(this.label113);
-            this.panl4Inv.Controls.Add(this.dt4ExpDate);
-            this.panl4Inv.Controls.Add(this.txt4ProcedureCode);
-            this.panl4Inv.Controls.Add(this.label117);
-            this.panl4Inv.Controls.Add(this.label123);
-            this.panl4Inv.Controls.Add(this.label122);
-            this.panl4Inv.Controls.Add(this.label110);
-            this.panl4Inv.Controls.Add(this.label121);
-            this.panl4Inv.Controls.Add(this.btn4AddInv);
-            this.panl4Inv.Controls.Add(this.label119);
-            this.panl4Inv.Controls.Add(this.btn4UpdateInv);
-            this.panl4Inv.Controls.Add(this.label108);
-            this.panl4Inv.Controls.Add(this.label107);
-            this.panl4Inv.Controls.Add(this.txt4CardNo);
-            this.panl4Inv.Controls.Add(this.label116);
-            this.panl4Inv.Controls.Add(this.label120);
-            this.panl4Inv.Controls.Add(this.label105);
-            this.panl4Inv.Controls.Add(this.txt4Total);
-            this.panl4Inv.Controls.Add(this.txt4SubTotal);
-            this.panl4Inv.Controls.Add(this.label118);
-            this.panl4Inv.Controls.Add(this.txt4DiscRate);
-            this.panl4Inv.Controls.Add(this.txt4AmtPaid);
-            this.panl4Inv.Controls.Add(this.label109);
-            this.panl4Inv.Controls.Add(this.txt4Balance);
-            this.panl4Inv.Controls.Add(this.label106);
-            this.panl4Inv.Location = new System.Drawing.Point(714, 8);
-            this.panl4Inv.Name = "panl4Inv";
-            this.panl4Inv.Size = new System.Drawing.Size(405, 567);
-            this.panl4Inv.TabIndex = 143;
-            // 
-            // btn4PrintPreview
-            // 
-            this.btn4PrintPreview.Location = new System.Drawing.Point(47, 18);
-            this.btn4PrintPreview.Margin = new System.Windows.Forms.Padding(4);
-            this.btn4PrintPreview.Name = "btn4PrintPreview";
-            this.btn4PrintPreview.Size = new System.Drawing.Size(133, 34);
-            this.btn4PrintPreview.TabIndex = 148;
-            this.btn4PrintPreview.Text = "Print Preview";
-            this.btn4PrintPreview.UseVisualStyleBackColor = true;
-            this.btn4PrintPreview.Click += new System.EventHandler(this.btn4PrintPreview_Click);
-            // 
-            // btn4Print
-            // 
-            this.btn4Print.Location = new System.Drawing.Point(222, 18);
-            this.btn4Print.Margin = new System.Windows.Forms.Padding(4);
-            this.btn4Print.Name = "btn4Print";
-            this.btn4Print.Size = new System.Drawing.Size(133, 34);
-            this.btn4Print.TabIndex = 146;
-            this.btn4Print.Text = "Print";
-            this.btn4Print.UseVisualStyleBackColor = true;
-            this.btn4Print.Click += new System.EventHandler(this.btn4Print_Click);
-            // 
-            // cmb4CardType
-            // 
-            this.cmb4CardType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb4CardType.FormattingEnabled = true;
-            this.cmb4CardType.Items.AddRange(new object[] {
-            "None",
-            "Master",
-            "Visa",
-            "Discover",
-            "AmExpr",
-            "Others"});
-            this.cmb4CardType.Location = new System.Drawing.Point(169, 270);
-            this.cmb4CardType.Margin = new System.Windows.Forms.Padding(4);
-            this.cmb4CardType.Name = "cmb4CardType";
-            this.cmb4CardType.Size = new System.Drawing.Size(112, 26);
-            this.cmb4CardType.TabIndex = 145;
-            // 
-            // label114
-            // 
-            this.label114.AutoSize = true;
-            this.label114.Location = new System.Drawing.Point(14, 270);
-            this.label114.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label114.Name = "label114";
-            this.label114.Size = new System.Drawing.Size(76, 18);
-            this.label114.TabIndex = 144;
-            this.label114.Text = "Card Type";
-            // 
-            // label112
-            // 
-            this.label112.AutoSize = true;
-            this.label112.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label112.Location = new System.Drawing.Point(145, 115);
-            this.label112.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(142, 25);
-            this.label112.TabIndex = 143;
-            this.label112.Text = "Invoice Detail";
-            // 
-            // btn4DeleteInv
-            // 
-            this.btn4DeleteInv.Location = new System.Drawing.Point(315, 526);
-            this.btn4DeleteInv.Margin = new System.Windows.Forms.Padding(4);
-            this.btn4DeleteInv.Name = "btn4DeleteInv";
-            this.btn4DeleteInv.Size = new System.Drawing.Size(70, 33);
-            this.btn4DeleteInv.TabIndex = 96;
-            this.btn4DeleteInv.Text = "Delete";
-            this.btn4DeleteInv.UseVisualStyleBackColor = true;
-            this.btn4DeleteInv.Click += new System.EventHandler(this.btn4DeleteInv_Click);
-            // 
-            // dtInvDate
-            // 
-            this.dtInvDate.AllowDrop = true;
-            this.dtInvDate.CustomFormat = "MM/DD/YYYY";
-            this.dtInvDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtInvDate.Location = new System.Drawing.Point(266, 154);
-            this.dtInvDate.Margin = new System.Windows.Forms.Padding(4);
-            this.dtInvDate.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.dtInvDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtInvDate.Name = "dtInvDate";
-            this.dtInvDate.Size = new System.Drawing.Size(119, 24);
-            this.dtInvDate.TabIndex = 101;
-            this.dtInvDate.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            // 
-            // txt4InvNo
-            // 
-            this.txt4InvNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4InvNo.Location = new System.Drawing.Point(72, 152);
-            this.txt4InvNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4InvNo.Name = "txt4InvNo";
-            this.txt4InvNo.Size = new System.Drawing.Size(104, 24);
-            this.txt4InvNo.TabIndex = 120;
-            // 
-            // label115
-            // 
-            this.label115.AutoSize = true;
-            this.label115.Location = new System.Drawing.Point(197, 155);
-            this.label115.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label115.Name = "label115";
-            this.label115.Size = new System.Drawing.Size(65, 18);
-            this.label115.TabIndex = 99;
-            this.label115.Text = "Inv  Date";
-            // 
-            // txt4HMCode
-            // 
-            this.txt4HMCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4HMCode.Location = new System.Drawing.Point(332, 188);
-            this.txt4HMCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4HMCode.Name = "txt4HMCode";
-            this.txt4HMCode.Size = new System.Drawing.Size(53, 24);
-            this.txt4HMCode.TabIndex = 123;
-            // 
-            // label111
-            // 
-            this.label111.AutoSize = true;
-            this.label111.Location = new System.Drawing.Point(14, 155);
-            this.label111.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label111.Name = "label111";
-            this.label111.Size = new System.Drawing.Size(50, 18);
-            this.label111.TabIndex = 119;
-            this.label111.Text = "Inv No";
-            // 
-            // cmb4PayMethod
-            // 
-            this.cmb4PayMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb4PayMethod.FormattingEnabled = true;
-            this.cmb4PayMethod.Items.AddRange(new object[] {
-            "None",
-            "Cash",
-            "Check",
-            "Debit",
-            "Credit"});
-            this.cmb4PayMethod.Location = new System.Drawing.Point(169, 230);
-            this.cmb4PayMethod.Margin = new System.Windows.Forms.Padding(4);
-            this.cmb4PayMethod.Name = "cmb4PayMethod";
-            this.cmb4PayMethod.Size = new System.Drawing.Size(112, 26);
-            this.cmb4PayMethod.TabIndex = 124;
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(226, 190);
-            this.label113.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(76, 18);
-            this.label113.TabIndex = 122;
-            this.label113.Text = "H/M Code";
-            // 
-            // dt4ExpDate
-            // 
-            this.dt4ExpDate.AllowDrop = true;
-            this.dt4ExpDate.CustomFormat = "mm/dd/yyyy";
-            this.dt4ExpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dt4ExpDate.Location = new System.Drawing.Point(289, 319);
-            this.dt4ExpDate.Margin = new System.Windows.Forms.Padding(4);
-            this.dt4ExpDate.MaxDate = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
-            this.dt4ExpDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dt4ExpDate.Name = "dt4ExpDate";
-            this.dt4ExpDate.Size = new System.Drawing.Size(96, 24);
-            this.dt4ExpDate.TabIndex = 126;
-            this.dt4ExpDate.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            // 
-            // txt4ProcedureCode
-            // 
-            this.txt4ProcedureCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4ProcedureCode.Location = new System.Drawing.Point(139, 188);
-            this.txt4ProcedureCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4ProcedureCode.Name = "txt4ProcedureCode";
-            this.txt4ProcedureCode.Size = new System.Drawing.Size(79, 24);
-            this.txt4ProcedureCode.TabIndex = 121;
-            // 
-            // label117
-            // 
-            this.label117.AutoSize = true;
-            this.label117.Location = new System.Drawing.Point(14, 233);
-            this.label117.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(120, 18);
-            this.label117.TabIndex = 125;
-            this.label117.Text = "Payment Method";
-            // 
-            // label123
-            // 
-            this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(200, 494);
-            this.label123.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(41, 18);
-            this.label123.TabIndex = 140;
-            this.label123.Text = "Total";
-            // 
-            // label122
-            // 
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(277, 400);
-            this.label122.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(16, 18);
-            this.label122.TabIndex = 141;
-            this.label122.Text = "$";
-            this.label122.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label110
-            // 
-            this.label110.AutoSize = true;
-            this.label110.Location = new System.Drawing.Point(14, 190);
-            this.label110.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(117, 18);
-            this.label110.TabIndex = 108;
-            this.label110.Text = "Procedure Code";
-            // 
-            // label121
-            // 
-            this.label121.AutoSize = true;
-            this.label121.Location = new System.Drawing.Point(200, 463);
-            this.label121.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label121.Name = "label121";
-            this.label121.Size = new System.Drawing.Size(61, 18);
-            this.label121.TabIndex = 137;
-            this.label121.Text = "Balance";
-            // 
-            // btn4AddInv
-            // 
-            this.btn4AddInv.Location = new System.Drawing.Point(85, 526);
-            this.btn4AddInv.Margin = new System.Windows.Forms.Padding(4);
-            this.btn4AddInv.Name = "btn4AddInv";
-            this.btn4AddInv.Size = new System.Drawing.Size(70, 33);
-            this.btn4AddInv.TabIndex = 142;
-            this.btn4AddInv.Text = "Add";
-            this.btn4AddInv.UseVisualStyleBackColor = true;
-            this.btn4AddInv.Click += new System.EventHandler(this.btn4AddInv_Click);
-            // 
-            // label119
-            // 
-            this.label119.AutoSize = true;
-            this.label119.Location = new System.Drawing.Point(200, 431);
-            this.label119.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label119.Name = "label119";
-            this.label119.Size = new System.Drawing.Size(67, 18);
-            this.label119.TabIndex = 134;
-            this.label119.Text = "Amt Paid";
-            // 
-            // btn4UpdateInv
-            // 
-            this.btn4UpdateInv.Location = new System.Drawing.Point(203, 526);
-            this.btn4UpdateInv.Margin = new System.Windows.Forms.Padding(4);
-            this.btn4UpdateInv.Name = "btn4UpdateInv";
-            this.btn4UpdateInv.Size = new System.Drawing.Size(70, 33);
-            this.btn4UpdateInv.TabIndex = 97;
-            this.btn4UpdateInv.Text = "Update";
-            this.btn4UpdateInv.UseVisualStyleBackColor = true;
-            this.btn4UpdateInv.Click += new System.EventHandler(this.btn4UpdateInv_Click);
-            // 
-            // label108
-            // 
-            this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(14, 319);
-            this.label108.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(64, 18);
-            this.label108.TabIndex = 112;
-            this.label108.Text = "Card No";
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(213, 319);
-            this.label107.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(68, 18);
-            this.label107.TabIndex = 114;
-            this.label107.Text = "Exp Date";
-            // 
-            // txt4CardNo
-            // 
-            this.txt4CardNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4CardNo.Location = new System.Drawing.Point(85, 317);
-            this.txt4CardNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4CardNo.MaxLength = 11;
-            this.txt4CardNo.Name = "txt4CardNo";
-            this.txt4CardNo.Size = new System.Drawing.Size(120, 24);
-            this.txt4CardNo.TabIndex = 110;
-            this.txt4CardNo.Text = "123-45-6789";
-            // 
-            // label116
-            // 
-            this.label116.AutoSize = true;
-            this.label116.Location = new System.Drawing.Point(200, 397);
-            this.label116.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label116.Name = "label116";
-            this.label116.Size = new System.Drawing.Size(73, 18);
-            this.label116.TabIndex = 131;
-            this.label116.Text = "Disc Rate";
-            // 
-            // label120
-            // 
-            this.label120.AutoSize = true;
-            this.label120.Location = new System.Drawing.Point(277, 365);
-            this.label120.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label120.Name = "label120";
-            this.label120.Size = new System.Drawing.Size(16, 18);
-            this.label120.TabIndex = 138;
-            this.label120.Text = "$";
-            this.label120.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(200, 367);
-            this.label105.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(71, 18);
-            this.label105.TabIndex = 128;
-            this.label105.Text = "Sub Total";
-            // 
-            // txt4Total
-            // 
-            this.txt4Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4Total.Location = new System.Drawing.Point(294, 494);
-            this.txt4Total.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4Total.MaxLength = 11;
-            this.txt4Total.Name = "txt4Total";
-            this.txt4Total.Size = new System.Drawing.Size(91, 24);
-            this.txt4Total.TabIndex = 139;
-            this.txt4Total.Text = "0.00";
-            this.txt4Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txt4SubTotal
-            // 
-            this.txt4SubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4SubTotal.Location = new System.Drawing.Point(294, 365);
-            this.txt4SubTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4SubTotal.MaxLength = 11;
-            this.txt4SubTotal.Name = "txt4SubTotal";
-            this.txt4SubTotal.Size = new System.Drawing.Size(91, 24);
-            this.txt4SubTotal.TabIndex = 127;
-            this.txt4SubTotal.Text = "0.00";
-            this.txt4SubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label118
-            // 
-            this.label118.AutoSize = true;
-            this.label118.Location = new System.Drawing.Point(278, 333);
-            this.label118.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(16, 18);
-            this.label118.TabIndex = 135;
-            this.label118.Text = "$";
-            this.label118.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txt4DiscRate
-            // 
-            this.txt4DiscRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4DiscRate.Location = new System.Drawing.Point(294, 397);
-            this.txt4DiscRate.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4DiscRate.MaxLength = 11;
-            this.txt4DiscRate.Name = "txt4DiscRate";
-            this.txt4DiscRate.Size = new System.Drawing.Size(91, 24);
-            this.txt4DiscRate.TabIndex = 130;
-            this.txt4DiscRate.Text = "0.00";
-            this.txt4DiscRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txt4AmtPaid
-            // 
-            this.txt4AmtPaid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4AmtPaid.Location = new System.Drawing.Point(294, 429);
-            this.txt4AmtPaid.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4AmtPaid.MaxLength = 11;
-            this.txt4AmtPaid.Name = "txt4AmtPaid";
-            this.txt4AmtPaid.Size = new System.Drawing.Size(91, 24);
-            this.txt4AmtPaid.TabIndex = 133;
-            this.txt4AmtPaid.Text = "0.00";
-            this.txt4AmtPaid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label109
-            // 
-            this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(278, 301);
-            this.label109.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(16, 18);
-            this.label109.TabIndex = 132;
-            this.label109.Text = "$";
-            this.label109.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // dtgv4Invoices
+            // 
+            this.dtgv4Invoices.AllowUserToAddRows = false;
+            this.dtgv4Invoices.AllowUserToOrderColumns = true;
+            this.dtgv4Invoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv4Invoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgv4Invoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv4Invoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Date,
+            this.InvNo,
+            this.SubTotal,
+            this.PaidAmt,
+            this.Total});
+            this.dtgv4Invoices.Location = new System.Drawing.Point(45, 175);
+            this.dtgv4Invoices.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgv4Invoices.Name = "dtgv4Invoices";
+            this.dtgv4Invoices.ReadOnly = true;
+            this.dtgv4Invoices.RowTemplate.Height = 24;
+            this.dtgv4Invoices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgv4Invoices.Size = new System.Drawing.Size(682, 399);
+            this.dtgv4Invoices.TabIndex = 95;
+            this.dtgv4Invoices.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView4Invoices_RowHeaderMouseDoubleClick);
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // InvNo
+            // 
+            this.InvNo.HeaderText = "Inv No";
+            this.InvNo.Name = "InvNo";
+            this.InvNo.ReadOnly = true;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.HeaderText = "Sub Total";
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.ReadOnly = true;
+            // 
+            // PaidAmt
+            // 
+            this.PaidAmt.HeaderText = "Paid Amt";
+            this.PaidAmt.Name = "PaidAmt";
+            this.PaidAmt.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
             // txt4Balance
             // 
             this.txt4Balance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4Balance.Location = new System.Drawing.Point(294, 461);
+            this.txt4Balance.Location = new System.Drawing.Point(505, 139);
             this.txt4Balance.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4Balance.MaxLength = 11;
             this.txt4Balance.Name = "txt4Balance";
-            this.txt4Balance.Size = new System.Drawing.Size(91, 24);
-            this.txt4Balance.TabIndex = 136;
-            this.txt4Balance.Text = "0.00";
-            this.txt4Balance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label106
-            // 
-            this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(278, 271);
-            this.label106.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(16, 18);
-            this.label106.TabIndex = 129;
-            this.label106.Text = "$";
-            this.label106.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // dataGridView4Invoices
-            // 
-            this.dataGridView4Invoices.AllowUserToAddRows = false;
-            this.dataGridView4Invoices.AllowUserToOrderColumns = true;
-            this.dataGridView4Invoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4Invoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView4Invoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4Invoices.Location = new System.Drawing.Point(25, 213);
-            this.dataGridView4Invoices.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView4Invoices.Name = "dataGridView4Invoices";
-            this.dataGridView4Invoices.ReadOnly = true;
-            this.dataGridView4Invoices.RowTemplate.Height = 24;
-            this.dataGridView4Invoices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView4Invoices.Size = new System.Drawing.Size(682, 361);
-            this.dataGridView4Invoices.TabIndex = 95;
-            this.dataGridView4Invoices.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView4Invoices_RowHeaderMouseDoubleClick);
-            // 
-            // txt4SearchBalance
-            // 
-            this.txt4SearchBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4SearchBalance.Location = new System.Drawing.Point(505, 166);
-            this.txt4SearchBalance.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4SearchBalance.Name = "txt4SearchBalance";
-            this.txt4SearchBalance.ReadOnly = true;
-            this.txt4SearchBalance.Size = new System.Drawing.Size(202, 24);
-            this.txt4SearchBalance.TabIndex = 94;
+            this.txt4Balance.ReadOnly = true;
+            this.txt4Balance.Size = new System.Drawing.Size(202, 24);
+            this.txt4Balance.TabIndex = 94;
             // 
             // label104
             // 
             this.label104.AutoSize = true;
             this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label104.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label104.Location = new System.Drawing.Point(425, 168);
+            this.label104.Location = new System.Drawing.Point(418, 140);
             this.label104.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label104.Name = "label104";
             this.label104.Size = new System.Drawing.Size(65, 18);
             this.label104.TabIndex = 93;
             this.label104.Text = "Balance ";
             // 
-            // txt4SearchInvNo
-            // 
-            this.txt4SearchInvNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4SearchInvNo.Location = new System.Drawing.Point(505, 124);
-            this.txt4SearchInvNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt4SearchInvNo.Name = "txt4SearchInvNo";
-            this.txt4SearchInvNo.ReadOnly = true;
-            this.txt4SearchInvNo.Size = new System.Drawing.Size(202, 24);
-            this.txt4SearchInvNo.TabIndex = 92;
-            // 
-            // label103
-            // 
-            this.label103.AutoSize = true;
-            this.label103.Location = new System.Drawing.Point(425, 126);
-            this.label103.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(82, 18);
-            this.label103.TabIndex = 91;
-            this.label103.Text = "Invoice No.";
-            // 
             // dt4LastVisit
             // 
             this.dt4LastVisit.CustomFormat = "mm/dd/yyyy";
             this.dt4LastVisit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dt4LastVisit.Location = new System.Drawing.Point(170, 126);
+            this.dt4LastVisit.Location = new System.Drawing.Point(170, 141);
             this.dt4LastVisit.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.dt4LastVisit.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dt4LastVisit.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dt4LastVisit.Name = "dt4LastVisit";
             this.dt4LastVisit.Size = new System.Drawing.Size(161, 24);
             this.dt4LastVisit.TabIndex = 90;
-            this.dt4LastVisit.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dt4LastVisit.Value = new System.DateTime(2015, 5, 5, 0, 0, 0, 0);
             // 
             // label102
             // 
             this.label102.AutoSize = true;
-            this.label102.Location = new System.Drawing.Point(62, 126);
+            this.label102.Location = new System.Drawing.Point(62, 141);
             this.label102.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label102.Name = "label102";
             this.label102.Size = new System.Drawing.Size(67, 18);
@@ -2209,30 +1795,19 @@
             this.label98.AutoSize = true;
             this.label98.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label98.ForeColor = System.Drawing.Color.Red;
-            this.label98.Location = new System.Drawing.Point(150, 77);
+            this.label98.Location = new System.Drawing.Point(150, 92);
             this.label98.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label98.Name = "label98";
             this.label98.Size = new System.Drawing.Size(24, 29);
             this.label98.TabIndex = 88;
             this.label98.Text = "*";
             // 
-            // btn4Refresh
-            // 
-            this.btn4Refresh.Location = new System.Drawing.Point(249, 24);
-            this.btn4Refresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btn4Refresh.Name = "btn4Refresh";
-            this.btn4Refresh.Size = new System.Drawing.Size(133, 34);
-            this.btn4Refresh.TabIndex = 87;
-            this.btn4Refresh.Text = "Refresh";
-            this.btn4Refresh.UseVisualStyleBackColor = true;
-            this.btn4Refresh.Click += new System.EventHandler(this.btn4Refresh_Click);
-            // 
             // btn4Search
             // 
-            this.btn4Search.Location = new System.Drawing.Point(94, 24);
+            this.btn4Search.Location = new System.Drawing.Point(31, 4);
             this.btn4Search.Margin = new System.Windows.Forms.Padding(4);
             this.btn4Search.Name = "btn4Search";
-            this.btn4Search.Size = new System.Drawing.Size(133, 34);
+            this.btn4Search.Size = new System.Drawing.Size(77, 27);
             this.btn4Search.TabIndex = 86;
             this.btn4Search.Text = "Search";
             this.btn4Search.UseVisualStyleBackColor = true;
@@ -2241,7 +1816,7 @@
             // txt4CustomerID
             // 
             this.txt4CustomerID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4CustomerID.Location = new System.Drawing.Point(182, 77);
+            this.txt4CustomerID.Location = new System.Drawing.Point(182, 92);
             this.txt4CustomerID.Margin = new System.Windows.Forms.Padding(4);
             this.txt4CustomerID.Name = "txt4CustomerID";
             this.txt4CustomerID.Size = new System.Drawing.Size(202, 24);
@@ -2250,7 +1825,7 @@
             // label99
             // 
             this.label99.AutoSize = true;
-            this.label99.Location = new System.Drawing.Point(62, 79);
+            this.label99.Location = new System.Drawing.Point(62, 94);
             this.label99.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label99.Name = "label99";
             this.label99.Size = new System.Drawing.Size(92, 18);
@@ -2262,7 +1837,7 @@
             this.label100.AutoSize = true;
             this.label100.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label100.ForeColor = System.Drawing.Color.Red;
-            this.label100.Location = new System.Drawing.Point(448, 85);
+            this.label100.Location = new System.Drawing.Point(448, 100);
             this.label100.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(0, 29);
@@ -2271,7 +1846,7 @@
             // txt4Name
             // 
             this.txt4Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt4Name.Location = new System.Drawing.Point(505, 77);
+            this.txt4Name.Location = new System.Drawing.Point(505, 92);
             this.txt4Name.Margin = new System.Windows.Forms.Padding(4);
             this.txt4Name.Name = "txt4Name";
             this.txt4Name.ReadOnly = true;
@@ -2281,7 +1856,7 @@
             // label101
             // 
             this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(425, 79);
+            this.label101.Location = new System.Drawing.Point(425, 94);
             this.label101.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label101.Name = "label101";
             this.label101.Size = new System.Drawing.Size(48, 18);
@@ -4171,14 +3746,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(4, 204);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
@@ -5252,14 +4827,14 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(4, 204);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
@@ -5624,9 +5199,7 @@
             this.tabpContact.PerformLayout();
             this.tabpAccount.ResumeLayout(false);
             this.tabpAccount.PerformLayout();
-            this.panl4Inv.ResumeLayout(false);
-            this.panl4Inv.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4Invoices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv4Invoices)).EndInit();
             this.tabpHealthInfor.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -5962,7 +5535,6 @@
         private System.Windows.Forms.DateTimePicker dt4LastVisit;
         private System.Windows.Forms.Label label102;
         private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.Button btn4Refresh;
         private System.Windows.Forms.Button btn4Search;
         private System.Windows.Forms.TextBox txt4CustomerID;
         private System.Windows.Forms.Label label99;
@@ -5970,46 +5542,8 @@
         private System.Windows.Forms.TextBox txt4Name;
         private System.Windows.Forms.Label label101;
         private System.Windows.Forms.Label label104;
-        private System.Windows.Forms.TextBox txt4SearchInvNo;
-        private System.Windows.Forms.Label label103;
-        private System.Windows.Forms.DataGridView dataGridView4Invoices;
-        private System.Windows.Forms.TextBox txt4SearchBalance;
-        private System.Windows.Forms.Label label107;
-        private System.Windows.Forms.Label label108;
-        private System.Windows.Forms.TextBox txt4CardNo;
-        private System.Windows.Forms.Label label110;
-        private System.Windows.Forms.DateTimePicker dtInvDate;
-        private System.Windows.Forms.Label label115;
-        private System.Windows.Forms.Button btn4UpdateInv;
-        private System.Windows.Forms.Button btn4DeleteInv;
-        private System.Windows.Forms.TextBox txt4InvNo;
-        private System.Windows.Forms.Label label111;
-        private System.Windows.Forms.TextBox txt4HMCode;
-        private System.Windows.Forms.Label label113;
-        private System.Windows.Forms.TextBox txt4ProcedureCode;
-        private System.Windows.Forms.ComboBox cmb4PayMethod;
-        private System.Windows.Forms.Label label117;
-        private System.Windows.Forms.DateTimePicker dt4ExpDate;
-        private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.TextBox txt4SubTotal;
-        private System.Windows.Forms.Label label120;
-        private System.Windows.Forms.Label label121;
+        private System.Windows.Forms.DataGridView dtgv4Invoices;
         private System.Windows.Forms.TextBox txt4Balance;
-        private System.Windows.Forms.Label label118;
-        private System.Windows.Forms.Label label119;
-        private System.Windows.Forms.TextBox txt4AmtPaid;
-        private System.Windows.Forms.Label label109;
-        private System.Windows.Forms.Label label116;
-        private System.Windows.Forms.TextBox txt4DiscRate;
-        private System.Windows.Forms.Label label106;
-        private System.Windows.Forms.Button btn4AddInv;
-        private System.Windows.Forms.Label label122;
-        private System.Windows.Forms.Label label123;
-        private System.Windows.Forms.TextBox txt4Total;
-        private System.Windows.Forms.Panel panl4Inv;
-        private System.Windows.Forms.Label label112;
-        private System.Windows.Forms.ComboBox cmb4CardType;
-        private System.Windows.Forms.Label label114;
         private System.Windows.Forms.Label label124;
         private System.Windows.Forms.TabPage tabpHealthInfor;
         private System.Windows.Forms.Panel panel1;
@@ -6099,8 +5633,6 @@
         private System.Windows.Forms.Button btn61Add;
         private System.Windows.Forms.Button btn61Update;
         private System.Windows.Forms.Button btn61Search;
-        private System.Windows.Forms.Button btn4PrintPreview;
-        private System.Windows.Forms.Button btn4Print;
         private System.Windows.Forms.ListBox lst62HMCodes;
         private System.Windows.Forms.ListBox lst62ProcedureCodes;
         private System.Windows.Forms.TabPage tabPpSet;
@@ -6113,5 +5645,15 @@
         private System.Windows.Forms.Label lbl62DiagnosticsCodes;
         private System.Windows.Forms.Label label128;
         private System.Windows.Forms.Label label126;
+        private System.Windows.Forms.Button btn4Invdetail;
+        private System.Windows.Forms.Button btn4AddInvoice;
+        private System.Windows.Forms.Button btn4Save;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaidAmt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Button btn4Quit;
     }
 }

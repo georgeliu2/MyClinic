@@ -8,11 +8,12 @@ using System.Windows.Forms;
 
 namespace AcupunctureClinic.Desktop.Forms
 {
+    using AcupunctureClinic.Data.BusinessService;
     using AcupunctureClinic.Desktop.Forms.Membership;
     public class frmDiagCodePickup : frmCodePickup
     {
-        public frmDiagCodePickup(Manage _manage, ListBox _codes) :
-            base(_manage, _codes)
+        public frmDiagCodePickup(ICodePickup target) :
+            base(target)
         {
             this.Text = "Diagnostics Code Editor";
             this.lblSelectedCodeList.Text = "Selected Diagnostics Codes:";
@@ -21,7 +22,7 @@ namespace AcupunctureClinic.Desktop.Forms
 
         protected override void LoadProcedureCodeList()
         {
-            DataTable diagCodes = manage.CustomerServiceObj.LoadDiagCodes();
+            DataTable diagCodes = targetObj.GetCodeTable();
             if (diagCodes == null || diagCodes.Rows.Count == 0)
                 return;
 
@@ -58,7 +59,7 @@ namespace AcupunctureClinic.Desktop.Forms
         protected override void AddRowValue(DataGridView vlist, string v1, string v2, string v3 = null)
         {
             if (v1 != null && v1 != "")
-                vlist.Rows.Add(v1, v1);
+                vlist.Rows.Add(v1, v2);
         }
 
         protected override void AddRowValue(DataGridView vlist, DataGridViewRow row)

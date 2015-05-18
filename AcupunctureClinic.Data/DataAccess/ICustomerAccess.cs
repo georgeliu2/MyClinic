@@ -92,35 +92,7 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <param name="CustomerID">id value</param>
         /// <returns>Data Row</returns>
         DataRow SelectAccountById(long id);
-
-        /// <summary>
-        /// Method to get invoice records  by id
-        /// </summary>
-        /// <param name="CustomerID">id value</param>
-        /// <returns>Data Table</returns>
-        DataTable GetInvoicesById(long id);
-
-        /// <summary>
-        /// Method to insert invoice details
-        /// </summary>
-        /// <param name="invoice">invoice</param>
-        /// <returns></returns>
-        bool AddInvoice(InvoiceModel invoice);
-
-        /// <summary>
-        /// Method to update invoice details
-        /// </summary>
-        /// <param name="invoice">invoice</param>
-        /// <returns></returns>
-        bool UpdateInvoice(InvoiceModel invoiceModel);
-
-        /// <summary>
-        /// Method to delete invoice details
-        /// </summary>
-        /// <param name="invoice">invoice</param>
-        /// <returns></returns>
-        bool DeleteInvoice(long invNo);
-
+     
         /// <summary>
         /// Method select HealthInfor by customer id
         /// </summary>
@@ -200,18 +172,13 @@ namespace AcupunctureClinic.Data.DataAccess
         /// <returns>bool</returns>
         bool UpdateFollowUpVisit(FollowUpVisitModel followUpVisittModel);
 
-        /// <summary>
-        /// Method FilloutInvoiceReport
-        /// </summary>
-        /// <param name="InvoiceModel">invoiceModel</param>
-        /// <returns>bool</returns>
-        Excel.Worksheet FilloutInvoiceReport(InvoiceModel invoiceModel);
 
-        /// <summary>
+
+        /*/// <summary>
         /// Close connecting to Excel
         /// </summary>
         /// <returns>void</returns>
-        void CloseExcel();
+        void CloseExcel(); */
 
         ///Procedure Code Methods
         /// <summary>

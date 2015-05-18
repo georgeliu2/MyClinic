@@ -146,6 +146,7 @@
             this.Location = new System.Drawing.Point(400, 200);
             this.Name = "frmCodePickup";
             this.Text = "Procedure Code Editor";
+            this.FormClosing += frmCodePickup_FormClosing;
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCodes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSelectedCodes)).EndInit();
             this.ResumeLayout(false);

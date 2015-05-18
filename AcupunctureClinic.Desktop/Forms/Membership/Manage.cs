@@ -7,6 +7,7 @@
 namespace AcupunctureClinic.Desktop.Forms.Membership
 {
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Drawing;
     using System.Drawing.Printing;
@@ -21,7 +22,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
     /// <summary>
     /// Manage screen - To view, search, print, export  customers information
     /// </summary>
-    public partial class Manage : Form
+    public partial class Manage : Form, ICodePickup
     {
         /// <summary>
         /// Instance of DataGridViewPrinter
@@ -34,6 +35,11 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         private ICusomerService customerService;
 
         /// <summary>
+        /// Interface of IInvoiceService
+        /// </summary>
+        private AcupunctureClinic.Data.BusinessService.IInvoiceService invoiceService;
+
+        /// <summary>
         /// Variable to store error message
         /// </summary>
         private string errorMessage;
@@ -41,10 +47,20 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         /// <summary>
         /// Member id
         /// </summary>
-        private long CustomerID;
+        private long customerID;
+        private string customerName;
+
+        private int codePickuprStatus;   //0 -- None; 1 -- ProcedureCodeEditor; 
+                                    //2 -- H/M Code Editor; 3 -- Diagnostic Code Editor
+        private DataTable procedureCodes;
+
+        private DataTable hmCodes;
 
         public ICusomerService CustomerServiceObj
         { get { return customerService; }   }
+
+        public AcupunctureClinic.Data.BusinessService.IInvoiceService InvoiceServiceObj
+        { get { return invoiceService; } }
 
         public ListBox Lst62ProcedureCodes
         {
@@ -58,6 +74,29 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             set { lst62HMCodes = value; }
         }
 
+        public long CustomerID
+        {
+            get { return customerID; }
+            set { customerID = value; }
+        }
+
+        public string CustomerName
+        {
+            get { return customerName; }
+            set { customerName = value; }
+        }
+
+        public DataTable ProcedureCodes
+        {
+            get { return procedureCodes; }
+            set { procedureCodes = value; }
+        }
+
+        public DataTable HMCodes
+        {
+            get { return hmCodes; }
+            set { hmCodes = value; }
+        }
         /// <summary>
         /// Initializes a new instance of the Manage class
         /// </summary>
@@ -71,6 +110,8 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             this.customerService = new CustomerService();            
             this.ResetRegistration();
             this.ResetSearch();
+            this.invoiceService = new InvoiceService();
+            codePickuprStatus = 0;
         }
 
         /// <summary>
@@ -821,7 +862,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         private void btnQuit_Click(object sender, EventArgs e)
         {
             this.Close();
-            Application.Exit();
+            //Application.Exit();
         }
 
 
@@ -1040,7 +1081,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             }
         }
 
-        private void LoadAccountAndInvoice()
+        public void LoadAccountAndInvoice()
         {
             string customerIdStr = txt4CustomerID.Text.Trim() != "" ? txt4CustomerID.Text.Trim() :
                     txtSCustomerID.Text.Trim() != "" ? txtSCustomerID.Text.Trim() : txt3CustomerID.Text.Trim();
@@ -1059,18 +1100,15 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
                 if (account != null)
                 {
                     txt4CustomerID.Text = account[0].ToString();
-                    txt4SearchInvNo.Text = txt4InvNo.Text = account[1].ToString();
+                    //txt4SearchInvNo.Text = txt4InvNo.Text = account[1].ToString();
                     currentInvNo = long.Parse(account[1].ToString());
                     dt4LastVisit.Value = Convert.ToDateTime(account[2]);
-                    txt4SearchBalance.Text = account[3].ToString();
+                    txt4Balance.Text = utility.DisplayCurrency(utility.StrToLong(account[3].ToString()));
                 }
 
                 //Load Customer Name
-                DataTable customer = this.customerService.SearchCustomers(CustomerID.ToString(), "", " Or");
-                if (customer != null && customer.Rows.Count > 0)
-                {
-                    txt4Name.Text = customer.Rows[0][1].ToString() + " " + customer.Rows[0][1].ToString();
-                }
+               
+                txt4Name.Text = CustomerName = GetCustomerNameByID(CustomerID);                
                     //retrieve account invoices  
                 LoadInvoices(CustomerID, currentInvNo);                               
             }
@@ -1084,64 +1122,39 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         private void LoadInvoices(long customerId, long currentInvNo)
         {
             //retrieve account invoices               
-            DataTable invoices = this.customerService.GetInvoicesByCustomerID(customerId);
+            DataTable invoices = this.invoiceService.GetInvoicesByCustomerID(customerId);
 
             if (invoices != null && invoices.Rows.Count > 0)
             {
                 DataColumn[] keys = new DataColumn[1];
                 keys[0] = invoices.Columns[1];
                 this.LoadInvoicesForDataGridView(invoices);
-                invoices.PrimaryKey = keys;
-                DataRow invoice = invoices.Rows.Find(currentInvNo);
-                if (invoice != null)
-                {
-                    dtInvDate.Value = Convert.ToDateTime(invoice[2]);
-                    txt4ProcedureCode.Text = invoice[3].ToString();
-                    txt4HMCode.Text = invoice[4].ToString();
-                    cmb4PayMethod.SelectedIndex = (int)(PaymentMethods)Enum.Parse(typeof(PaymentMethods), invoice[6].ToString());
-                    cmb4CardType.SelectedIndex = (int)(CardTypes)Enum.Parse(typeof(CardTypes), invoice[7].ToString());
-                    txt4CardNo.Text = invoice[8].ToString();
-                    if (invoice[9] != null && invoice[9].ToString().Trim() != "")
-                        dt4ExpDate.Value = Convert.ToDateTime(invoice[9]);
-                    txt4SubTotal.Text = invoice[10].ToString();
-                    txt4Balance.Text = invoice[12].ToString();
-                    txt4AmtPaid.Text = invoice[11].ToString();
-                    txt4Total.Text = invoice[13].ToString();
-                    txt4DiscRate.Text = invoice[5].ToString();
-                }
+                long balance = CalculateBalance(invoices);
+                txt4Balance.Text = utility.DisplayCurrency(balance);
             }
             //else
             //if cannot get the name, just ignore it
         }
 
-        private void LoadInvoice(DataGridViewRow row)
+        private long CalculateBalance(DataTable invoices)
         {
-            //CustomerID = this.txt4CustomerID.Text.Trim() == "" ? CustomerID : long.Parse(txt4CustomerID.Text.Trim());
-            //long invNo = (long)row.Cells[1].Value;
-
-            txt4InvNo.Text = row.Cells[1].Value.ToString();
-            dtInvDate.Value = Convert.ToDateTime(row.Cells[2].Value);
-            txt4ProcedureCode.Text = row.Cells[3].Value.ToString();
-            txt4HMCode.Text = row.Cells[4].Value.ToString();
-            txt4DiscRate.Text = row.Cells[5].Value.ToString();
-            cmb4PayMethod.SelectedValue = row.Cells[6].Value;
-            //cmb4PayMethod.SelectedIndex = (int)(PaymentMethods)Enum.Parse(typeof(PaymentMethods), row.Cells[6].Value.ToString())
-            cmb4CardType.SelectedValue = row.Cells[7].Value;
-            txt4CardNo.Text = row.Cells[8].Value.ToString();
-            dt4ExpDate.Value = row.Cells[9].Value.ToString() == "" ? dt4ExpDate.MinDate : Convert.ToDateTime(row.Cells[9].Value);
-            txt4SubTotal.Text = row.Cells[10].Value.ToString();
-            txt4AmtPaid.Text = row.Cells[11].Value.ToString();
-            txt4Balance.Text = row.Cells[12].Value.ToString();
-            txt4Total.Text = row.Cells[13].Value.ToString();
-           
+            long balance = 0;
+            if (invoices != null && invoices.Rows.Count > 0)
+            {
+                foreach (DataRow row in invoices.Rows)
+                    balance += Convert.ToInt64(row[9]);
+            }
+            return balance;
         }
+
 
         private void dataGridView4Invoices_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridViewRow currentRow = dataGridView4Invoices.CurrentRow;
+            DataGridViewRow currentRow = dtgv4Invoices.CurrentRow;
+            btnInvdetail_Click(sender, e);
             //MessageBox.Show(Convert.ToString(currentRow.Cells[0].Value));
 
-            this.LoadInvoice(currentRow);
+            //this.LoadInvoice(currentRow);
         }
 
         /// <summary>
@@ -1150,23 +1163,42 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         private void InitilizeDataGridView4InvoicesStyle()
         {
             // Setting the style of the DataGridView control
-            dataGridView4Invoices.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridView4Invoices.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.ControlDark;
-            dataGridView4Invoices.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView4Invoices.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView4Invoices.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridView4Invoices.DefaultCellStyle.BackColor = Color.Empty;
-            dataGridView4Invoices.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.Info;
-            dataGridView4Invoices.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dataGridView4Invoices.GridColor = SystemColors.ControlDarkDark;
+            dtgv4Invoices.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9, FontStyle.Bold, GraphicsUnit.Point);
+            dtgv4Invoices.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.ControlDark;
+            dtgv4Invoices.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dtgv4Invoices.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgv4Invoices.DefaultCellStyle.Font = new Font("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
+            dtgv4Invoices.DefaultCellStyle.BackColor = Color.Empty;
+            dtgv4Invoices.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.Info;
+            dtgv4Invoices.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            dtgv4Invoices.GridColor = SystemColors.ControlDarkDark;
+
+            dtgv4Invoices.DataSource = null;
+            dtgv4Invoices.Rows.Clear();
+            dtgv4Invoices.ColumnCount = 5;
+            dtgv4Invoices.Columns[0].HeaderCell.Value = "Date";
+            dtgv4Invoices.Columns[1].HeaderCell.Value = "Inv No";
+            dtgv4Invoices.Columns[2].HeaderCell.Value = "Sub Total";
+            dtgv4Invoices.Columns[3].HeaderCell.Value = "Amt Paid";
+            dtgv4Invoices.Columns[4].HeaderCell.Value = "Total";
         }
 
         private void LoadInvoicesForDataGridView(System.Data.DataTable data)
         {
-            // Data grid view column setting            
-            this.dataGridView4Invoices.DataSource = data;
-            this.dataGridView4Invoices.DataMember = data.TableName;
-            this.dataGridView4Invoices.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            // Data grid view column setting    
+            this.dtgv4Invoices.Rows.Clear();            
+            this.dtgv4Invoices.DataMember = data.TableName;
+            foreach (DataRow row in data.Rows)
+            {
+                dtgv4Invoices.Rows.Add(row[2], row[1].ToString(), utility.DisplayCurrency(utility.StrToLong(row[7].ToString())), utility.DisplayCurrency(utility.StrToLong(row[8].ToString())), utility.DisplayCurrency(utility.StrToLong(row[9].ToString())));
+                if (dt4LastVisit.Value < (DateTime)row[2])
+                    dt4LastVisit.Value = (DateTime)row[2];
+            }
+            if(dtgv4Invoices.Rows.Count > 0)
+            {
+                dtgv4Invoices.CurrentCell = dtgv4Invoices.Rows[dtgv4Invoices.Rows.Count - 1].Cells[0];
+                
+            }
         }
 
         private void ResetAccount()
@@ -1174,8 +1206,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             txt4CustomerID.Text = "";
             txt4Name.Text = "";
             dt4LastVisit.Value = dt4LastVisit.MinDate;
-            txt4SearchInvNo.Text = "";
-            txt4SearchBalance.Text = "";
+            txt4Balance.Text = "";
             CustomerID = -1;
         }
 
@@ -1195,130 +1226,20 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
         private void ResetInvoices()
         {
             ResetInvoice();
-            dataGridView4Invoices.DataSource = null;
-            dataGridView4Invoices.Refresh();
+            dtgv4Invoices.DataSource = null;
+            dtgv4Invoices.Refresh();
         }
 
          private void ResetInvoice()
          {
             //Clear invoice detail panel
-            dtInvDate.Value = dtInvDate.MinDate;
-            txt4ProcedureCode.Text = "";
-            txt4HMCode.Text = "";
-            cmb4PayMethod.SelectedIndex = 0;
-            cmb4CardType.SelectedIndex = 0;
-            txt4CardNo.Text = "";
-            dt4ExpDate.Value = dt4ExpDate.MinDate;
-            txt4SubTotal.Text ="";
+            dt4LastVisit.Value = dt4LastVisit.MinDate;
+            txt4CustomerID.Text = "";
+            txt4Name.Text = "";
             txt4Balance.Text = "";
-            txt4AmtPaid.Text = "";
-            txt4Total.Text = "";
-            txt4DiscRate.Text = "";
+      
         }
-
-        private void btn4AddInv_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Check if the validation passes
-                if (  true) //this.ValidateInvoice())
-                {
-                    // Assign the values to the model
-                    InvoiceModel invoiceModel = CreateInvoiceModel();
-                    
-
-                    // Call the service method and assign the return status to variable
-                    var success = this.customerService.AddInvoice(invoiceModel);
-
-                    // if status of success variable is true then display a information else display the error message
-                    if (success)
-                    {
-                        txt4InvNo.Text = invoiceModel.InvNo.ToString();
-                        // display the message box
-                        MessageBox.Show(
-                            Resources.Registration_Successful_Message,
-                            Resources.Registration_Successful_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);                       
-                    }
-                    else
-                    {
-                        // display the error messge
-                        MessageBox.Show(
-                            Resources.Registration_Error_Message,
-                            Resources.Registration_Error_Message_Title,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                         // Reset the screen
-                        this.ResetInvoices();
-                    }
-                }
-                /*else
-                {
-                    // Display the validation failed message
-                    MessageBox.Show(
-                        this.errorMessage, 
-                        Resources.Registration_Error_Message_Title, 
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Error);
-                }*/
-            }
-            catch (Exception ex)
-            {
-                this.ShowErrorMessage(ex);
-            }      
-        }
-
-        private void btn4UpdateInv_Click(object sender, EventArgs e)
-        {
-           // if (this.ValidateUpdate())
-           // {
-                // Assign the values to the model
-                InvoiceModel invoiceModel =CreateInvoiceModel();
-                
-
-                var flag = this.customerService.UpdateInvoice(invoiceModel);
-
-                if (flag)
-                {
-                    //Update account        
-                    /* DataTable customer = this.customerService.UpdateAccount(contactModel.CustomerID.ToString(), "", " Or");
-                     if (customer != null && customer.Rows.Count > 0)
-                     {
-                         txt3Name.Text = customer.Rows[0][1].ToString() + " " + customer.Rows[0][1].ToString();
-                     }   */
-                    ;
-                }
-                else
-                {
-                    MessageBox.Show(
-                   "Updated the invoice failed!",
-                   Resources.Registration_Error_Message_Title,
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
-                }
-            /*}
-            else
-            {
-                MessageBox.Show(
-                    this.errorMessage,
-                    Resources.Registration_Error_Message_Title,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }*/
-        }
-
-        private void btn4DeleteInv_Click(object sender, EventArgs e)
-        {           
-           
-            long invNo = long.Parse(this.txt4InvNo.Text);
-            var flag = this.customerService.DeleteInvoice(invNo);
-            if (flag)
-                this.ResetInvoice();
-            else
-                MessageBox.Show("Delete invoice failed!");
-        }
-
+                                
         ///
         ///Tab Page HealthInfor mathods
         ///
@@ -2144,92 +2065,79 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
             return initNo.Trim() + "-" + followup.Trim();
         }
 
-        private InvoiceModel  CreateInvoiceModel()
+
+
+
+        /// <summary>
+        /// Populate procedure codes or H/M code from CodePickup obj
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>void</returns>
+        public void PopulateCodes(DataGridView dataGrid)
         {
-            InvoiceModel invoiceModel = new InvoiceModel()
+            if (codePickuprStatus == 1)  //Procedure Code
             {
-                CustomerID = long.Parse(txt4CustomerID.Text.ToString()),
-                InvNo = long.Parse(this.txt4InvNo.Text),
-                InvDate = this.dtInvDate.Value,
-                ProcedureCode = this.txt4ProcedureCode.Text.Trim(),
-                HMCode = this.txt4HMCode.Text.Trim(),
-
-                PaymentMethod = (PaymentMethods)cmb4PayMethod.SelectedIndex,
-
-                CardType = (CardTypes)cmb4CardType.SelectedIndex,
-                CardNo = this.txt4CardNo.Text.Trim(),
-                ExpDate = dt4ExpDate.Value,
-                SubTotal = long.Parse(txt4SubTotal.Text.Trim()),
-                DiscountRate = long.Parse(txt4DiscRate.Text.Trim()),
-                AmountPaid = long.Parse(txt4AmtPaid.Text.Trim()),
-                Balance = long.Parse(txt4Balance.Text.Trim()),
-                Total = long.Parse(txt4Total.Text.Trim())
-            };
-            return invoiceModel;
+                lst62ProcedureCodes.Items.Clear();
+                foreach (DataGridViewRow row in dataGrid.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        string code = row.Cells[0].Value.ToString().Trim();
+                        if (code != "")
+                            lst62ProcedureCodes.Items.Add(code);
+                    }
+                }
+            }
+            else if( codePickuprStatus == 2) //H/M Code
+            {
+                lst62HMCodes.Items.Clear();
+                foreach (DataGridViewRow row in dataGrid.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        string code = row.Cells[0].Value.ToString().Trim();
+                        if (code != "")
+                            lst62HMCodes.Items.Add(code);
+                    }
+                }
+            } 
+            else if ( codePickuprStatus == 3) //Diagonostic  code
+            {
+                lst62DiagCodes.Items.Clear();
+                foreach (DataGridViewRow row in dataGrid.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        string code = row.Cells[0].Value.ToString().Trim();
+                        if (code != "")
+                            lst62DiagCodes.Items.Add(code);
+                    }
+                }
+            }
         }
 
-
-        private void btn4PrintPreview_Click(object sender, EventArgs e)
+      
+        public void ActiveObj()
         {
-
-            // Assign the values to the model
-            InvoiceModel invoiceModel = CreateInvoiceModel();
-
-
-            Excel.Worksheet invoiceReport = this.customerService.FilloutInvoiceReport(invoiceModel);
-
-            if (invoiceReport != null)
-            {
-                ;
-                invoiceReport.PrintPreview(Type.Missing); 
-                
-                   /*ws.PrintOut(
-        Type.Missing, Type.Missing, Type.Missing, Type.Missing, 
-        Type.Missing, Type.Missing, Type.Missing, Type.Missing);*/
-
-
-            }
-
-            //invoiceReport.Deactivate();
-            //invoiceReport.Close(Type.Missing, Type.Missing, Type.Missing);
-            this.customerService.CloseExcel();
-        
-        }
-
-        private void btn4Print_Click(object sender, EventArgs e)
-        {
-            // Assign the values to the model
-            InvoiceModel invoiceModel = CreateInvoiceModel();
-
-
-            Excel.Worksheet invoiceReport = this.customerService.FilloutInvoiceReport(invoiceModel);
-
-            if (invoiceReport != null)
-            {
-                invoiceReport.PrintOut(Type.Missing, Type.Missing, Type.Missing, Type.Missing, 
-                                       Type.Missing,Type.Missing, Type.Missing, Type.Missing);
-                /*ws.PrintOut(
-     Type.Missing, Type.Missing, Type.Missing, Type.Missing, 
-     Type.Missing, Type.Missing, Type.Missing, Type.Missing);*/
-
-            }
-
-            //invoiceReport.Deactivate();
-            //invoiceReport.Close(Type.Missing, Type.Missing, Type.Missing);
-            this.customerService.CloseExcel();
+      
+            this.Show();
+            this.BringToFront();
         }
 
         private void lbl62ProcedureCodes_Click(object sender, EventArgs e)
         {
-            var procedureCodeEditor = new frmCodePickup(this, lst62ProcedureCodes);
+            codePickuprStatus = 1; //ProcedureCode Pickup
+            var procedureCodeEditor = new frmCodePickup(this);
             //frmCodePickupEditor.Closing += frmCodePickup.frmCodePickup_Closing;
             procedureCodeEditor.Show();
             procedureCodeEditor.BringToFront();          
         }
 
+
         private void lbl62HMCodes_Click(object sender, EventArgs e)
         {
-            var hmCodeEditor = new frmHMCodePickup(this, lst62HMCodes);
+            codePickuprStatus = 2; // H/M Code Pickup
+            var hmCodeEditor = new frmHMCodePickup(this);
             hmCodeEditor.Show();
             hmCodeEditor.BringToFront();
 
@@ -2237,6 +2145,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
         private void lbl7SetProcedureCodes_Click(object sender, EventArgs e)
         {
+            codePickuprStatus = 1;
             var procedureCodeEditor = new frmCodeEditor(this);
             procedureCodeEditor.Show();
             procedureCodeEditor.BringToFront();
@@ -2245,6 +2154,7 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
         private void lbl7SetHMCode_Click(object sender, EventArgs e)
         {
+            codePickuprStatus = 2;
             var hmCodeEditor = new HMCodeEditor(this);
             hmCodeEditor.Show();
             hmCodeEditor.BringToFront();
@@ -2273,7 +2183,8 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
         private void lbl62DiagnosticsCodes_Click(object sender, EventArgs e)
         {
-            var diagCodeEditor = new frmDiagCodePickup(this, lst62DiagCodes);
+            codePickuprStatus = 3;
+            var diagCodeEditor = new frmDiagCodePickup(this);
 
             diagCodeEditor.Show();
             diagCodeEditor.BringToFront();
@@ -2282,12 +2193,128 @@ namespace AcupunctureClinic.Desktop.Forms.Membership
 
         private void lbl7SetDiagnosticsCodes_Click(object sender, EventArgs e)
         {
+            codePickuprStatus = 3;
             var diagCodeEditor = new DiagCodeEditor(this);
             diagCodeEditor.Show();
             diagCodeEditor.BringToFront();
             this.Hide();
         }
 
+        private void btn4AddInvoice_Click(object sender, EventArgs e)
+        {
+            var invoiceEditor = new frmInvoice(this);
+            invoiceEditor.Closing += invoiceEditor.frmInvoice_Closing;
+            invoiceEditor.Show();
+            invoiceEditor.BringToFront();
+            this.Hide();
+        }
 
+        public string CodeDescription ( string code)
+        {
+            if(ProcedureCodes == null )
+            {
+                ProcedureCodes = this.customerService.LoadProcedureCodes();
+            }
+
+            string desc = null;
+            foreach(DataRow row in ProcedureCodes.Rows)
+            {
+                if( code.Trim() == row[0].ToString().Trim())
+                {
+                    desc = row[1].ToString();
+                    break;
+                }
+            }
+
+            if( desc == null )
+            {
+                if(HMCodes == null )
+                    HMCodes = this.customerService.LoadHMCodes();
+
+                foreach(DataRow row in HMCodes.Rows)
+                {
+                    if (code.Trim() == row[0].ToString())
+                    {
+                        desc = row[1].ToString();
+                        break;
+                    }
+                }
+            }
+
+            return desc;
+
+        }
+
+        public string GetCustomerNameByID(long id)
+        {
+            DataRow row = customerService.GetCustomerById(id);
+            if (row != null )
+                return row[1].ToString() + " " + row[2].ToString();
+            else
+                return "";
+        }
+
+        private void btnInvdetail_Click(object sender, EventArgs e)
+        {
+            frmInvoice invoiceEditor = null;
+            if (dtgv4Invoices.CurrentRow != null)
+            {
+                int invNo = int.Parse(dtgv4Invoices.CurrentRow.Cells[1].Value.ToString());
+                invoiceEditor = new frmInvoice(this, invNo);
+            }
+            else
+                invoiceEditor = new frmInvoice(this);
+            invoiceEditor.Closing += invoiceEditor.frmInvoice_Closing;
+            invoiceEditor.Show();
+            invoiceEditor.BringToFront();
+            this.Hide();
+        }
+
+        private void btn4Quit_Click(object sender, EventArgs e)
+        {
+            Manage_Closing(sender, e);
+        }
+
+        /// <summary>
+        /// Get List of code string
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>A List of code string</returns>
+        public DataTable GetCodeTable()
+        {
+            if (codePickuprStatus == 1) //Procedure Code
+            {
+                return this.CustomerServiceObj.LoadProcedureCodes();
+            }
+            else if (codePickuprStatus == 2) //HM Code
+                return this.CustomerServiceObj.LoadHMCodes();
+            else if (codePickuprStatus == 3) //Diagonostic Code
+                return this.CustomerServiceObj.LoadDiagCodes();
+            else
+                return null;
+        }
+
+        /// <summary>
+        /// Get List of selected code strings
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>A List of code strings</returns>
+        public List<string> GetSelectedCodes()
+        {
+            ListBox codeSource = null;
+            if( codePickuprStatus == 1)
+                codeSource = lst62ProcedureCodes;
+            else if( codePickuprStatus == 2  )
+                codeSource = lst62HMCodes;
+            else if( codePickuprStatus == 3  )
+                codeSource = lst62DiagCodes;
+
+            List<string> codeList = new List<string>();
+            foreach( string code in codeSource.Items )
+            {
+                codeList.Add(code);
+            }
+            return codeList;
+        }
     }     
 }

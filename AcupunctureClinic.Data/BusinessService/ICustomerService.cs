@@ -93,34 +93,7 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <returns>A DataRow of the Contact table</returns>
         DataRow SelectAccountById(long customerId);
 
-        /// <summary>
-        /// Service method to get invoices records by multiple parameters
-        /// </summary>
-        /// <param name="CustomerID">CustomerID value</param>
-        /// <returns>A DataTable of the Invoice table</returns>
-        DataTable GetInvoicesByCustomerID(long customerId);
 
-        /// <summary>
-        /// Method to add invoice to the database
-        /// </summary>
-        /// <param name="invoiceModel">invoiceModel</param>
-        /// <returns></returns>
-        bool AddInvoice(InvoiceModel invoiceModel);
-
-        /// <summary>
-        /// Method to update invoice to the database
-        /// </summary>
-        /// <param name="invoiceModel">invoiceModel</param>
-        /// <returns></returns>
-        bool UpdateInvoice(InvoiceModel invoiceModel);
-
-
-        /// <summary>
-        /// Method to update invoice to the database
-        /// </summary>
-        /// <param name="InvNo">invoice number</param>
-        /// <returns></returns>
-        bool DeleteInvoice(long invNo);
 
         /// <summary>
         /// Method select HealthInfor by customer id
@@ -204,19 +177,6 @@ namespace AcupunctureClinic.Data.BusinessService
         /// <param name="FollowUpVisitModel">followUpVisittModel</param>
         /// <returns>bool</returns>
         bool UpdateFollowUpVisit(FollowUpVisitModel followUpVisittModel);
-
-        /// <summary>
-        /// Method FilloutInvoiceReport
-        /// </summary>
-        /// <param name="InvoiceModel">invoiceModel</param>
-        /// <returns>bool</returns>
-        Excel.Worksheet FilloutInvoiceReport(InvoiceModel invoiceModel);
-
-        /// <summary>
-        /// Close connecting to Excel
-        /// </summary>
-        /// <returns>void</returns>
-        void CloseExcel();
 
         /// Procedure Code Methds
         /// <summary>
@@ -309,7 +269,8 @@ namespace AcupunctureClinic.Data.BusinessService
         /// </summary>
         /// <returns>bool</returns>
         bool UpdateDiagCode(DataCodeModel diagCodeModel);
-        
+
+
 
     }
 }

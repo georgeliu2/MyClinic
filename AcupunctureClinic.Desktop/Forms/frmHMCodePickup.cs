@@ -8,11 +8,12 @@ using System.Windows.Forms;
 
 namespace AcupunctureClinic.Desktop.Forms
 {
+    using AcupunctureClinic.Data.BusinessService;
     using AcupunctureClinic.Desktop.Forms.Membership;
     public class frmHMCodePickup : frmCodePickup
     {
-        public frmHMCodePickup(Manage _manage, ListBox _codes) :
-            base(_manage, _codes)
+        public frmHMCodePickup(ICodePickup target) :
+            base(target)
         {
             this.Text = "Health /Medicine Code Editor";
             this.lblSelectedCodeList.Text = "Selected H/M Codes:";
@@ -22,7 +23,7 @@ namespace AcupunctureClinic.Desktop.Forms
 
         protected override void LoadProcedureCodeList()
         {
-            DataTable hmCodes = manage.CustomerServiceObj.LoadHMCodes();
+            DataTable hmCodes = TargetObj.GetCodeTable();
             if (hmCodes == null || hmCodes.Rows.Count == 0)
                 return;
             //Fill out dtgvhmCodes

@@ -91,29 +91,66 @@ namespace AcupunctureClinic.Data.Sql
         /// <summary>
         /// Sql to get invoice records by Id
         /// </summary>
-        public static readonly string sqlGetInvoicesById = "Select * From Invoice Where CustomerID = @CustomerID";
+        public static readonly string sqlGetInvoicesById = "Select * From Invoice Where CustomerID = @CustomerID ORDER BY InvDate ASC";
 
         /// <summary>
         /// Sql to add invoice record 
         /// </summary>
-        public static readonly string sqlAddInvoice = "Insert Into" +
-            " Invoice (CustomerID, InvDate, ProcedureCode, HMCode, DiscountRate, PaymentMethod, CardType, CardNo, ExpDate, " +
-                " SubTotal, AmountPaid, Balance, Total)  Values(@CustomerID, @InvDate, @ProcedureCode, @HMCode, @DiscountRate, " +
-                " @PaymentMethod, @CardType, @CardNo, @ExpDate, @SubTotal, @AmountPaid, @Balance, @Total)";
+        public static readonly string sqlInsertInvoiceSelf = "Insert Into" +
+            " Invoice (CustomerID, InvDate,  PaymentMethod, CardType, CardNo, ExpDate, " +
+                " SubTotal, AmountPaid, Total)  Values(@CustomerID, @InvDate, " +
+                " @PaymentMethod, @CardType, @CardNo, @ExpDate, @SubTotal, @AmountPaid, @Total)";
 
         /// <summary>
         /// Sql to update invoice record 
         /// </summary>
-        public static readonly string sqlUpdateInvoice = "Update Invoice " +
-            " Set [CustomerID] = @CustomerID,[InvDate] = @InvDate, [ProcedureCode] = @ProcedureCode, [HMCode] = @HMCode," +
-            " [DiscountRate] = @DiscountRate, [PaymentMethod] = @PaymentMethod, [CardType] = @CardType, [CardNo] = @CardNo, " +
-            " [ExpDate] = @ExpDate, [SubTotal] = @SubTotal, [AmountPaid] = @AmountPaid, [Balance] = @Balance, [Total] = @Total " +
+        public static readonly string sqlUpdateInvoiceSelf = "Update Invoice " +
+            " Set [CustomerID] = @CustomerID,[InvDate] = @InvDate, " +
+            " [PaymentMethod] = @PaymentMethod, [CardType] = @CardType, [CardNo] = @CardNo, " +
+            " [ExpDate] = @ExpDate, [SubTotal] = @SubTotal, [AmountPaid] = @AmountPaid,  [Total] = @Total " +
             " where ([InvNo] = @InvNo) ";
 
         /// <summary>
         /// sql to delete invoice details
         /// </summary>
         public static readonly string sqlDeleteInvoice = "Delete From Invoice Where (InvNo = @InvNo)";
+
+        /// <summary>
+        /// Sql to get invoice records by Id and InvNo
+        /// </summary>
+        public static readonly string sqlGetInvoicesByInvNo = "Select * From Invoice Where InvNo = @InvNo";
+
+        /// <summary>
+        /// Sql to get invoice records by Id and InvNo
+        /// </summary>
+        public static readonly string sqlLoadInvoiceItemsByInvNo = "Select * From Invoice_Items Where InvNo = @InvNo";
+
+        
+        /// <summary>
+        /// Sql to Insert invoice item record 
+        /// </summary>
+        public static readonly string sqlInsertInvoiceItem = "Insert Into  " +
+          " Invoice_Items(InvNo, Procedure_Code, H_M_Code, Price, DiscountRate, LineTotal)" +
+            " Values(@InvNo, @Procedure_Code, @H_M_Code, @Price, @DiscountRate, @LineTotal)";
+
+        /// <summary>
+        /// Sql to update invoice item record 
+        /// </summary>
+        public static readonly string sqlUpdateInvoiceItem = "Update Invoice_Items " +
+            " Set [Price] = @Price,[DiscountRate] = @DiscountRate, [LineTotal] = @LineTotal" +
+            " where ([InvNo] = @InvNo and [Procedure_Code] = @ProcedureCode and [H_M_Code] = @HMCode) ";
+
+        /// <summary>
+        /// Sql to delete invoice item
+        /// </summary>
+        public static readonly string sqlDeleteInvoiceItem = "Delete From Invoice_Items" +
+            " where (InvNo = @InvNo and Procedure_Code = @ProcedureCode and H_M_Code = @HMCode) ";
+
+        /// <summary>
+        /// Sql to delete invoice items
+        /// </summary>
+        public static readonly string sqlDeleteInvoiceItems = "Delete From Invoice_Items" +
+            " where (InvNo = @InvNo )";
 
         /// <summary>
         /// Sql to get a HealthInfor by Id
@@ -131,7 +168,7 @@ namespace AcupunctureClinic.Data.Sql
             " Set [Family_History] = @Family_History, [Allergies] = @Allergies, [Musculoskeletal] = @Musculoskeletal," +
             " [Motor] = @Motor  where ([CustomerID] = @CustomerID) ";
 
-        
+
         /// <summary>
         /// Sql to get invoice records by Id
         /// </summary>             
@@ -141,7 +178,7 @@ namespace AcupunctureClinic.Data.Sql
         /// Sql to get initial visiting infor records by InitNo
         /// </summary>      
         public static readonly string sqlSelectInitVisitByInitNo = "Select * From Initial_Visit Where CustomerID = @CustomerID and InitialNo = @InitialNo ORDER BY InitialDate ASC "; //ASCENDING
-        
+
         /// <summary>
         /// Sql to get invoice records by Id
         /// </summary>        
@@ -171,7 +208,7 @@ namespace AcupunctureClinic.Data.Sql
             " BP, Pulse, Cranial, Cerbellar, DeepTendonRef, Sensory, Impression ) " +
             "  Values(@CustomerID,@InitialNo, @InitialDate, @Medications, @ChiefComplaint, @HistoryOfPresentIllness, " +
             " @BP, @Pulse, @Cranial, @Cerbellar, @DeepTendonRef, @Sensory, @Impression )";
-        
+
         /// <summary>
         /// Sql update a record to Initial_Visit 
         /// </summary>
@@ -179,7 +216,7 @@ namespace AcupunctureClinic.Data.Sql
             " Set [InitialDate] = @InitialDate, [Medications] = @Medications, [ChiefComplaint] = @ChiefComplaint," +
             " [HistoryOfPresentIllness] = @HistoryOfPresentIllness, [BP] = @BP, [Pulse] = @Pulse, [Cranial] = @Cranial," +
             " [Cerbellar] = @Cerbellar, [DeepTendonRef] = @DeepTendonRef, [Sensory] = @Sensory, [Impression] = @Impression  where ([CustomerID] = @CustomerID and [InitialNo] = @InitialNo)";
-        
+
         /// <summary>
         /// Sql add a record to Follow_Up_Visit 
         /// </summary>
@@ -188,7 +225,7 @@ namespace AcupunctureClinic.Data.Sql
             " ProcedureCode, HM_Code ) " +
             "  Values(@CustomerID,@InitialNo, @FollowUpNo, @FollowUpDate, @Subjective, @Objective, @DiagnosticsCode, " +
             " @ProcedureCode, @HM_Code )";
-        
+
         /// <summary>
         /// Sql update a record in Follow_Up_Visit 
         /// </summary>
@@ -196,20 +233,20 @@ namespace AcupunctureClinic.Data.Sql
         " Set [FollowUpDate] = @FollowUpDate, [Subjective] = @Subjective, [Objective] = @Objective," +
         " [DiagnosticsCode] = @DiagnosticsCode, [ProcedureCode] = @ProcedureCode, [HM_Code] = @HM_Code " +
         " where ([CustomerID] = @CustomerID and [InitialNo] = @InitialNo) and [FollowUpNo] = @FollowUpNo";
- 
+
         ///SQL Codes accessing Treatment_Procedure table
         /// <summary>
         /// Sql Select all records in Treatment_Procedure 
         /// </summary>
         public static readonly string sqlLoadProcedureCodes = "Select * From Treatment_Procedure ORDER BY Procedure_Code  ASC"; //DESC"; ASC ";
-        
+
         /// <summary>
         /// Sql add a record to Trement_Procedure 
         /// </summary>
         public static readonly string sqlAddProcedureCode = "Insert Into" +
             " Treatment_Procedure (Procedure_Code, Description, Price ) " +
             "  Values(@ProcedureCode,@ProcedureName, @Price ) ";
-        
+
         /// <summary>
         /// sql to delete procedure code record
         /// </summary>
@@ -248,13 +285,13 @@ namespace AcupunctureClinic.Data.Sql
         public static readonly string sqlUpdateHMCode = "Update Herbs_Medicines " +
         " Set [Description] = @Description, [Price] = @Price " +
         " where [H_M_Code] = @HMCode";
- 
+
         /// <summary>
         /// Sql Get the last initial No for the customer 
         /// </summary>
         public static readonly string sqlCreateInitialNoByID = "Select  MAX(InitialNo) From Initial_Visit Where CustomerID = @CustomerID";
 
-              /// <summary>
+        /// <summary>
         /// Sql Get the last Follow up No for the customer and Initial No
         /// </summary>
         public static readonly string sqlCreateFollowupNoByID = "Select  MAX(FollowUpNo) From Follow_Up_Visit Where CustomerID = @CustomerID AND InitialNo = @InitialNo";
@@ -271,8 +308,8 @@ namespace AcupunctureClinic.Data.Sql
         public static readonly string sqlAddDiagCode = "Insert Into" +
             " Diagnostics_Codes (Diagnostics_Code, Description ) " +
             "  Values(@DiagnosticsCode,@Description ) ";
-     
-       /// <summary>
+
+        /// <summary>
         /// sql to delete diagnostics code record
         /// </summary>
         public static readonly string sqlDeleteDiagCode = "Delete From Diagnostics_Codes Where (Diagnostics_Code = @DiagnosticsCode)";
@@ -284,6 +321,7 @@ namespace AcupunctureClinic.Data.Sql
         public static readonly string sqlUpdateDiagCode = "Update Diagnostics_Codes " +
         " Set [Description] = @Description " +
         " where [Diagnostics_Code] = @DiagnosticsCode";
-
     }
+
+       
 }

@@ -8,6 +8,7 @@ namespace AcupunctureClinic.Data.DataAccess
 {
     using System;
     using System.Data;
+    using System.Collections.Generic;
     using System.Data.OleDb;
     using AcupunctureClinic.Data.DataModel;
     using AcupunctureClinic.Data.Sql;
@@ -19,9 +20,7 @@ namespace AcupunctureClinic.Data.DataAccess
     /// </summary>
     public class CustomerAccess : ConnectionAccess, ICustomerAccess
     {
-        public Excel.Workbook InvoiceBook { get; set; }
-        public Excel.Application ExcelApp { get; set; }
-        public Excel.Worksheet InvoiceSheet { get; set; }
+
         /// <summary>
         /// Method to get all  customers
         /// </summary>
@@ -387,134 +386,7 @@ namespace AcupunctureClinic.Data.DataAccess
         }
         */
 
-        /// <summary>
-        /// Method to get invoice records  by id
-        /// </summary>
-        /// <param name="CustomerID">id value</param>
-        /// <returns>Data Table</returns>
-        public DataTable GetInvoicesById(long id)
-        {
-            DataTable dataTable = new DataTable();
-
-            using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter())
-            {
-                // Create the command and set its properties
-                dataAdapter.SelectCommand = new OleDbCommand();
-                dataAdapter.SelectCommand.Connection = new OleDbConnection(this.DBConnectionString);
-                dataAdapter.SelectCommand.CommandType = CommandType.Text;
-                dataAdapter.SelectCommand.CommandText = Scripts.sqlGetInvoicesById;
-
-                // Add the parameter to the parameter collection
-                dataAdapter.SelectCommand.Parameters.AddWithValue("@CustomerID", id);
-
-                // Fill the datatable From adapter
-                dataAdapter.Fill(dataTable);
-                return dataTable;
-            }
-        }
-
-        /// <summary>
-        /// Method to insert customer contact details
-        /// </summary>
-        /// <param name="invoice">invoice</param>
-        /// <returns></returns>
-        public bool AddInvoice(InvoiceModel invoice)
-        {
-            using (OleDbCommand dbCommand = new OleDbCommand())
-            {
-                // Set the command object properties
-                dbCommand.Connection = new OleDbConnection(this.DBConnectionString);
-                dbCommand.CommandType = CommandType.Text;
-                dbCommand.CommandText = Scripts.sqlAddInvoice;
-
-                // Add the input parameters to the parameter collection
-                dbCommand.Parameters.AddWithValue("@CustomerID", invoice.CustomerID);
-                dbCommand.Parameters.AddWithValue("@InvDate", invoice.InvDate); //ToShortDateString()); //invoice.InvDate.ToShortDateString());
-                dbCommand.Parameters.AddWithValue("@ProcedureCode", invoice.ProcedureCode);
-                dbCommand.Parameters.AddWithValue("@HMCode", invoice.HMCode);
-                dbCommand.Parameters.AddWithValue("@DiscountRate", invoice.DiscountRate);
-                dbCommand.Parameters.AddWithValue("@PaymentMethod", (int)invoice.PaymentMethod);
-                dbCommand.Parameters.AddWithValue("@CardType", (int)invoice.CardType);
-                dbCommand.Parameters.AddWithValue("@CardNo", invoice.CardNo);
-                dbCommand.Parameters.AddWithValue("@ExpDate", invoice.ExpDate); //invoice.ExpDate.ToShortDateString());
-                dbCommand.Parameters.AddWithValue("@SubTotal", invoice.SubTotal);
-                dbCommand.Parameters.AddWithValue("@AmountPaid", invoice.AmountPaid);
-                dbCommand.Parameters.AddWithValue("@Balance", invoice.Balance);
-                dbCommand.Parameters.AddWithValue("@Total", invoice.Total);
-
-                // Open the connection, execute the query and close the connection
-                dbCommand.Connection.Open();
-                var rowsAffected = dbCommand.ExecuteNonQuery();
-                dbCommand.CommandText = "Select @@Identity";
-                invoice.InvNo = (int)dbCommand.ExecuteScalar();
-                dbCommand.Connection.Close();
-                return rowsAffected > 0;
-            }
-        }
-
-        /// <summary>
-        /// Method to update invoice details
-        /// </summary>
-        /// <param name="invoice">invoice</param>
-        /// <returns></returns>
-        public bool UpdateInvoice(InvoiceModel invoice)
-        {
-            using (OleDbCommand dbCommand = new OleDbCommand())
-            {
-                // Set the command object properties
-                dbCommand.Connection = new OleDbConnection(this.DBConnectionString);
-                dbCommand.CommandType = CommandType.Text;
-                dbCommand.CommandText = Scripts.sqlUpdateInvoice;
-
-                // Add the input parameters to the parameter collection
-                dbCommand.Parameters.AddWithValue("@CustomerID", invoice.CustomerID);
-                dbCommand.Parameters.AddWithValue("@InvDate", invoice.InvDate);
-                dbCommand.Parameters.AddWithValue("@ProcedureCode", invoice.ProcedureCode);
-                dbCommand.Parameters.AddWithValue("@HMCode", invoice.HMCode);
-                dbCommand.Parameters.AddWithValue("@DiscountRate", invoice.DiscountRate);
-                dbCommand.Parameters.AddWithValue("@PaymentMethod", (int)invoice.PaymentMethod);
-                dbCommand.Parameters.AddWithValue("@CardType", (int)invoice.CardType);
-                dbCommand.Parameters.AddWithValue("@CardNo", invoice.CardNo);
-                dbCommand.Parameters.AddWithValue("@ExpDate", invoice.ExpDate); //invoice.ExpDate.ToShortDateString());
-                dbCommand.Parameters.AddWithValue("@SubTotal", invoice.SubTotal);
-                dbCommand.Parameters.AddWithValue("@AmountPaid", invoice.AmountPaid);
-                dbCommand.Parameters.AddWithValue("@Balance", invoice.Balance);
-                dbCommand.Parameters.AddWithValue("@Total", invoice.Total);
-                dbCommand.Parameters.AddWithValue("@InvNo", invoice.InvNo);
-
-                // Open the connection, execute the query and close the connection
-                dbCommand.Connection.Open();
-                var rowsAffected = dbCommand.ExecuteNonQuery();
-                dbCommand.Connection.Close();
-                return rowsAffected > 0;
-            }
-        }
-
-        /// <summary>
-        /// Method to delete invoice details
-        /// </summary>
-        /// <param name="invoice">invoice</param>
-        /// <returns></returns>
-        public bool DeleteInvoice(long invNo)
-        {
-            using (OleDbCommand dbCommand = new OleDbCommand())
-            {
-                // Set the command object properties
-                dbCommand.Connection = new OleDbConnection(this.DBConnectionString);
-                dbCommand.CommandType = CommandType.Text;
-                dbCommand.CommandText = Scripts.sqlDeleteInvoice;
-
-                // Add the input parameter to the parameter collection
-                dbCommand.Parameters.AddWithValue("@InvNo", invNo);
-
-                // Open the connection, execute the query and close the connection
-                dbCommand.Connection.Open();
-                var rowsAffected = dbCommand.ExecuteNonQuery();
-                dbCommand.Connection.Close();
-
-                return rowsAffected > 0;
-            }
-        }
+ 
 
         /// <summary>
         /// Method select HealthInfor by customer id
@@ -898,99 +770,6 @@ namespace AcupunctureClinic.Data.DataAccess
             }
         }
 
-        public void ClearInvoice(Excel.Worksheet invoiceSheet)
-        {
-            for (int i = 15; i <= 27; i++)
-            {
-                invoiceSheet.Cells[i, 1] = "";
-                invoiceSheet.Cells[i, 2] = "";
-                invoiceSheet.Cells[i, 3] = "";
-                invoiceSheet.Cells[i, 7] = "";
-                invoiceSheet.Cells[i, 8] = "";
-                invoiceSheet.Cells[i, 9] = "";
-            }
-            invoiceSheet.Cells[29, 2] = "";   //Payment method
-            invoiceSheet.Cells[28, 9] = "";   //Subtotal
-            invoiceSheet.Cells[29, 9] = "";     //Amount paid
-            invoiceSheet.Cells[30, 9] = "";     //Total
-        }
-        /// <summary>
-        /// Method FilloutInvoiceReport. It fill out Excel Invoice report
-        /// </summary>
-        /// <param name="InvoiceModel">invoiceModel</param>
-        /// <returns>bool</returns>
-        public Excel.Worksheet FilloutInvoiceReport(InvoiceModel invoiceModel)
-        {
-            try
-            {
-                //ExcelApp = new Excel.Application();
-                ExcelApp = new Excel.ApplicationClass();
-
-                //InvoiceBook = ExcelApp.Workbooks.Open(this.ExcelConnectionString);
-                InvoiceBook = ExcelApp.Workbooks.Open(this.ExcelConnectionString,
-                         Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                         Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                         Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                         Type.Missing, Type.Missing);
-
-                InvoiceSheet = (Excel.Worksheet)InvoiceBook.Sheets[1]; // Explicit cast is not required here
-
-                ClearInvoice(InvoiceSheet);
-
-                //InvoiceSheet.Activate();
-                InvoiceSheet.Cells[4, 9] = invoiceModel.InvDate;
-                InvoiceSheet.Cells[5, 9] = invoiceModel.InvNo;
-                InvoiceSheet.Cells[6, 9] = invoiceModel.CustomerID;
-
-                InvoiceSheet.Cells[15, 1] = invoiceModel.ProcedureCode;
-                InvoiceSheet.Cells[15, 2] = invoiceModel.HMCode;
-                InvoiceSheet.Cells[15, 7] = invoiceModel.SubTotal;
-                InvoiceSheet.Cells[15, 8] = invoiceModel.DiscountRate / 100.0;
-                InvoiceSheet.Cells[15, 9] = invoiceModel.Total;
-
-                InvoiceSheet.Cells[29, 2] = Enum.GetName(typeof(PaymentMethods), invoiceModel.PaymentMethod);
-                InvoiceSheet.Cells[28, 9] = invoiceModel.SubTotal;   //Subtotal
-                InvoiceSheet.Cells[29, 9] = invoiceModel.AmountPaid;     //Amount paid
-                InvoiceSheet.Cells[30, 9] = invoiceModel.Total;     //Total
-
-                ExcelApp.Visible = true;
-
-                //InvoiceSheet.Activate(); 
-
-
-            }
-            catch (Exception)
-            {
-                ;
-            }
-
-            return InvoiceSheet;
-        }
-
-
-        /// <summary>
-        /// Close connecting to Excel
-        /// </summary>
-        /// <returns>void</returns>
-        public void CloseExcel()
-        {
-            if (InvoiceBook != null)
-                InvoiceBook.Close(false, Type.Missing, Type.Missing);
-            InvoiceSheet = null;
-            ExcelApp.Quit();
-            System.Diagnostics.Process[] process = System.Diagnostics.Process.GetProcessesByName("Excel");
-            foreach (System.Diagnostics.Process p in process)
-            {
-                if (!string.IsNullOrEmpty(p.ProcessName))
-                {
-                    try
-                    {
-                        p.Kill();
-                    }
-                    catch { }
-                }
-            }
-        }
 
 
         //Procedure Code Mathods
@@ -1364,5 +1143,7 @@ namespace AcupunctureClinic.Data.DataAccess
                 return rowsAffected > 0;
             }
         }
+
+
     }
 }

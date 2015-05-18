@@ -119,6 +119,12 @@
     <Compile Include="Forms\CodeEditor.Designer.cs">
       <DependentUpon>CodeEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInvoice.Designer.cs">
+      <DependentUpon>frmInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HMCodeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmCodePickup.resx">
       <DependentUpon>frmCodePickup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInvoice.resx">
+      <DependentUpon>frmInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Membership\Manage.resx">
       <DependentUpon>Manage.cs</DependentUpon>
@@ -181,12 +190,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AcupunctureClinic.Data\AcupunctureClinic.Data.csproj">
-      <Project>{BD99F3E9-A537-4509-B059-192E4746EC0B}</Project>
-      <Name>AcupunctureClinic.Data %28AcupunctureClinic.Data\AcupunctureClinic.Data%29</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -299,6 +302,12 @@
       </TargetPath>
       <FileType>Assembly</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcupunctureClinic.Data\AcupunctureClinic.Data.csproj">
+      <Project>{bd99f3e9-a537-4509-b059-192e4746ec0b}</Project>
+      <Name>AcupunctureClinic.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

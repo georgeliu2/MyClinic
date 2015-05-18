@@ -140,45 +140,6 @@ namespace AcupunctureClinic.Data.BusinessService
             return this.customerAccess.SelectAccountById(customerId);
         }
 
-        /// <summary>
-        /// Service method to get invoices records by multiple parameters
-        /// </summary>
-        /// <param name="CustomerID">CustomerID value</param>
-        /// <returns>A DataTable of the Invoice table</returns>
-        public DataTable GetInvoicesByCustomerID(long customerId)
-        {
-            return this.customerAccess.GetInvoicesById(customerId);
-        }
-
-        /// <summary>
-        /// Method to add invoice to the database
-        /// </summary>
-        /// <param name="invoiceModel">invoiceModel</param>
-        /// <returns></returns>
-        public bool AddInvoice(InvoiceModel invoiceModel)
-        {
-            return this.customerAccess.AddInvoice(invoiceModel);
-        }
-
-        /// <summary>
-        /// Method to update invoice to the database
-        /// </summary>
-        /// <param name="invoiceModel">invoiceModel</param>
-        /// <returns></returns>
-        public bool UpdateInvoice(InvoiceModel invoiceModel)
-        {
-            return this.customerAccess.UpdateInvoice(invoiceModel);
-        }
-
-        /// <summary>
-        /// Method to delete invoice details
-        /// </summary>
-        /// <param name="invoice">invoice</param>
-        /// <returns></returns>
-        public bool DeleteInvoice(long invNo)
-        {
-            return this.customerAccess.DeleteInvoice(invNo);
-        }
 
         /// <summary>
         /// Method select HealthInfor by customer id
@@ -293,24 +254,6 @@ namespace AcupunctureClinic.Data.BusinessService
             return this.customerAccess.UpdateFollowUpVisit(followUpVisittModel);
         }
 
-        /// <summary>
-        /// Method FilloutInvoiceReport
-        /// </summary>
-        /// <param name="InvoiceModel">invoiceModel</param>
-        /// <returns>bool</returns>
-        public Excel.Worksheet FilloutInvoiceReport(InvoiceModel invoiceModel)
-        {
-            return this.customerAccess.FilloutInvoiceReport(invoiceModel);
-        }
-
-        /// <summary>
-        /// Close connecting to Excel
-        /// </summary>
-        /// <returns>void</returns>
-        public void CloseExcel()
-        {
-            this.customerAccess.CloseExcel();
-        }
 
         ///Procedure Code Methods
         /// <summary>
@@ -444,5 +387,7 @@ namespace AcupunctureClinic.Data.BusinessService
         {
             return this.customerAccess.UpdateDiagCode(diagCodeModel);
         }
+
+ 
     }
 }
